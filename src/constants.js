@@ -1,6 +1,6 @@
 const FETCH_PARAMS = {
   headers: {
-    Authorization: 'token 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',
+    Authorization: `token ${process.env.REACT_APP_API_KEY}`,
   },
 };
 
