@@ -6,12 +6,16 @@ import Lottie from 'react-lottie';
 import colors from './colors.json';
 import FETCH_PARAMS from './constants';
 import loadingAnim from './loading.json';
+import loadingWhiteAnim from './loading-white.json';
 
 function Repo() {
   const [data, setData] = useState({});
   const [nextContributorsPage, setNextContributorsPage] = useState(1);
   const [nextSubscribersPage, setNextSubscribersPage] = useState(1);
   const [nextStargazersPage, setNextStargazersPage] = useState(1);
+  const [isContributorsLoading, setContributorsLoading] = useState(false);
+  const [isSubscribersLoading, setSubscribersLoading] = useState(false);
+  const [isStargazersLoading, setStargazersLoading] = useState(false);
   const params = useParams();
 
   useEffect(() => {
@@ -49,6 +53,7 @@ function Repo() {
   }, []);
 
   const fetchNextContributorsPage = () => {
+    setContributorsLoading(true);
     fetch(`${data.contributors_url}?page=${nextContributorsPage}&per_page=90`, FETCH_PARAMS).then((res) => res.json()).then((e) => {
       if (e.length) {
         setData({ ...data, contributors: data.contributors.concat(e) });
@@ -56,10 +61,12 @@ function Repo() {
       } else {
         setNextContributorsPage(null);
       }
+      setContributorsLoading(false);
     });
   };
 
   const fetchNextSubscribersPage = () => {
+    setSubscribersLoading(true);
     fetch(`${data.subscribers_url}?page=${nextSubscribersPage}&per_page=90`, FETCH_PARAMS).then((res) => res.json()).then((e) => {
       if (e.length) {
         setData({ ...data, subscribers: data.subscribers.concat(e) });
@@ -67,10 +74,12 @@ function Repo() {
       } else {
         setNextSubscribersPage(null);
       }
+      setSubscribersLoading(false);
     });
   };
 
   const fetchNextStargazersPage = () => {
+    setStargazersLoading(true);
     fetch(`${data.stargazers_url}?page=${nextStargazersPage}&per_page=90`, FETCH_PARAMS).then((res) => res.json()).then((e) => {
       if (e.length) {
         setData({ ...data, stargazers: data.stargazers.concat(e) });
@@ -78,6 +87,7 @@ function Repo() {
       } else {
         setNextStargazersPage(null);
       }
+      setStargazersLoading(false);
     });
   };
 
@@ -196,7 +206,26 @@ function Repo() {
                   </Link>
                 ))}
               </div>
-              {nextContributorsPage ? <button onClick={fetchNextContributorsPage} type="button" className="text-lg text-white py-3 w-full bg-purple-500 rounded-md shadow-md mt-6">Load more</button> : ''}
+              {nextContributorsPage ? (
+                <button onClick={fetchNextContributorsPage} type="button" className="text-lg text-white h-14 w-full bg-purple-500 rounded-md shadow-md mt-6">
+                  {isContributorsLoading ? (
+                    <Lottie
+                      options={{
+                        loop: true,
+                        autoplay: true,
+                        animationData: loadingWhiteAnim,
+                        rendererSettings: {
+                          preserveAspectRatio: 'xMidYMid slice',
+                        },
+                      }}
+                      height={40}
+                      width={40}
+                      isStopped={false}
+                      isPaused={false}
+                    />
+                  ) : 'Load more'}
+                </button>
+              ) : ''}
             </div>
             <div className="mt-8">
               <div className="flex items-center gap-2 text-2xl font-medium text-slate-600 tracking-wide">
@@ -216,7 +245,26 @@ function Repo() {
                   </Link>
                 ))}
               </div>
-              {nextSubscribersPage ? <button onClick={fetchNextSubscribersPage} type="button" className="text-lg text-white py-3 w-full bg-purple-500 rounded-md shadow-md mt-6">Load more</button> : ''}
+              {nextSubscribersPage ? (
+                <button onClick={fetchNextSubscribersPage} type="button" className="text-lg text-white h-14 w-full bg-purple-500 rounded-md shadow-md mt-6">
+                  {isSubscribersLoading ? (
+                    <Lottie
+                      options={{
+                        loop: true,
+                        autoplay: true,
+                        animationData: loadingWhiteAnim,
+                        rendererSettings: {
+                          preserveAspectRatio: 'xMidYMid slice',
+                        },
+                      }}
+                      height={40}
+                      width={40}
+                      isStopped={false}
+                      isPaused={false}
+                    />
+                  ) : 'Load more'}
+                </button>
+              ) : ''}
             </div>
             <div className="mt-8">
               <div className="flex items-center gap-2 text-2xl font-medium text-slate-600 tracking-wide">
@@ -236,7 +284,26 @@ function Repo() {
                   </Link>
                 ))}
               </div>
-              {nextStargazersPage ? <button onClick={fetchNextStargazersPage} type="button" className="text-lg text-white py-3 w-full bg-purple-500 rounded-md shadow-md mt-6">Load more</button> : ''}
+              {nextStargazersPage ? (
+                <button onClick={fetchNextStargazersPage} type="button" className="text-lg text-white h-14 w-full bg-purple-500 rounded-md shadow-md mt-6">
+                  {isStargazersLoading ? (
+                    <Lottie
+                      options={{
+                        loop: true,
+                        autoplay: true,
+                        animationData: loadingWhiteAnim,
+                        rendererSettings: {
+                          preserveAspectRatio: 'xMidYMid slice',
+                        },
+                      }}
+                      height={40}
+                      width={40}
+                      isStopped={false}
+                      isPaused={false}
+                    />
+                  ) : 'Load more'}
+                </button>
+              ) : ''}
             </div>
           </div>
         ) : (

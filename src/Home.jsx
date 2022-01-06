@@ -26,7 +26,7 @@ function Home() {
   };
 
   return (
-    <div className="h-full w-full flex items-center justify-center pb-6">
+    <div className="h-full w-full flex items-center justify-center pb-8">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden w-1/2">
         <form onSubmit={fetchResult} className="flex items-center gap-4">
           <Icon icon="uil:search" className="w-6 h-6 ml-4 text-slate-300 flex-shrink-0" />
