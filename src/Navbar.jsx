@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav className="flex items-center justify-between">
+    <nav className="flex items-center justify-between mb-6">
       <Link to="/">
         <svg width="135" height="34" viewBox="0 0 135 34" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clipPath="url(#clip0_4_10)">

@@ -5,6 +5,7 @@ import Lottie from 'react-lottie';
 import { Link } from 'react-router-dom';
 import color from './colors.json';
 import loadingAnim from './loading.json';
+import FETCH_PARAMS from './constants';
 
 function Home() {
   const [query, setQuery] = useState('');
@@ -17,8 +18,8 @@ function Home() {
     if (query) {
       setFirstSearch(false);
       setLoading(true);
-      const users = await fetch(`https://api.github.com/search/users?q=${encodeURIComponent(query)}`).then((res) => res.json());
-      const repo = await fetch(`https://api.github.com/search/repositories?q=${encodeURIComponent(query)}`).then((res) => res.json());
+      const users = await fetch(`https://api.github.com/search/users?q=${encodeURIComponent(query)}`, FETCH_PARAMS).then((res) => res.json());
+      const repo = await fetch(`https://api.github.com/search/repositories?q=${encodeURIComponent(query)}`, FETCH_PARAMS).then((res) => res.json());
       setResult({ users, repo });
       setLoading(false);
     }
