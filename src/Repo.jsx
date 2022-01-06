@@ -23,7 +23,7 @@ function Repo() {
           const subscribers = await fetch(`${d.subscribers_url}?per_page=90`, FETCH_PARAMS).then((r) => r.json());
           const stargazers = await fetch(`${d.stargazers_url}?per_page=90`, FETCH_PARAMS).then((r) => r.json());
 
-          const contributorsCount = await fetch(`${d.contributors_url}?per_page=1`, FETCH_PARAMS).then((r) => r.headers.get('Link').match(/&page=(?<page>\d+)>; rel="last/).groups.page);
+          const contributorsCount = await fetch(`${d.contributors_url}?per_page=1`, FETCH_PARAMS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 1);
 
           if (contributors.length >= 30) setNextContributorsPage(2);
           else setNextContributorsPage(null);

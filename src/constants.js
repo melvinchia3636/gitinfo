@@ -1,6 +1,6 @@
 const FETCH_PARAMS = {
   headers: {
-    Authorization: 'token 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',
+    Authorization: 'token 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',
   },
 };
 
