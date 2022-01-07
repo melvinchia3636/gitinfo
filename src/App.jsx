@@ -5,11 +5,30 @@ import Repo from './Repo';
 import Navbar from './Navbar';
 
 function App() {
+  const [theme, setTheme] = React.useState(localStorage.theme);
+
+  React.useEffect(() => {
+    if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.theme = theme;
+  }, [theme]);
+
   return (
-    <div className="w-full h-screen bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
-      <div className="w-full h-full shadow-2xl m-32 bg-indigo-50 p-6 pb-0 flex flex-col">
+    <div className="w-full h-screen bg-gradient-to-br from-indigo-500 dark:from-indigo-900 to-purple-500 dark:to-purple-900 flex items-center justify-center">
+      <div className="h-full shadow-2xl w-[calc(100vw-20rem)] bg-indigo-50 dark:bg-gray-700 p-6 pb-0 flex flex-col">
         <Router>
-          <Navbar />
+          <Navbar theme={theme} setTheme={setTheme} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/repo/:user/:reponame" element={<Repo />} />

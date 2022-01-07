@@ -4,6 +4,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&display=swap');
 
+@font-face {
+  font-family: "Proxima Nova";
+  src: local('Proxima Nova'), url(./Proxima.otf) format('opentype')
+}
+
 * {
-    font-family: Barlow
+    font-family: "Proxima Nova";
+    scroll-behavior: smooth;
+}
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: rgb(129 140 248);
 }
