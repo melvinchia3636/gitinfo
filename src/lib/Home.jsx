@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import Lottie from 'react-lottie';
 import { Link } from 'react-router-dom';
-import color from './colors.json';
-import loadingAnim from './loading.json';
+import color from './assets/colors.json';
+import loadingAnim from './assets/loading.json';
 import FETCH_PARAMS from './constants';
 
 function Home() {
@@ -30,8 +30,8 @@ function Home() {
       <div className="bg-white rounded-lg shadow-lg overflow-hidden w-1/2">
         <form onSubmit={fetchResult} className="flex items-center gap-4">
           <Icon icon="uil:search" className="w-6 h-6 ml-4 text-slate-300 flex-shrink-0" />
-          <input onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Search Github" className="placeholder-slate-300 py-4 w-full text-xl focus:border-none focus:outline-none text-slate-600" />
-          <button aria-label="search" type="submit" className="bg-purple-500 text-lg py-3 m-1 mb-0.5 rounded-md text-white h-full p-3 flex items-center gap-1"><Icon icon="uil:arrow-right" className="w-8 h-8" /></button>
+          <input onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Search Github" className="placeholder-slate-300 caret-indigo-500 py-4 w-full text-xl focus:border-none focus:outline-none text-slate-600" />
+          <button aria-label="search" type="submit" className="bg-indigo-500 text-lg py-3 m-1 mb-0.5 rounded-md text-white h-full p-3 flex items-center gap-1"><Icon icon="uil:arrow-right" className="w-8 h-8" /></button>
         </form>
         {!isLoading ? (
           <div className={`border-t-2 border-t-slate-50 max-h-[24rem] overflow-y-scroll transition-all duration-500 flex flex-col gap-4 px-4 ${result?.users?.items?.length || result?.repo?.items?.length ? 'py-4' : '0'}`}>

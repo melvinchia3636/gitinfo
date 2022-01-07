@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import Repo from './Repo';
-import Navbar from './Navbar';
+import Home from './lib/Home';
+import Repo from './lib/Repo';
+import Navbar from './lib/Navbar';
 
 function App() {
   const [theme, setTheme] = React.useState(localStorage.theme);
