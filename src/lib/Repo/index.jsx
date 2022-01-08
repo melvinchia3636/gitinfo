@@ -8,7 +8,7 @@ import { Icon } from '@iconify/react';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Lottie from 'react-lottie';
-import FETCH_PARAMS from '../constants';
+import FETCH_HEADERS from '../constants';
 import loadingAnim from '../assets/loading.json';
 
 import Header from './Header';
@@ -37,17 +37,17 @@ function Repo() {
   const params = useParams();
 
   useEffect(() => {
-    fetch('https://api.github.com/rate_limit', FETCH_PARAMS).then((res) => res.json()).then(({ resources: { core } }) => {
+    fetch('https://api.github.com/rate_limit', FETCH_HEADERS).then((res) => res.json()).then(({ resources: { core } }) => {
       if (core.remaining) {
-        fetch(`https://api.github.com/repos/${params.user}/${params.reponame}`, FETCH_PARAMS).then((res) => res.json()).then(async (d) => {
-          const langs = await fetch(d.languages_url, FETCH_PARAMS).then((r) => r.json());
-          const contributors = await fetch(`${d.contributors_url}?per_page=30`, FETCH_PARAMS).then((r) => r.json());
-          const subscribers = await fetch(`${d.subscribers_url}?per_page=30`, FETCH_PARAMS).then((r) => r.json());
-          const stargazers = await fetch(`${d.stargazers_url}?per_page=30`, FETCH_PARAMS).then((r) => r.json());
-          const releases = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=5`, FETCH_PARAMS).then((r) => r.json());
+        fetch(`https://api.github.com/repos/${params.user}/${params.reponame}`, FETCH_HEADERS).then((res) => res.json()).then(async (d) => {
+          const langs = await fetch(d.languages_url, FETCH_HEADERS).then((r) => r.json());
+          const contributors = await fetch(`${d.contributors_url}?per_page=30`, FETCH_HEADERS).then((r) => r.json());
+          const subscribers = await fetch(`${d.subscribers_url}?per_page=30`, FETCH_HEADERS).then((r) => r.json());
+          const stargazers = await fetch(`${d.stargazers_url}?per_page=30`, FETCH_HEADERS).then((r) => r.json());
+          const releases = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=5`, FETCH_HEADERS).then((r) => r.json());
 
-          const contributorsCount = await fetch(`${d.contributors_url}?per_page=1`, FETCH_PARAMS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 1);
-          const releasesCount = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_PARAMS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
+          const contributorsCount = await fetch(`${d.contributors_url}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 1);
+          const releasesCount = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
 
           if (contributorsCount > 30) setNextContributorsPage(2);
           else setNextContributorsPage(null);
@@ -62,7 +62,7 @@ function Repo() {
           let readmeContent;
           // eslint-disable-next-line no-restricted-syntax
           for await (const i of README_URL) {
-            readmeContent = await fetch(i, FETCH_PARAMS)
+            readmeContent = await fetch(i, FETCH_HEADERS)
               .then((res) => (res.status === 200 ? res.text() : ''));
             if (readmeContent) break;
           }

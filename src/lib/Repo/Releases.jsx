@@ -1,9 +1,13 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import emoji from 'emoji-dictionary';
+import Lottie from 'react-lottie';
 import Readme from './Readme';
-import FETCH_PARAMS from '../constants';
+import FETCH_HEADERS from '../constants';
+import loadingWhiteAnim from '../assets/loading-white.json';
 
 const reactionMap = {
   '+1': '+1',
@@ -27,10 +31,15 @@ function Releases({
   data, nextReleasesPage, setNextReleasesPage, setData,
 }) {
   const [isReleasesLoading, setReleasesLoading] = useState(false);
+  const [isReactionLoading, setReactionLoading] = useState(false);
+  const [nextReactionPage, setNextReactionPage] = useState(null);
+  const [isReactedPeopleListShow, setReactedPeopleListShow] = useState(false);
+  const [reactionData, setReactionData] = useState([]);
+  const [currentReactionURL, setCurrentReactionURL] = useState(null);
 
   const fetchNextReleasesPage = () => {
     setReleasesLoading(true);
-    fetch(`${data.releases_url.replace(/\{.*?\}/, '')}?page=${nextReleasesPage}&per_page=5`, FETCH_PARAMS).then((res) => res.json()).then((e) => {
+    fetch(`${data.releases_url.replace(/\{.*?\}/, '')}?page=${nextReleasesPage}&per_page=5`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
       setData({ ...data, releases: data.releases.concat(e) });
       if (e.length === 5) {
         setNextReleasesPage(nextReleasesPage + 1);
@@ -41,8 +50,31 @@ function Releases({
     });
   };
 
-  const showReactedPeopleList = () => {
+  const fetchNextReactionPage = () => {
+    setReactionLoading(true);
+    fetch(`${currentReactionURL}?page=${nextReactionPage}&per_page=30`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
+      setReactionData(reactionData.concat(e));
+      if (e.length === 30) {
+        setNextReactionPage(nextReactionPage + 1);
+      } else {
+        setNextReactionPage(null);
+      }
+      setReactionLoading(false);
+    });
+  };
 
+  const showReactedPeopleList = (reactionURL) => {
+    setReactedPeopleListShow(true);
+    setCurrentReactionURL(reactionURL);
+    setNextReactionPage(null);
+    setReactionData([]);
+    fetch(`${reactionURL}?per_page=30`, FETCH_HEADERS)
+      .then((res) => res.json())
+      .then((e) => {
+        setReactionData(e);
+        if (e.length === 30) setNextReactionPage(2);
+        else setNextReactionPage(null);
+      });
   };
 
   return (
@@ -103,7 +135,7 @@ function Releases({
                       </div>
                     ) : ''
                   ))}
-                  <button type="button" onClick={showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-gray-500">
+                  <button type="button" onClick={() => showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-gray-500">
                     {e.reactions.total_count}
                     {' '}
                     people reacted
@@ -118,6 +150,44 @@ function Releases({
             {isReleasesLoading ? 'Loading...' : 'Load more'}
           </button>
         ) : ''}
+        <div
+          onClick={() => setReactedPeopleListShow(false)}
+          className={`absolute top-0 left-0 flex overflow-hidden items-center justify-center w-full h-screen bg-black transition-all ${isReactedPeopleListShow ? 'z-0 bg-opacity-20 duration-200' : 'z-[-1] bg-opacity-0 duration-500'}`}
+        />
+        <div className={`w-96 h-[80vh] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-white shadow-2xl text-slate-600 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${isReactedPeopleListShow ? '-translate-y-1/2' : 'translate-y-[100%]'}`}>
+          {reactionData.length ? reactionData.map((e) => (
+            <div className="flex items-center gap-4">
+              <div className="relative inline-block">
+                <img src={e.user.avatar_url} alt={e.user.login} className="w-12 h-12 rounded-full" />
+                <span className="absolute -bottom-2 -right-2 text-2xl">{emoji.getUnicode(reactionMap[e.content])}</span>
+              </div>
+              <div>
+                <p className="text-xl">{e.user.login}</p>
+                <p className="text-xs text-slate-400">{new Date(e.created_at).toLocaleString()}</p>
+              </div>
+            </div>
+          )) : ''}
+          {nextReactionPage ? (
+            <button onClick={fetchNextReactionPage} type="button" className="text-lg text-white h-14 flex-shrink-0 w-full bg-indigo-500 rounded-md shadow-md mt-4">
+              {isReactionLoading ? (
+                <Lottie
+                  options={{
+                    loop: true,
+                    autoplay: true,
+                    animationData: loadingWhiteAnim,
+                    rendererSettings: {
+                      preserveAspectRatio: 'xMidYMid slice',
+                    },
+                  }}
+                  height={40}
+                  width={40}
+                  isStopped={false}
+                  isPaused={false}
+                />
+              ) : 'Load more'}
+            </button>
+          ) : ''}
+        </div>
       </div>
     ) : ''
   );

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import Lottie from 'react-lottie';
-import FETCH_PARAMS from '../constants';
+import FETCH_HEADERS from '../constants';
 import loadingWhiteAnim from '../assets/loading-white.json';
 
 function Subscribers({
@@ -12,7 +12,7 @@ function Subscribers({
   const [isSubscribersLoading, setSubscribersLoading] = useState(false);
   const fetchNextSubscribersPage = () => {
     setSubscribersLoading(true);
-    fetch(`${data.subscribers_url}?page=${nextSubscribersPage}&per_page=90`, FETCH_PARAMS).then((res) => res.json()).then((e) => {
+    fetch(`${data.subscribers_url}?page=${nextSubscribersPage}&per_page=90`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
       setData({ ...data, subscribers: data.subscribers.concat(e) });
       if (e.length === 90) {
         setNextSubscribersPage(nextSubscribersPage + 1);

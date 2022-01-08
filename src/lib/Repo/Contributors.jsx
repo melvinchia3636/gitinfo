@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import Lottie from 'react-lottie';
-import FETCH_PARAMS from '../constants';
+import FETCH_HEADERS from '../constants';
 import loadingWhiteAnim from '../assets/loading-white.json';
 
 function Contributors({
@@ -12,7 +12,7 @@ function Contributors({
   const [isContributorsLoading, setContributorsLoading] = useState(false);
   const fetchNextContributorsPage = () => {
     setContributorsLoading(true);
-    fetch(`${data.contributors_url}?page=${nextContributorsPage}&per_page=90`, FETCH_PARAMS).then((res) => res.json()).then((e) => {
+    fetch(`${data.contributors_url}?page=${nextContributorsPage}&per_page=90`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
       setData({ ...data, contributors: data.contributors.concat(e) });
       if (e.length === 90) {
         setNextContributorsPage(nextContributorsPage + 1);

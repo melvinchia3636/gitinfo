@@ -25,7 +25,7 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="w-full h-screen bg-gradient-to-br from-indigo-500 dark:from-indigo-900 to-purple-500 dark:to-purple-900 flex items-center justify-center">
+    <div className="w-full h-screen overflow-hidden relative bg-gradient-to-br from-indigo-500 dark:from-indigo-900 to-purple-500 dark:to-purple-900 flex items-center justify-center">
       <div className="h-full shadow-2xl w-[calc(100vw-20rem)] bg-indigo-50 dark:bg-gray-700 p-6 pb-0 flex flex-col">
         <Router>
           <Navbar theme={theme} setTheme={setTheme} />
