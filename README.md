@@ -54,5 +54,5 @@ This project was inspired by Allicodes' ![Git-Find](https://github.com/alli-Code
  
 ## 📄 License
 
-Copyright © 2022 Melvin Chia
+Copyright © 2022 Melvin Chia<br/>
 Licensed under MIT.
