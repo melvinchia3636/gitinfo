@@ -27,7 +27,7 @@ function Tags({
     data.tags.length ? (
       <div className="mt-8">
         <div className="flex items-center gap-2 text-2xl font-medium text-slate-600 dark:text-gray-100 tracking-wide">
-          <Icon icon="uil:box" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
+          <Icon icon="uil:tag" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
           Tags
           <span className="text-xs mt-2">
             (
