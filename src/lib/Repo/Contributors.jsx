@@ -12,9 +12,9 @@ function Contributors({
   const [isContributorsLoading, setContributorsLoading] = useState(false);
   const fetchNextContributorsPage = () => {
     setContributorsLoading(true);
-    fetch(`${data.contributors_url}?page=${nextContributorsPage}&per_page=90`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
+    fetch(`${data.contributors_url}?page=${nextContributorsPage}&per_page=30`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
       setData({ ...data, contributors: data.contributors.concat(e) });
-      if (e.length === 90) {
+      if (e.length === 30) {
         setNextContributorsPage(nextContributorsPage + 1);
       } else {
         setNextContributorsPage(null);

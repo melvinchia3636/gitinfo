@@ -25,6 +25,7 @@ import Subscribers from './Subscribers';
 import Stargazers from './Stargazers';
 import ReadmeMD from './ReadmeMD';
 import Releases from './Releases';
+import Tags from './Tags';
 
 function Repo() {
   const [data, setData] = useState({});
@@ -33,6 +34,7 @@ function Repo() {
   const [nextSubscribersPage, setNextSubscribersPage] = useState(1);
   const [nextStargazersPage, setNextStargazersPage] = useState(1);
   const [nextReleasesPage, setNextReleasesPage] = useState(1);
+  const [nextTagsPage, setNextTagsPage] = useState(1);
 
   const params = useParams();
 
@@ -45,9 +47,11 @@ function Repo() {
           const subscribers = await fetch(`${d.subscribers_url}?per_page=30`, FETCH_HEADERS).then((r) => r.json());
           const stargazers = await fetch(`${d.stargazers_url}?per_page=30`, FETCH_HEADERS).then((r) => r.json());
           const releases = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=5`, FETCH_HEADERS).then((r) => r.json());
+          const tags = await fetch(`${d.tags_url}?per_page=10`, FETCH_HEADERS).then((r) => r.json());
 
           const contributorsCount = await fetch(`${d.contributors_url}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 1);
           const releasesCount = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
+          const tagsCount = await fetch(`${d.tags_url}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
 
           if (contributorsCount > 30) setNextContributorsPage(2);
           else setNextContributorsPage(null);
@@ -57,6 +61,8 @@ function Repo() {
           else setNextStargazersPage(null);
           if (releasesCount > 5) setNextReleasesPage(2);
           else setNextReleasesPage(null);
+          if (tagsCount > 10) setNextTagsPage(2);
+          else setNextTagsPage(null);
 
           const README_URL = ['README.md', 'readme.md', '.github/README.md', 'README.rst'].map((e) => `https://cors-anywhere.thecodeblog.net/raw.githubusercontent.com/${d.full_name}/${d.default_branch}/${e}`);
           let readmeContent;
@@ -77,6 +83,8 @@ function Repo() {
             readmeContent,
             releases,
             releasesCount,
+            tags,
+            tagsCount,
           });
         });
       } else {
@@ -123,6 +131,12 @@ function Repo() {
               setData={setData}
               nextReleasesPage={nextReleasesPage}
               setNextReleasesPage={setNextReleasesPage}
+            />
+            <Tags
+              data={data}
+              setData={setData}
+              nextTagsPage={nextTagsPage}
+              setNextTagsPage={setNextTagsPage}
             />
           </div>
         ) : (

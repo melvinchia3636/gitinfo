@@ -12,9 +12,9 @@ function Stargazers({
   const [isStargazersLoading, setStargazersLoading] = useState(false);
   const fetchNextStargazersPage = () => {
     setStargazersLoading(true);
-    fetch(`${data.stargazers_url}?page=${nextStargazersPage}&per_page=90`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
+    fetch(`${data.stargazers_url}?page=${nextStargazersPage}&per_page=30`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
       setData({ ...data, stargazers: data.stargazers.concat(e) });
-      if (e.length === 90) {
+      if (e.length === 30) {
         setNextStargazersPage(nextStargazersPage + 1);
       } else {
         setNextStargazersPage(null);

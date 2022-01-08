@@ -95,7 +95,7 @@ function Releases({
               <h4 className="text-4xl font-bold">{e.name}</h4>
               <div className="text-lg flex mt-2 gap-6">
                 <div className="flex items-center gap-2">
-                  <Icon icon="uil:tag" className="w-5 h-5 text-indigo-500" />
+                  <Icon icon="uil:tag-alt" className="w-5 h-5 text-indigo-500" />
                   {e.tag_name}
                 </div>
                 <div className="flex items-center gap-2">

@@ -12,9 +12,9 @@ function Subscribers({
   const [isSubscribersLoading, setSubscribersLoading] = useState(false);
   const fetchNextSubscribersPage = () => {
     setSubscribersLoading(true);
-    fetch(`${data.subscribers_url}?page=${nextSubscribersPage}&per_page=90`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
+    fetch(`${data.subscribers_url}?page=${nextSubscribersPage}&per_page=30`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
       setData({ ...data, subscribers: data.subscribers.concat(e) });
-      if (e.length === 90) {
+      if (e.length === 30) {
         setNextSubscribersPage(nextSubscribersPage + 1);
       } else {
         setNextSubscribersPage(null);
