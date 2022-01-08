@@ -93,6 +93,16 @@ function Releases({
           {data.releases.map((e, i) => (
             <div className={`w-full p-6 ${i ? 'border-t border-slate-300 dark:border-zinc-500' : 'pt-0'}`}>
               <h4 className="text-4xl font-bold">{e.name}</h4>
+              <div className="text-lg flex mt-2 gap-6">
+                <div className="flex items-center gap-2">
+                  <Icon icon="uil:tag" className="w-5 h-5 text-indigo-500" />
+                  {e.tag_name}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Icon icon="ph:git-commit-bold" className="w-5 h-5 text-indigo-500" />
+                  {e.target_commitish.slice(0, 6)}
+                </div>
+              </div>
               <Readme content={e.body} />
               <div className="mt-6">
                 <h5 className="text-2xl">
@@ -135,7 +145,7 @@ function Releases({
                       </div>
                     ) : ''
                   ))}
-                  <button type="button" onClick={() => showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-gray-500">
+                  <button type="button" onClick={() => showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-gray-500 hover:underline transition-all duration-200 hover:text-indigo-500">
                     {e.reactions.total_count}
                     {' '}
                     people reacted
