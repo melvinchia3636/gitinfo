@@ -104,7 +104,8 @@
   border-style: none;
   max-width: 100%;
   box-sizing: content-box;
-  display: inline
+  display: inline;
+  margin-bottom: .3rem
 }
 
 .markdown-body code,

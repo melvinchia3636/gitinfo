@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "Proxima Nova";
-  src: local('Proxima Nova'), url(./lib/assets/Proxima.otf) format('opentype')
+  src: local('Proxima Nova'), url(./Proxima.otf) format('opentype')
 }
 
 * {

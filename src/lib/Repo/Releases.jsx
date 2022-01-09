@@ -8,6 +8,7 @@ import Lottie from 'react-lottie';
 import Readme from './Readme';
 import FETCH_HEADERS from '../constants';
 import loadingWhiteAnim from '../assets/loading-white.json';
+import loadingAnim from '../assets/loading.json';
 
 const reactionMap = {
   '+1': '+1',
@@ -176,7 +177,24 @@ function Releases({
                 <p className="text-xs text-slate-400">{new Date(e.created_at).toLocaleString()}</p>
               </div>
             </div>
-          )) : ''}
+          )) : (
+            <div className="flex w-full h-full items-center justify-center">
+              <Lottie
+                options={{
+                  loop: true,
+                  autoplay: true,
+                  animationData: loadingAnim,
+                  rendererSettings: {
+                    preserveAspectRatio: 'xMidYMid slice',
+                  },
+                }}
+                height={60}
+                width={60}
+                isStopped={false}
+                isPaused={false}
+              />
+            </div>
+          )}
           {nextReactionPage ? (
             <button onClick={fetchNextReactionPage} type="button" className="text-lg text-white h-14 flex-shrink-0 w-full bg-indigo-500 rounded-md shadow-md mt-4">
               {isReactionLoading ? (
