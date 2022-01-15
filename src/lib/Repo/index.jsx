@@ -27,6 +27,7 @@ import ReadmeMD from './ReadmeMD';
 import Releases from './Releases';
 import Tags from './Tags';
 import Labels from './Labels';
+import Issues from './Issues';
 
 function Repo() {
   const [data, setData] = useState({});
@@ -37,6 +38,7 @@ function Repo() {
   const [nextReleasesPage, setNextReleasesPage] = useState(1);
   const [nextTagsPage, setNextTagsPage] = useState(1);
   const [nextLabelsPage, setNextLabelsPage] = useState(1);
+  const [nextIssuesPage, setNextIssuesPage] = useState(1);
 
   const params = useParams();
 
@@ -51,11 +53,13 @@ function Repo() {
           const releases = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=5`, FETCH_HEADERS).then((r) => r.json());
           const tags = await fetch(`${d.tags_url}?per_page=10`, FETCH_HEADERS).then((r) => r.json());
           const labels = await fetch(`${d.labels_url.replace(/\{.*?\}/, '')}?per_page=20`, FETCH_HEADERS).then((r) => r.json());
+          const issues = await fetch(`${d.issues_url.replace(/\{.*?\}/, '')}?per_page=20`, FETCH_HEADERS).then((r) => r.json());
 
           const contributorsCount = await fetch(`${d.contributors_url}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 1);
           const releasesCount = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
           const tagsCount = await fetch(`${d.tags_url}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
           const labelsCount = await fetch(`${d.labels_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
+          const issuesCount = await fetch(`${d.issues_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
 
           if (contributorsCount > 30) setNextContributorsPage(2);
           else setNextContributorsPage(null);
@@ -67,8 +71,10 @@ function Repo() {
           else setNextReleasesPage(null);
           if (tagsCount > 10) setNextTagsPage(2);
           else setNextTagsPage(null);
-          if (labelsCount > 10) setNextLabelsPage(2);
+          if (labelsCount > 20) setNextLabelsPage(2);
           else setNextLabelsPage(null);
+          if (issuesCount > 20) setNextIssuesPage(2);
+          else setNextIssuesPage(null);
 
           const README_URL = ['README.md', 'readme.md', '.github/README.md', 'README.rst'].map((e) => `https://cors-anywhere.thecodeblog.net/raw.githubusercontent.com/${d.full_name}/${d.default_branch}/${e}`);
           let readmeContent;
@@ -93,6 +99,8 @@ function Repo() {
             tagsCount,
             labels,
             labelsCount,
+            issues,
+            issuesCount,
           });
         });
       } else {
@@ -151,6 +159,12 @@ function Repo() {
               setData={setData}
               nextLabelsPage={nextLabelsPage}
               setNextLabelsPage={setNextLabelsPage}
+            />
+            <Issues
+              data={data}
+              setData={setData}
+              nextIssuesPage={nextIssuesPage}
+              setNextIssuesPage={setNextIssuesPage}
             />
           </div>
         ) : (
