@@ -49,7 +49,7 @@ function Labels({
           {data.labels.map((e, i) => (
             <div className={`w-full p-4 ${i ? 'border-t border-slate-300 dark:border-zinc-500' : 'pt-0'}`}>
               <h4 className={`text-xs font-bold shadow-md rounded-full px-3 pt-1.5 pb-1 inline ${hex_is_light(e.color) ? 'text-slate-600' : 'text-white'}`} style={{ backgroundColor: `#${e.color}` }}>{e.name}</h4>
-              <p className="mt-2">{e.description}</p>
+              <p className="mt-2 text-lg">{e.description}</p>
             </div>
           ))}
         </div>

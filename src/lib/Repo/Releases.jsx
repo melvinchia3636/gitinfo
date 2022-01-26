@@ -78,6 +78,8 @@ function Releases({
       });
   };
 
+  console.log(data.releases);
+
   return (
     data.releases.length ? (
       <div className="mt-8">
@@ -136,22 +138,24 @@ function Releases({
                     <a href={e.tarball_url} target="_blank" rel="noopener noreferrer">Source code (.tar.gz)</a>
                   </div>
                 </div>
-                <div className="flex gap-1 mt-6 items-center -ml-1">
-                  <Icon icon="uil:smile" className="w-6 h-6 text-slate-300 dark:text-gray-500" />
-                  {Object.entries(e.reactions).slice(2).map(([k, v]) => (
-                    v ? (
-                      <div className="flex items-center gap-1 rounded-full px-2 border border-slate-300 dark:border-gray-500">
-                        <span>{emoji.getUnicode(reactionMap[k])}</span>
-                        <span className="text-sm">{v}</span>
-                      </div>
-                    ) : ''
-                  ))}
-                  <button type="button" onClick={() => showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-gray-500 hover:underline transition-all duration-200 hover:text-indigo-500">
-                    {e.reactions.total_count}
-                    {' '}
-                    people reacted
-                  </button>
-                </div>
+                {Boolean(e.reactions) && (
+                  <div className="flex gap-1 mt-6 items-center -ml-1">
+                    <Icon icon="uil:smile" className="w-6 h-6 text-slate-300 dark:text-gray-500" />
+                    {Object.entries(e.reactions).slice(2).map(([k, v]) => (
+                      v ? (
+                        <div className="flex items-center gap-1 rounded-full px-2 border border-slate-300 dark:border-gray-500">
+                          <span>{emoji.getUnicode(reactionMap[k])}</span>
+                          <span className="text-sm">{v}</span>
+                        </div>
+                      ) : ''
+                    ))}
+                    <button type="button" onClick={() => showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-gray-500 hover:underline transition-all duration-200 hover:text-indigo-500">
+                      {e.reactions.total_count}
+                      {' '}
+                      people reacted
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))}

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
@@ -27,11 +28,11 @@ function HeadingRenderer(props) {
   return React.createElement(`h${props.level}`, { id: slug }, props.children);
 }
 
-function Readme({ content }) {
+function Readme({ data: { readmeContent, full_name, default_branch } }) {
   return (
     <div className="markdown-body mt-4 text-slate-600 dark:text-gray-100 !break-words">
       <ReactMarkdown
-        children={content.replace(/:\w+:/gi, (name) => emoji.getUnicode(name))}
+        children={readmeContent.replace(/:\w+:/gi, (name) => emoji.getUnicode(name))}
         plugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
@@ -49,6 +50,12 @@ function Readme({ content }) {
             >
               {props.children}
             </a>
+          ),
+          img: (props) => (
+            <img
+              src={props.src.startsWith('/') ? `https://raw.githubusercontent.com/${full_name}/${default_branch}${props.src}` : props.src}
+              alt={props.alt}
+            />
           ),
           code({
             node, inline, className, children, ...props

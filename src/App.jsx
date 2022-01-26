@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './lib/Home';
 import Repo from './lib/Repo';
 import Navbar from './lib/Navbar';
+import User from './lib/User';
 
 function App() {
   const [theme, setTheme] = React.useState(localStorage.theme);
@@ -32,6 +33,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/repo/:user/:reponame" element={<Repo />} />
+            <Route path="/user/:username" element={<User />} />
           </Routes>
         </Router>
       </div>

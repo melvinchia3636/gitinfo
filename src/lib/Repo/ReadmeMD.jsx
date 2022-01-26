@@ -11,7 +11,7 @@ function ReadmeMD({ data }) {
           <Icon icon="codicon:law" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
           README.md
         </div>
-        <Readme content={data.readmeContent} />
+        <Readme data={data} />
       </div>
     ) : ''
   );

@@ -49,7 +49,7 @@ function Issues({
           {data.issues.map((e, i) => (
             <div className={`w-full p-4 ${i ? 'border-t border-slate-300 dark:border-zinc-500' : 'pt-0'}`}>
               <div className="flex items-center gap-2">
-                <Icon icon="octicon:issue-opened-16" className="text-green-700 w-5 h-5 flex-shrink-0" />
+                <Icon icon="octicon:issue-opened-16" className="text-green-700 dark:text-green-500 w-5 h-5 flex-shrink-0" />
                 <h4 className="text-xl flex-shrink overflow-hidden overflow-ellipsis whitespace-nowrap font-bold">{e.title}</h4>
                 <div className="flex items-center gap-2">
                   {e.labels.map((t) => (
