@@ -3,7 +3,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/thecodeb/gitinfo.thecodeblog.net/
     - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp assets-manifest.json $DEPLOYPATH
+    - /bin/cp asset-manifest.json $DEPLOYPATH
     - /bin/cp favicon.png $DEPLOYPATH
     - /bin/cp manifest.json $DEPLOYPATH
     - /bin/cp -R static $DEPLOYPATH
