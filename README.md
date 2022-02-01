@@ -25,7 +25,7 @@ I've made a web app that allows users to search for Github accounts and reposito
 <img width="49%" alt="Screenshot 2022-01-08 at 1 50 57 PM" src="https://user-images.githubusercontent.com/64565584/148633280-7fb418a2-c52c-4232-93d4-632d7d7e5aea.png">
 <img width="49%" alt="Screenshot 2022-01-08 at 1 51 06 PM" src="https://user-images.githubusercontent.com/64565584/148633278-2538d13e-b2fa-4cc4-9af4-15addd56f8d3.png">
 <img width="49%" alt="Screenshot 2022-02-02 at 6 01 16 AM" src="https://user-images.githubusercontent.com/64565584/152058858-8742c961-3027-4649-8cb1-7b4e2f1e056e.png">
-
+<img width="49%" alt="Screenshot 2022-02-02 at 6 04 08 AM" src="https://user-images.githubusercontent.com/64565584/152059238-5dbe8bf4-073a-45c1-94d4-01aa44938acd.png">
   
 </div>
 
