@@ -1,6 +1,6 @@
 const FETCH_HEADERS = {
   headers: {
-    Authorization: `token ${process.env.REACT_APP_API_KEY}`,
+    Authorization: `token ${window.atob(process.env.REACT_APP_API_KEY)}`,
   },
 };
 
