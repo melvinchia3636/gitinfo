@@ -89,6 +89,13 @@ function Home() {
           />
         )}
       </div>
+      <p className="absolute left-1/2 bottom-4 transform -translate-x-1/2 text-slate-600">
+        Created by
+        {' '}
+        <a href="https://thecodeblog.net" className="underline text-indigo-500">Melvin Chia</a>
+        {' '}
+        with 💖. Project under MIT license.
+      </p>
     </div>
   );
 }
