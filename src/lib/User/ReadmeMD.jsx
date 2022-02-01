@@ -17,13 +17,13 @@ function ReadmeMD({ username }) {
   }, []);
   return (
     data ? (
-      <div>
+      <>
         <div className="flex items-center gap-2 text-2xl font-medium text-slate-600 dark:text-gray-100 tracking-wide">
           <Icon icon="uil:info-circle" className="w-8 h-8 text-indigo-500 dark:text-indigo-400 -mt-1" />
           README.md
         </div>
         <Readme data={{ readmeContent: data, full_name: 'melvinchia3636/melvinchia3636', default_branch: 'main' }} />
-      </div>
+      </>
     ) : ''
   );
 }

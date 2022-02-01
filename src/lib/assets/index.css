@@ -18,3 +18,13 @@ input:checked ~ .dot {
   transform: translateX(100%);
   background-color: rgb(129 140 248);
 }
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

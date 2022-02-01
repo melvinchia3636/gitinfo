@@ -4,7 +4,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
+import Lottie from 'react-lottie';
 import FETCH_HEADERS from '../constants';
+import loadingWhiteAnim from '../assets/loading-white.json';
 
 function hex_is_light(color) {
   const hex = color.replace('#', '');
@@ -55,7 +57,22 @@ function Labels({
         </div>
         {nextLabelsPage ? (
           <button onClick={fetchNextLabelsPage} type="button" className="text-lg text-white h-14 w-full bg-indigo-500 rounded-md shadow-md mt-6">
-            {isLabelsLoading ? 'Loading...' : 'Load more'}
+            {isLabelsLoading ? (
+              <Lottie
+                options={{
+                  loop: true,
+                  autoplay: true,
+                  animationData: loadingWhiteAnim,
+                  rendererSettings: {
+                    preserveAspectRatio: 'xMidYMid slice',
+                  },
+                }}
+                height={40}
+                width={40}
+                isStopped={false}
+                isPaused={false}
+              />
+            ) : 'Load more'}
           </button>
         ) : ''}
       </div>

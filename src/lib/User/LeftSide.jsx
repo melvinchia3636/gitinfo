@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 
 function LeftSide({ data }) {
   return (
-    <div className="text-slate-600 dark:text-white overflow-y-scroll h-full mb-8 -mt-2">
+    <div className="text-slate-600 dark:text-white overflow-y-scroll h-full mb-8 -mt-2 no-scrollbar">
       <img src={data.avatar_url} alt={data.login} className="rounded-2xl w-72 h-72 bg-white shadow-lg" />
       <div className="ml-0.5">
         <h2 className="text-4xl mt-4 font-bold">{data.name}</h2>
@@ -28,10 +28,10 @@ function LeftSide({ data }) {
         </div>
         )}
         {Boolean(data.blog) && (
-        <div className="text-lg flex items-center gap-3 mt-2">
+        <a href={data.blog} target="_blank" rel="noreferrer" className="text-lg flex items-center gap-3 mt-2">
           <Icon icon="uil:link" className="text-indigo-500 w-6 h-6" />
           {data.blog}
-        </div>
+        </a>
         )}
         {Boolean(data.twitter_username) && (
         <div className="text-lg flex items-center gap-3 mt-2">

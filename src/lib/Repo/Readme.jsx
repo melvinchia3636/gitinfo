@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable camelcase */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -28,11 +29,12 @@ function HeadingRenderer(props) {
   return React.createElement(`h${props.level}`, { id: slug }, props.children);
 }
 
-function Readme({ data: { readmeContent, full_name, default_branch } }) {
+function Readme({ data }) {
   return (
+    data ? JSON.stringify(data) !== '{}' && (
     <div className="markdown-body mt-4 text-slate-600 dark:text-gray-100 !break-words">
       <ReactMarkdown
-        children={readmeContent.replace(/:\w+:/gi, (name) => emoji.getUnicode(name))}
+        children={data.readmeContent.replace(/:\w+:/gi, (name) => emoji.getUnicode(name))}
         plugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
@@ -53,7 +55,7 @@ function Readme({ data: { readmeContent, full_name, default_branch } }) {
           ),
           img: (props) => (
             <img
-              src={props.src.startsWith('/') ? `https://raw.githubusercontent.com/${full_name}/${default_branch}${props.src}` : props.src}
+              src={props.src.startsWith('/') ? `https://raw.githubusercontent.com/${data.full_name}/${data.default_branch}${props.src}` : props.src}
               alt={props.alt}
             />
           ),
@@ -84,6 +86,7 @@ function Readme({ data: { readmeContent, full_name, default_branch } }) {
         }}
       />
     </div>
+    ) : <></>
   );
 }
 

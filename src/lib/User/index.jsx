@@ -26,7 +26,7 @@ function User() {
     });
   });
   return (
-    <div className="h-full w-full pt-4 pb-0 overflow-scroll">
+    <div className="h-full w-full flex pt-4 pb-0">
       {JSON.stringify(data) !== '{}' ? (
         data !== 'finished' ? (
           <div className="w-full h-full flex justify-between gap-12">
