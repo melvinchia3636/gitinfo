@@ -24,13 +24,15 @@ I've made a web app that allows users to search for Github accounts and reposito
 <img width="49%" alt="Screenshot 2022-01-08 at 1 50 47 PM" src="https://user-images.githubusercontent.com/64565584/148633282-00d03e0d-6399-4f9f-a9c9-fa728f825a8d.png">
 <img width="49%" alt="Screenshot 2022-01-08 at 1 50 57 PM" src="https://user-images.githubusercontent.com/64565584/148633280-7fb418a2-c52c-4232-93d4-632d7d7e5aea.png">
 <img width="49%" alt="Screenshot 2022-01-08 at 1 51 06 PM" src="https://user-images.githubusercontent.com/64565584/148633278-2538d13e-b2fa-4cc4-9af4-15addd56f8d3.png">
+<img width="49%" alt="Screenshot 2022-02-02 at 6 01 16 AM" src="https://user-images.githubusercontent.com/64565584/152058858-8742c961-3027-4649-8cb1-7b4e2f1e056e.png">
+
   
 </div>
 
 ## 🔬 Technologies Used 
 
 ![skills](https://img.shields.io/badge/-JAVASCRIPT-FF0000?style=for-the-badge&logo=javascript&logoColor=white&color=red)
-![skills](https://img.shields.io/badge/-HTML-FF0000?style=for-the-badge&logo=html5&logoColor=white&color=green)
+![skills](https://img.shields.io/badge/-HTML-FF0000?style=for-the-badge&logo=html5&logoColor=white&color=green)!
 ![skills](https://img.shields.io/badge/-CSS-FF0000?style=for-the-badge&logo=css3&logoColor=white&color=blue)
 ![skills](https://img.shields.io/badge/-TAILWIND_CSS-FF0000?style=for-the-badge&logo=tailwindcss&logoColor=white&color=22D3EE)
 ![skills](https://img.shields.io/badge/-REACT_JS-FF0000?style=for-the-badge&logo=react&logoColor=white&color=38BDF8)
