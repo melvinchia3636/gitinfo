@@ -78,8 +78,6 @@ function Releases({
       });
   };
 
-  console.log(data.releases);
-
   return (
     data.releases.length ? (
       <div className="mt-8">

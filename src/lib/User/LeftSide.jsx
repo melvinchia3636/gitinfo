@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 
 function LeftSide({ data }) {
   return (
-    <div className="text-slate-600 dark:text-white overflow-y-scroll h-full mb-8 -mt-2 no-scrollbar">
+    <div className="text-slate-600 dark:text-white overflow-y-scroll h-full mb-8 no-scrollbar">
       <img src={data.avatar_url} alt={data.login} className="rounded-2xl w-72 h-72 bg-white shadow-lg" />
       <div className="ml-0.5">
         <h2 className="text-4xl mt-4 font-bold">{data.name}</h2>
@@ -27,6 +27,12 @@ function LeftSide({ data }) {
           {data.location}
         </div>
         )}
+        {Boolean(data.email) && (
+        <div className="text-lg flex items-center gap-3 mt-2">
+          <Icon icon="uil:envelope" className="text-indigo-500 w-6 h-6" />
+          {data.email}
+        </div>
+        )}
         {Boolean(data.blog) && (
         <a href={data.blog} target="_blank" rel="noreferrer" className="text-lg flex items-center gap-3 mt-2">
           <Icon icon="uil:link" className="text-indigo-500 w-6 h-6" />
@@ -34,11 +40,11 @@ function LeftSide({ data }) {
         </a>
         )}
         {Boolean(data.twitter_username) && (
-        <div className="text-lg flex items-center gap-3 mt-2">
+        <a href={`https://twitter.com/${data.twitter_username}`} target="_blank" rel="noopener noreferrer" className="text-lg flex items-center gap-3 mt-2">
           <Icon icon="uil:twitter" className="text-indigo-500 w-6 h-6" />
           @
           {data.twitter_username}
-        </div>
+        </a>
         )}
         <div className="text-lg flex items-center gap-3 mt-6">
           <Icon icon="icon-park-outline:timer" className="text-indigo-500 w-[1.7rem] h-[1.7rem]" />

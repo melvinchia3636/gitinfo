@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable camelcase */
 /* eslint-disable react/destructuring-assignment */
@@ -32,7 +33,7 @@ function HeadingRenderer(props) {
 function Readme({ data }) {
   return (
     data ? JSON.stringify(data) !== '{}' && (
-    <div className="markdown-body mt-4 text-slate-600 dark:text-gray-100 !break-words">
+    <div className="markdown-body mt-6 text-slate-600 dark:text-gray-100 !break-words">
       <ReactMarkdown
         children={data.readmeContent.replace(/:\w+:/gi, (name) => emoji.getUnicode(name))}
         plugins={[remarkGfm]}
@@ -55,7 +56,11 @@ function Readme({ data }) {
           ),
           img: (props) => (
             <img
-              src={props.src.startsWith('/') ? `https://raw.githubusercontent.com/${data.full_name}/${data.default_branch}${props.src}` : props.src}
+              src={props.src.startsWith('/')
+                ? `https://raw.githubusercontent.com/${data.full_name}/${data.default_branch}${props.src}`
+                : (props.src.startsWith('https://github.com')
+                  ? props.src.replace(/^https:\/\/github\.com/, 'https://raw.githubusercontent.com').replace('/blob', '')
+                  : props.src)}
               alt={props.alt}
             />
           ),

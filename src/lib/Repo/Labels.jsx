@@ -7,6 +7,7 @@ import { Icon } from '@iconify/react';
 import Lottie from 'react-lottie';
 import FETCH_HEADERS from '../constants';
 import loadingWhiteAnim from '../assets/loading-white.json';
+import { applySaturationToHexColor, shadeColor } from './Issues';
 
 function hex_is_light(color) {
   const hex = color.replace('#', '');
@@ -48,12 +49,26 @@ function Labels({
           </span>
         </div>
         <div className="mt-6 flex flex-col text-slate-600 dark:text-white">
-          {data.labels.map((e, i) => (
-            <div className={`w-full p-4 ${i ? 'border-t border-slate-300 dark:border-zinc-500' : 'pt-0'}`}>
-              <h4 className={`text-xs font-bold shadow-md rounded-full px-3 pt-1.5 pb-1 inline ${hex_is_light(e.color) ? 'text-slate-600' : 'text-white'}`} style={{ backgroundColor: `#${e.color}` }}>{e.name}</h4>
-              <p className="mt-2 text-lg">{e.description}</p>
-            </div>
-          ))}
+          {data.labels.map((e, i) => {
+            const color = !hex_is_light(e.color) ? applySaturationToHexColor(shadeColor(`#${e.color}`, 100), 80) : `#${e.color}`;
+            console.log(color);
+            return (
+              <div className={`w-full p-4 ${i ? 'border-t border-slate-300 dark:border-zinc-500' : 'pt-0'}`}>
+                <div className={`text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap pt-1.5 pb-1 inline dark:hidden ${hex_is_light(e.color) ? 'text-slate-600' : 'text-white'}`} style={{ backgroundColor: `#${e.color}` }}>{e.name}</div>
+                <div
+                  className="text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap outline outline-1 pt-1.5 pb-1 hidden dark:inline"
+                  style={{
+                    backgroundColor: `${color}30`,
+                    outlineColor: color,
+                    color,
+                  }}
+                >
+                  {e.name}
+                </div>
+                <p className="mt-2 text-lg">{e.description}</p>
+              </div>
+            );
+          })}
         </div>
         {nextLabelsPage ? (
           <button onClick={fetchNextLabelsPage} type="button" className="text-lg text-white h-14 w-full bg-indigo-500 rounded-md shadow-md mt-6">

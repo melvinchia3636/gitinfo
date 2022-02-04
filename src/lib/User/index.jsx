@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Lottie from 'react-lottie';
+import ReactStickyBox from 'react-sticky-box';
 import FETCH_HEADERS from '../constants';
 import loadingAnim from '../assets/loading.json';
 
@@ -24,13 +25,15 @@ function User() {
         setData('finished');
       }
     });
-  });
+  }, []);
   return (
-    <div className="h-full w-full flex pt-4 pb-0">
+    <div className="h-full w-full flex pb-0">
       {JSON.stringify(data) !== '{}' ? (
         data !== 'finished' ? (
-          <div className="w-full h-full flex justify-between gap-12">
-            <LeftSide data={data} />
+          <div className="w-full h-full overflow-y-scroll flex justify-between gap-12 items-start">
+            <ReactStickyBox offsetBottom={60}>
+              <LeftSide data={data} />
+            </ReactStickyBox>
             <RightSide data={data} />
           </div>
         ) : (

@@ -14,7 +14,7 @@ function Repositories({ repos_url, repos_count }) {
 
   const fetchNextReposPage = () => {
     setReposLoading(true);
-    fetch(`${repos_url}?page=${nextReposPage}&per_page=20`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
+    fetch(`${repos_url}?page=${nextReposPage}&per_page=20&sort=updated`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
       setData([...data, ...e]);
       if (e.length === 20) {
         setNextReposPage(nextReposPage + 1);
@@ -26,7 +26,7 @@ function Repositories({ repos_url, repos_count }) {
   };
 
   useEffect(() => {
-    fetch(`${repos_url}?per_page=20`, FETCH_HEADERS).then((res) => res.json()).then((d) => {
+    fetch(`${repos_url}?per_page=20&sort=updated`, FETCH_HEADERS).then((res) => res.json()).then((d) => {
       setData(d);
       if (d.length === 20) {
         setData(d);
@@ -65,6 +65,18 @@ function Repositories({ repos_url, repos_count }) {
                 <Icon icon="uil:eye" className="w-5 h-5 mb-0.5 text-indigo-500" />
                 {e.watchers_count.toLocaleString()}
               </div>
+              {e.forks_count > 0 && (
+              <div className="flex items-center gap-1.5">
+                <Icon icon="jam:fork" className="w-5 h-5 mb-0.5 text-indigo-500" />
+                {e.forks_count.toLocaleString()}
+              </div>
+              )}
+              {e.open_issues > 0 && (
+              <div className="flex items-center gap-1.5">
+                <Icon icon="octicon:issue-opened-16" className="w-4 h-4 mb-0.5 text-indigo-500 stroke-[0.5px] stroke-indigo-500 overflow-visible" />
+                {e.open_issues.toLocaleString()}
+              </div>
+              )}
             </div>
           </a>
         ))}
