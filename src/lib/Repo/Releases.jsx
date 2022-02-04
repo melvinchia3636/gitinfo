@@ -81,7 +81,7 @@ function Releases({
   return (
     data.releases.length ? (
       <div className="mt-8">
-        <div className="flex items-center gap-2 text-2xl font-medium text-slate-600 dark:text-gray-100 tracking-wide">
+        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
           <Icon icon="uil:box" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
           Releases
           <span className="text-xs mt-2">
@@ -90,9 +90,9 @@ function Releases({
             )
           </span>
         </div>
-        <div className="mt-6 flex flex-col text-slate-600 dark:text-white">
+        <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-200">
           {data.releases.map((e, i) => (
-            <div className={`w-full p-6 ${i ? 'border-t border-slate-300 dark:border-zinc-500' : 'pt-0'}`}>
+            <div className={`w-full p-6 ${i ? 'border-t border-zinc-300 dark:border-zinc-600' : 'pt-0'}`}>
               <h4 className="text-4xl font-bold">{e.name}</h4>
               <div className="text-lg flex mt-2 gap-6">
                 <div className="flex items-center gap-2">
@@ -138,16 +138,16 @@ function Releases({
                 </div>
                 {Boolean(e.reactions) && (
                   <div className="flex gap-1 mt-6 items-center -ml-1">
-                    <Icon icon="uil:smile" className="w-6 h-6 text-slate-300 dark:text-gray-500" />
+                    <Icon icon="uil:smile" className="w-6 h-6 text-zinc-300 dark:text-zinc-500" />
                     {Object.entries(e.reactions).slice(2).map(([k, v]) => (
                       v ? (
-                        <div className="flex items-center gap-1 rounded-full px-2 border border-slate-300 dark:border-gray-500">
+                        <div className="flex items-center gap-1 rounded-full px-2 border border-zinc-300 dark:border-zinc-600">
                           <span>{emoji.getUnicode(reactionMap[k])}</span>
                           <span className="text-sm">{v}</span>
                         </div>
                       ) : ''
                     ))}
-                    <button type="button" onClick={() => showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-gray-500 hover:underline transition-all duration-200 hover:text-indigo-500">
+                    <button type="button" onClick={() => showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-zinc-500 hover:underline transition-all duration-200 hover:text-indigo-500">
                       {e.reactions.total_count}
                       {' '}
                       people reacted
@@ -167,7 +167,7 @@ function Releases({
           onClick={() => setReactedPeopleListShow(false)}
           className={`absolute top-0 left-0 flex overflow-hidden items-center justify-center w-full h-screen bg-black transition-all ${isReactedPeopleListShow ? 'z-0 bg-opacity-20 duration-200' : 'z-[-1] bg-opacity-0 duration-500'}`}
         />
-        <div className={`w-96 h-[80vh] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-white shadow-2xl text-slate-600 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${isReactedPeopleListShow ? '-translate-y-1/2' : 'translate-y-[100%]'}`}>
+        <div className={`w-96 h-[80vh] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-white shadow-2xl text-zinc-600 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${isReactedPeopleListShow ? '-translate-y-1/2' : 'translate-y-[100%]'}`}>
           {reactionData.length ? reactionData.map((e) => (
             <div className="flex items-center gap-4">
               <div className="relative inline-block">
@@ -176,7 +176,7 @@ function Releases({
               </div>
               <div>
                 <p className="text-xl">{e.user.login}</p>
-                <p className="text-xs text-slate-400">{new Date(e.created_at).toLocaleString()}</p>
+                <p className="text-xs text-zinc-400">{new Date(e.created_at).toLocaleString()}</p>
               </div>
             </div>
           )) : (

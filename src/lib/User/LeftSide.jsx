@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 
 function LeftSide({ data }) {
   return (
-    <div className="text-slate-600 dark:text-white overflow-y-scroll h-full mb-8 no-scrollbar">
+    <div className="text-zinc-600 dark:text-zinc-200 overflow-y-scroll h-full mb-8 no-scrollbar">
       <img src={data.avatar_url} alt={data.login} className="rounded-2xl w-72 h-72 bg-white shadow-lg" />
       <div className="ml-0.5">
         <h2 className="text-4xl mt-4 font-bold">{data.name}</h2>

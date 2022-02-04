@@ -72,7 +72,7 @@
   padding-bottom: .3em;
   font-size: 2em;
   border-bottom: 1px solid hsla(210,18%,87%,1);
-  @apply dark:border-gray-500
+  @apply dark:border-zinc-600
 }
 
 .markdown-body mark {
@@ -125,7 +125,7 @@
   overflow: hidden;
   background: transparent;
   border-bottom: 1px solid hsla(210,18%,87%,1);
-  @apply dark:border-gray-500;
+  @apply dark:border-zinc-600;
   height: .25em;
   padding: 0;
   margin: 24px 0;
@@ -239,7 +239,7 @@
   background-color: #f6f8fa;
   border: solid 1px rgba(175,184,193,0.2);
   border-bottom-color: rgba(175,184,193,0.2);
-  @apply dark:border-gray-500;
+  @apply dark:border-zinc-600;
   border-radius: 6px;
   box-shadow: inset 0 -1px 0 rgba(175,184,193,0.2);
 }
@@ -261,7 +261,7 @@
   padding-bottom: .3em;
   font-size: 1.5em;
   border-bottom: 1px solid hsla(210,18%,87%,1);
-  @apply dark:border-gray-500;
+  @apply dark:border-zinc-600;
 }
 
 .markdown-body h3 {
@@ -294,9 +294,9 @@
   margin: 0;
   padding: 0 1em;
   color: #57606a;
-  @apply dark:text-gray-100;
+  @apply dark:text-zinc-200;
   border-left: .25em solid #d0d7de;
-  @apply dark:border-gray-600;
+  @apply dark:border-zinc-600;
 }
 .markdown-body ul,
 .markdown-body ol {
@@ -678,7 +678,7 @@
 }
 
 .markdown-body table tr:nth-child(2n) {
-  @apply bg-indigo-100 dark:bg-gray-600
+  @apply bg-indigo-100 dark:bg-zinc-700
 }
 
 .markdown-body table img {
@@ -834,7 +834,7 @@
   font-size: 85%;
   line-height: 1.45;
   background-color: #f6f8fa;
-  @apply shadow-md dark:bg-gray-600;
+  @apply shadow-md dark:bg-zinc-700;
   border-radius: 6px;
 }
 

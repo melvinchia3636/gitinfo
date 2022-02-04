@@ -168,7 +168,7 @@ function Repo() {
             />
           </div>
         ) : (
-          <div className="w-full h-full flex items-center pb-12 flex-col gap-2 justify-center text-slate-600 dark:text-gray-100 text-2xl">
+          <div className="w-full h-full flex items-center pb-12 flex-col gap-2 justify-center text-zinc-600 dark:text-zinc-200 text-2xl">
             <Icon icon="uil:exclamation-triangle" className="w-12 h-12" />
             API rate limit exceeded
           </div>

@@ -1,35 +1,29 @@
-/* eslint-disable no-throw-literal */
-/* eslint-disable max-len */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-shadow */
-/* eslint-disable camelcase */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import FETCH_HEADERS from '../constants';
 
-function hex_is_light(color) {
+export function hexIsLight(color) {
   const hex = color.replace('#', '');
-  const c_r = parseInt(hex.substr(0, 2), 16);
-  const c_g = parseInt(hex.substr(2, 2), 16);
-  const c_b = parseInt(hex.substr(4, 2), 16);
-  const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+  const cR = parseInt(hex.substr(0, 2), 16);
+  const cG = parseInt(hex.substr(2, 2), 16);
+  const cB = parseInt(hex.substr(4, 2), 16);
+  const brightness = ((cR * 299) + (cG * 587) + (cB * 114)) / 1000;
   return brightness > 155;
 }
 
 export function shadeColor(col, amt) {
+  let c = col;
   let usePound = false;
 
-  if (col[0] === '#') {
-    col = col.slice(1);
+  if (c[0] === '#') {
+    c = c.slice(1);
     usePound = true;
   }
 
-  let R = parseInt(col.substring(0, 2), 16);
-  let G = parseInt(col.substring(2, 4), 16);
-  let B = parseInt(col.substring(4, 6), 16);
+  let R = parseInt(c.substring(0, 2), 16);
+  let G = parseInt(c.substring(2, 4), 16);
+  let B = parseInt(c.substring(4, 6), 16);
 
   // to make the colour less bright than the input
   // change the following three "+" symbols to "-"
@@ -54,14 +48,6 @@ export function shadeColor(col, amt) {
 }
 
 export function applySaturationToHexColor(hex, saturationPercent) {
-  if (!/^#([0-9a-f]{6})$/i.test(hex)) {
-    throw ('Unexpected color format');
-  }
-
-  if (saturationPercent < 0 || saturationPercent > 100) {
-    throw ('Unexpected color format');
-  }
-
   const saturationFloat = saturationPercent / 100;
   const rgbIntensityFloat = [
     parseInt(hex.substr(1, 2), 16) / 255,
@@ -89,12 +75,24 @@ export function applySaturationToHexColor(hex, saturationPercent) {
     newMediumIntensityFloat = newMinIntensityFloat;
   } else {
     // Calculate medium intensity with respect to original intensity proportion.
-    const intensityProportion = (maxIntensityFloat - mediumIntensityFloat) / (mediumIntensityFloat - minIntensityFloat);
-    newMediumIntensityFloat = (intensityProportion * newMinIntensityFloat + maxIntensityFloat) / (intensityProportion + 1);
+    const intensityProportion = (
+      maxIntensityFloat - mediumIntensityFloat
+    ) / (
+      mediumIntensityFloat - minIntensityFloat
+    );
+    newMediumIntensityFloat = (
+      intensityProportion * newMinIntensityFloat + maxIntensityFloat
+    ) / (
+      intensityProportion + 1
+    );
   }
 
   const newRgbIntensityFloat = [];
-  const newRgbIntensityFloatSorted = [newMinIntensityFloat, newMediumIntensityFloat, maxIntensityFloat];
+  const newRgbIntensityFloatSorted = [
+    newMinIntensityFloat,
+    newMediumIntensityFloat,
+    maxIntensityFloat,
+  ];
 
   // We've found new intensities, but we have then sorted from min to max.
   // Now we have to restore original order.
@@ -103,8 +101,8 @@ export function applySaturationToHexColor(hex, saturationPercent) {
     newRgbIntensityFloat.push(newRgbIntensityFloatSorted[rgbSortedIndex]);
   });
 
-  const floatToHex = function (val) { return (`0${Math.round(val * 255).toString(16)}`).substr(-2); };
-  const rgb2hex = function (rgb) { return `#${floatToHex(rgb[0])}${floatToHex(rgb[1])}${floatToHex(rgb[2])}`; };
+  const floatToHex = (val) => (`0${Math.round(val * 255).toString(16)}`).substr(-2);
+  const rgb2hex = (rgb) => `#${floatToHex(rgb[0])}${floatToHex(rgb[1])}${floatToHex(rgb[2])}`;
 
   const newHex = rgb2hex(newRgbIntensityFloat);
 
@@ -132,7 +130,7 @@ function Issues({
   return (
     data.issues.length ? (
       <div className="mt-8">
-        <div className="flex items-center gap-2 text-2xl font-medium text-slate-600 dark:text-gray-100 tracking-wide">
+        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
           <Icon icon="uil:tag-alt" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
           Issues
           <span className="text-xs mt-2">
@@ -141,18 +139,18 @@ function Issues({
             )
           </span>
         </div>
-        <div className="mt-6 flex flex-col text-slate-600 dark:text-white">
+        <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-200">
           {data.issues.map((e, i) => (
-            <div className={`w-full p-4 ${i ? 'border-t border-slate-300 dark:border-zinc-500' : 'pt-0'}`}>
+            <div className={`w-full p-4 ${i ? 'border-t border-zinc-300 dark:border-zinc-600' : 'pt-0'}`}>
               <div className="flex items-center gap-2">
                 <Icon icon="octicon:issue-opened-16" className="text-green-700 dark:text-green-500 w-5 h-5 flex-shrink-0" />
                 <h4 className="text-xl flex-shrink overflow-hidden overflow-ellipsis whitespace-nowrap font-bold pr-2">{e.title}</h4>
                 <div className="flex items-center gap-2">
                   {e.labels.map((t) => {
-                    const color = !hex_is_light(t.color) ? applySaturationToHexColor(shadeColor(`#${t.color}`, 100), 80) : `#${t.color}`;
+                    const color = !hexIsLight(t.color) ? applySaturationToHexColor(shadeColor(`#${t.color}`, 100), 80) : `#${t.color}`;
                     return (
                       <>
-                        <div className={`text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap pt-1.5 pb-1 inline dark:hidden ${hex_is_light(t.color) ? 'text-slate-600' : 'text-white'}`} style={{ backgroundColor: `#${t.color}` }}>{t.name}</div>
+                        <div className={`text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap pt-1.5 pb-1 inline dark:hidden ${hexIsLight(t.color) ? 'text-zinc-600' : 'text-white'}`} style={{ backgroundColor: `#${t.color}` }}>{t.name}</div>
                         <div
                           className="text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap outline outline-1 pt-1.5 pb-1 hidden dark:inline"
                           style={{
@@ -168,7 +166,7 @@ function Issues({
                   })}
                 </div>
               </div>
-              <div className="flex gap-4 items-center text-slate-400 text-sm ml-7 mt-1.5">
+              <div className="flex gap-4 items-center text-zinc-400 text-sm ml-7 mt-1.5">
                 <p>
                   #
                   {e.number}

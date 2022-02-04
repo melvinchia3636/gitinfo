@@ -25,7 +25,7 @@ function Subscribers({
 
   return (
     <div className="mt-10">
-      <div className="flex items-center gap-2 text-2xl font-medium text-slate-600 dark:text-gray-100 tracking-wide">
+      <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
         <Icon icon="uil:eye" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
         Subscribers
         <span className="text-xs mt-2">
@@ -36,7 +36,7 @@ function Subscribers({
       </div>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-x-5 gap-y-3 mt-4 flex-wrap">
         {data.subscribers.map((e) => (
-          <Link to={`/user/${e.login}`} className="text-slate-600 break-all dark:text-gray-100 text-lg flex items-center gap-2">
+          <Link to={`/user/${e.login}`} className="text-zinc-600 break-all dark:text-zinc-200 text-lg flex items-center gap-2">
             <img src={e.avatar_url} alt={e.login} className="w-6 h-6 rounded-full" />
             {e.login}
           </Link>

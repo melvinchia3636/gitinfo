@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
@@ -7,16 +6,7 @@ import { Icon } from '@iconify/react';
 import Lottie from 'react-lottie';
 import FETCH_HEADERS from '../constants';
 import loadingWhiteAnim from '../assets/loading-white.json';
-import { applySaturationToHexColor, shadeColor } from './Issues';
-
-function hex_is_light(color) {
-  const hex = color.replace('#', '');
-  const c_r = parseInt(hex.substr(0, 2), 16);
-  const c_g = parseInt(hex.substr(2, 2), 16);
-  const c_b = parseInt(hex.substr(4, 2), 16);
-  const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
-  return brightness > 155;
-}
+import { applySaturationToHexColor, shadeColor, hexIsLight } from './Issues';
 
 function Labels({
   data, nextLabelsPage, setNextLabelsPage, setData,
@@ -39,7 +29,7 @@ function Labels({
   return (
     data.labels.length ? (
       <div className="mt-8">
-        <div className="flex items-center gap-2 text-2xl font-medium text-slate-600 dark:text-gray-100 tracking-wide">
+        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
           <Icon icon="uil:tag-alt" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
           Labels
           <span className="text-xs mt-2">
@@ -48,13 +38,12 @@ function Labels({
             )
           </span>
         </div>
-        <div className="mt-6 flex flex-col text-slate-600 dark:text-white">
+        <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-200">
           {data.labels.map((e, i) => {
-            const color = !hex_is_light(e.color) ? applySaturationToHexColor(shadeColor(`#${e.color}`, 100), 80) : `#${e.color}`;
-            console.log(color);
+            const color = !hexIsLight(e.color) ? applySaturationToHexColor(shadeColor(`#${e.color}`, 100), 80) : `#${e.color}`;
             return (
-              <div className={`w-full p-4 ${i ? 'border-t border-slate-300 dark:border-zinc-500' : 'pt-0'}`}>
-                <div className={`text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap pt-1.5 pb-1 inline dark:hidden ${hex_is_light(e.color) ? 'text-slate-600' : 'text-white'}`} style={{ backgroundColor: `#${e.color}` }}>{e.name}</div>
+              <div className={`w-full p-4 ${i ? 'border-t border-zinc-300 dark:border-zinc-600' : 'pt-0'}`}>
+                <div className={`text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap pt-1.5 pb-1 inline dark:hidden ${hexIsLight(e.color) ? 'text-zinc-600' : 'text-white'}`} style={{ backgroundColor: `#${e.color}` }}>{e.name}</div>
                 <div
                   className="text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap outline outline-1 pt-1.5 pb-1 hidden dark:inline"
                   style={{

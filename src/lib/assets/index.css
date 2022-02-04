@@ -30,10 +30,10 @@ input:checked ~ .dot {
 }
 
 .react-calendar-heatmap rect { border-radius: 4px }
-.react-calendar-heatmap text { @apply !fill-slate-600 }
+.react-calendar-heatmap text { @apply !fill-zinc-600 }
 .dark .react-calendar-heatmap text { @apply !fill-white }
 .react-calendar-heatmap .color-scale-0,
-.react-calendar-heatmap .color-empty { @apply !fill-slate-200 }
+.react-calendar-heatmap .color-empty { @apply !fill-zinc-200 }
 .react-calendar-heatmap .color-scale-1 { @apply fill-indigo-200 }
 .react-calendar-heatmap .color-scale-2 { @apply fill-indigo-300 }
 .react-calendar-heatmap .color-scale-3 { @apply fill-indigo-400 }
@@ -41,7 +41,7 @@ input:checked ~ .dot {
 .react-calendar-heatmap .color-scale-4 { @apply fill-indigo-600 }
 
 .dark .react-calendar-heatmap .color-scale-0,
-.dark .react-calendar-heatmap .color-empty { @apply !fill-slate-600 }
+.dark .react-calendar-heatmap .color-empty { @apply !fill-zinc-600 }
 .dark .react-calendar-heatmap .color-scale-1 { @apply fill-indigo-400 }
 .dark .react-calendar-heatmap .color-scale-2 { @apply fill-indigo-500 }
 .dark .react-calendar-heatmap .color-scale-3 { @apply fill-indigo-600 }

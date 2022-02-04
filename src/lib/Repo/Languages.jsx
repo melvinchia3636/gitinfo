@@ -15,19 +15,19 @@ function Languages({ data }) {
 
   return (
     <div className="mt-10">
-      <div className="flex items-center gap-2 text-2xl font-medium text-slate-600 dark:text-gray-100 tracking-wide">
+      <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
         <Icon icon="ic:round-code" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
         Languages
       </div>
-      <div className="mt-3 flex w-full border border-slate-300 dark:border-slate-600 h-4 l rounded-full overflow-hidden">
+      <div className="mt-3 flex w-full border border-zinc-300 dark:border-zinc-600 h-4 l rounded-full overflow-hidden">
         {Object.entries(data.langs).map(([k, v]) => (
           <div className="h-full" style={{ backgroundColor: colors[k]?.color }} data-key={k} data-value={v} />
         ))}
       </div>
       <div className="flex gap-x-5 gap-y-3 mt-4 flex-wrap">
         {Object.keys(data.langs).map((k) => (
-          <div className="text-slate-600 dark:text-gray-100 text-lg flex items-center gap-2">
-            <span className="w-4 h-4 rounded-full border border-slate-300 dark:border-slate-600" style={{ backgroundColor: colors[k]?.color }} />
+          <div className="text-zinc-600 dark:text-zinc-200 text-lg flex items-center gap-2">
+            <span className="w-4 h-4 rounded-full border border-zinc-300 dark:border-zinc-600" style={{ backgroundColor: colors[k]?.color }} />
             {k}
           </div>
         ))}
