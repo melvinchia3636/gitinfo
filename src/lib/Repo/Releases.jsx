@@ -97,7 +97,7 @@ function Releases({
               <div className="text-lg flex mt-2 gap-6">
                 <div className="flex items-center gap-2">
                   <Icon icon="uil:tag-alt" className="w-5 h-5 text-custom-500" />
-                  {e.tag_name}
+                  {e.tag_namexko}
                 </div>
                 <div className="flex items-center gap-2">
                   <Icon icon="ph:git-commit-bold" className="w-5 h-5 text-custom-500" />

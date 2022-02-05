@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 
 function RepoSize({ data }) {
   return (
-    <div>
+    <div className="mt-10">
       <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
         <Icon icon="uil:file" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Repository Size

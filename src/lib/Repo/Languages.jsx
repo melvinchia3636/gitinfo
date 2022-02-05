@@ -19,7 +19,7 @@ function Languages({ data }) {
         <Icon icon="ic:round-code" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Languages
       </div>
-      <div className="mt-3 flex w-full border border-zinc-300 dark:border-zinc-600 h-4 l rounded-full overflow-hidden">
+      <div className="mt-6 flex w-full border border-zinc-300 dark:border-zinc-600 h-4 l rounded-full overflow-hidden">
         {Object.entries(data.langs).map(([k, v]) => (
           <div className="h-full" style={{ backgroundColor: colors[k]?.color }} data-key={k} data-value={v} />
         ))}
