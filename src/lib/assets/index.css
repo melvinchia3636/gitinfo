@@ -127,7 +127,7 @@ input:checked ~ .dot {
 	--color-custom-900: #0d47a1;
 }
 
-.theme-sky {
+.theme-light-blue {
 	--color-custom-50: #e1f5fe;
 	--color-custom-100: #b3e5fc;
 	--color-custom-200: #81d4fa;
@@ -270,7 +270,7 @@ input:checked ~ .dot {
 	--color-custom-900: #3e2723;
 }
 
-.theme-gray {
+.theme-grey {
 	--color-custom-50: #fafafa;
 	--color-custom-100: #f5f5f5;
 	--color-custom-200: #eeeeee;
