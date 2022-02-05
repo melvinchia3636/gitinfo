@@ -60,7 +60,7 @@ function Navbar({ theme, setTheme }) {
                 <span className={`w-4 h-4 rounded-full theme-${e} bg-custom-500 block`} />
                 {e}
               </div>
-              {themeColor === e ? <Icon icon="uil:check" /> : ''}
+              {themeColor === `theme-${e}` ? <Icon icon="uil:check" /> : ''}
             </button>
           ))}
         </div>
