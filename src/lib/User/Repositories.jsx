@@ -37,7 +37,7 @@ function Repositories({ repos_url, repos_count }) {
   return (
     <div>
       <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
-        <Icon icon="uil:book-alt" className="w-8 h-8 text-indigo-500 dark:text-indigo-400 -mt-1" />
+        <Icon icon="uil:book-alt" className="w-8 h-8 text-custom-500 dark:text-custom-400 -mt-1" />
         Repositories
         <span className="text-xs mt-2">
           (
@@ -58,22 +58,22 @@ function Repositories({ repos_url, repos_count }) {
               </div>
               )}
               <div className="flex items-center gap-2">
-                <Icon icon="uil:star" className="w-5 h-5 mb-0.5 text-indigo-500" />
+                <Icon icon="uil:star" className="w-5 h-5 mb-0.5 text-custom-500" />
                 {e.stargazers_count.toLocaleString()}
               </div>
               <div className="flex items-center gap-2">
-                <Icon icon="uil:eye" className="w-5 h-5 mb-0.5 text-indigo-500" />
+                <Icon icon="uil:eye" className="w-5 h-5 mb-0.5 text-custom-500" />
                 {e.watchers_count.toLocaleString()}
               </div>
               {e.forks_count > 0 && (
               <div className="flex items-center gap-1.5">
-                <Icon icon="jam:fork" className="w-5 h-5 mb-0.5 text-indigo-500" />
+                <Icon icon="jam:fork" className="w-5 h-5 mb-0.5 text-custom-500" />
                 {e.forks_count.toLocaleString()}
               </div>
               )}
               {e.open_issues > 0 && (
               <div className="flex items-center gap-1.5">
-                <Icon icon="octicon:issue-opened-16" className="w-4 h-4 mb-0.5 text-indigo-500 stroke-[0.5px] stroke-indigo-500 overflow-visible" />
+                <Icon icon="octicon:issue-opened-16" className="w-4 h-4 mb-0.5 text-custom-500 stroke-[0.5px] stroke-custom-500 overflow-visible" />
                 {e.open_issues.toLocaleString()}
               </div>
               )}
@@ -81,7 +81,7 @@ function Repositories({ repos_url, repos_count }) {
           </a>
         ))}
         {nextReposPage ? (
-          <button onClick={fetchNextReposPage} type="button" className="text-lg text-white h-14 w-full bg-indigo-500 rounded-md shadow-md mt-6">
+          <button onClick={fetchNextReposPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
             {isReposLoading ? (
               <Lottie
                 options={{

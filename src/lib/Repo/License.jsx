@@ -7,7 +7,7 @@ function License({ data }) {
     data.license ? (
       <div className="mt-10">
         <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
-          <Icon icon="codicon:law" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
+          <Icon icon="codicon:law" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
           License
         </div>
         <p className="mt-3 text-zinc-600 dark:text-zinc-200 text-lg ml-1 tracking-wide">{data.license.name}</p>

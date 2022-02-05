@@ -14,9 +14,9 @@ function Languages({ data }) {
   }, []);
 
   return (
-    <div className="mt-10">
+    <div>
       <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
-        <Icon icon="ic:round-code" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
+        <Icon icon="ic:round-code" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Languages
       </div>
       <div className="mt-3 flex w-full border border-zinc-300 dark:border-zinc-600 h-4 l rounded-full overflow-hidden">

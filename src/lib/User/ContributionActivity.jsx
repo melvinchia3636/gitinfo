@@ -60,10 +60,11 @@ function ContributionActivity({ username, eventsUrl }) {
         setYears(yrs);
       });
     fetch(eventsUrl, FETCH_HEADERS).then((res) => res.json()).then((d) => {
-      const contributions = [d[0]];
-      for (const ev of d.slice(1)) {
-        if (
-          contributions[contributions.length - 1].type === ev.type
+      if (d.length) {
+        const contributions = [d[0]];
+        for (const ev of d.slice(1)) {
+          if (
+            contributions[contributions.length - 1].type === ev.type
           && ev.type === 'PushEvent'
           && contributions[contributions.length - 1].repo.id === ev.repo.id
           && new Date(contributions[contributions.length - 1]
@@ -72,14 +73,15 @@ function ContributionActivity({ username, eventsUrl }) {
           === new Date(ev
             .created_at)
             .toDateString()
-        ) {
-          contributions[contributions.length - 1].payload.commits.push(...ev.payload.commits);
-          contributions[contributions.length - 1].payload.size += ev.payload.commits.length;
-        } else {
-          contributions.push(ev);
+          ) {
+            contributions[contributions.length - 1].payload.commits.push(...ev.payload.commits);
+            contributions[contributions.length - 1].payload.size += ev.payload.commits.length;
+          } else {
+            contributions.push(ev);
+          }
         }
+        setContributionEvents(contributions);
       }
-      setContributionEvents(contributions);
     });
   }, []);
 
@@ -88,12 +90,13 @@ function ContributionActivity({ username, eventsUrl }) {
       {contributionCalendar.length > 0 && (
       <>
         <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
-          <Icon icon="mdi:puzzle-edit-outline" className="w-8 h-8 text-indigo-500 dark:text-indigo-400 -mt-1" />
+          <Icon icon="mdi:puzzle-edit-outline" className="w-8 h-8 text-custom-500 dark:text-custom-400 -mt-1" />
           Contribution Activities
         </div>
         <div className="flex gap-8 mt-6 items-start">
           <div className="flex flex-col min-w-0">
             <Heatmap data={contributionCalendar} />
+            {contributionEvents.length > 0 && (
             <div className="text-zinc-600 flex flex-col mt-4">
               {contributionEvents.map((e) => (
                 <div className="border-zinc-300 dark:border-zinc-600 border-b p-4 pt-5">
@@ -115,11 +118,12 @@ function ContributionActivity({ username, eventsUrl }) {
                 </div>
               ))}
             </div>
+            )}
           </div>
           <StickyBox offsetTop={20} offsetBottom={20}>
             <div className="flex flex-col text-zinc-600 dark:text-zinc-200">
               {years.map((e, i) => (
-                <button className={`block px-4 py-2 pt-2.5 rounded-md ${!i ? 'text-white bg-indigo-500 shadow-md' : ''}`} key={`yearbtn-${e}`} type="button">
+                <button className={`block px-4 py-2 pt-2.5 rounded-md ${!i ? 'text-white bg-custom-500 shadow-md' : ''}`} key={`yearbtn-${e}`} type="button">
                   {e}
                 </button>
               ))}

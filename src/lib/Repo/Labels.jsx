@@ -28,9 +28,9 @@ function Labels({
 
   return (
     data.labels.length ? (
-      <div className="mt-8">
+      <div>
         <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
-          <Icon icon="uil:tag-alt" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
+          <Icon icon="uil:tag-alt" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
           Labels
           <span className="text-xs mt-2">
             (
@@ -60,7 +60,7 @@ function Labels({
           })}
         </div>
         {nextLabelsPage ? (
-          <button onClick={fetchNextLabelsPage} type="button" className="text-lg text-white h-14 w-full bg-indigo-500 rounded-md shadow-md mt-6">
+          <button onClick={fetchNextLabelsPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
             {isLabelsLoading ? (
               <Lottie
                 options={{

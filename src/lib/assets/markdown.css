@@ -43,7 +43,7 @@
 
 .markdown-body a {
   background-color: transparent;
-  @apply text-indigo-500 dark:text-indigo-400;
+  @apply text-custom-500 dark:text-custom-400;
   text-decoration: none;
 }
 
@@ -678,7 +678,7 @@
 }
 
 .markdown-body table tr:nth-child(2n) {
-  @apply bg-indigo-100 dark:bg-zinc-700
+  @apply bg-custom-100 dark:bg-zinc-700
 }
 
 .markdown-body table img {

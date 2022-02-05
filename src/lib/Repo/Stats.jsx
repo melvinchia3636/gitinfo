@@ -4,10 +4,10 @@ import { Icon } from '@iconify/react';
 
 function Stats({ data }) {
   return (
-    <div className="flex gap-3 mt-10 px-1 tracking-wide">
+    <div className="flex gap-3 px-1 tracking-wide">
       <div className="flex items-center gap-2 rounded-md p-2 bg-white dark:bg-zinc-600 w-full shadow-md">
-        <div className="p-2 bg-indigo-200 dark:bg-indigo-500 rounded-md">
-          <Icon icon="ant-design:star-filled" className="w-8 h-8 text-indigo-500 dark:text-indigo-200" />
+        <div className="p-2 bg-custom-200 dark:bg-custom-500 rounded-md">
+          <Icon icon="ant-design:star-filled" className="w-8 h-8 text-custom-500 dark:text-custom-200" />
         </div>
         <div className="text-sm font-medium text-zinc-400 flex flex-col justify-between">
           Stars
@@ -15,8 +15,8 @@ function Stats({ data }) {
         </div>
       </div>
       <div className="flex items-center gap-2 rounded-md p-2 bg-white dark:bg-zinc-600 w-full shadow-md">
-        <div className="p-2 bg-indigo-200 dark:bg-indigo-500 rounded-md">
-          <Icon icon="ant-design:fork-outlined" className="w-8 h-8 text-indigo-500 dark:text-indigo-200 stroke-[0.4px]" />
+        <div className="p-2 bg-custom-200 dark:bg-custom-500 rounded-md">
+          <Icon icon="ant-design:fork-outlined" className="w-8 h-8 text-custom-500 dark:text-custom-200 stroke-[0.4px]" />
         </div>
         <div className="text-sm font-medium text-zinc-400 flex flex-col justify-between">
           Forks
@@ -24,8 +24,8 @@ function Stats({ data }) {
         </div>
       </div>
       <div className="flex items-center gap-2 rounded-md p-2 bg-white dark:bg-zinc-600 w-full shadow-md">
-        <div className="p-2 bg-indigo-200 dark:bg-indigo-500 rounded-md">
-          <Icon icon="uil:eye" className="w-8 h-8 text-indigo-500 dark:text-indigo-200" />
+        <div className="p-2 bg-custom-200 dark:bg-custom-500 rounded-md">
+          <Icon icon="uil:eye" className="w-8 h-8 text-custom-500 dark:text-custom-200" />
         </div>
         <div className="text-sm font-medium text-zinc-400 flex flex-col justify-between">
           Subscribers
@@ -33,8 +33,8 @@ function Stats({ data }) {
         </div>
       </div>
       <div className="flex items-center gap-2 rounded-md p-2 bg-white dark:bg-zinc-600 w-full shadow-md">
-        <div className="p-2 bg-indigo-200 dark:bg-indigo-500 rounded-md">
-          <Icon icon="octicon:issue-opened-24" className="w-8 h-8 text-indigo-500 dark:text-indigo-200 stroke-indigo-500 dark:stroke-indigo-200 stroke-[0.4px]" />
+        <div className="p-2 bg-custom-200 dark:bg-custom-500 rounded-md">
+          <Icon icon="octicon:issue-opened-24" className="w-8 h-8 text-custom-500 dark:text-custom-200 stroke-custom-500 dark:stroke-custom-200 stroke-[0.4px]" />
         </div>
         <div className="text-sm font-medium text-zinc-400 flex flex-col justify-between">
           Issues

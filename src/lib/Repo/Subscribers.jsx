@@ -12,9 +12,9 @@ function Subscribers({
   const [isSubscribersLoading, setSubscribersLoading] = useState(false);
   const fetchNextSubscribersPage = () => {
     setSubscribersLoading(true);
-    fetch(`${data.subscribers_url}?page=${nextSubscribersPage}&per_page=30`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
+    fetch(`${data.subscribers_url}?page=${nextSubscribersPage}&per_page=90`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
       setData({ ...data, subscribers: data.subscribers.concat(e) });
-      if (e.length === 30) {
+      if (e.length === 90) {
         setNextSubscribersPage(nextSubscribersPage + 1);
       } else {
         setNextSubscribersPage(null);
@@ -24,9 +24,9 @@ function Subscribers({
   };
 
   return (
-    <div className="mt-10">
+    <div>
       <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
-        <Icon icon="uil:eye" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
+        <Icon icon="uil:eye" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Subscribers
         <span className="text-xs mt-2">
           (
@@ -43,7 +43,7 @@ function Subscribers({
         ))}
       </div>
       {nextSubscribersPage ? (
-        <button onClick={fetchNextSubscribersPage} type="button" className="text-lg text-white h-14 w-full bg-indigo-500 rounded-md shadow-md mt-4">
+        <button onClick={fetchNextSubscribersPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-4">
           {isSubscribersLoading ? (
             <Lottie
               options={{

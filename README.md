@@ -33,7 +33,7 @@ I've made a web app that allows users to search for Github accounts and reposito
 
 ![skills](https://img.shields.io/badge/-JAVASCRIPT-FF0000?style=for-the-badge&logo=javascript&logoColor=white&color=red)
 ![skills](https://img.shields.io/badge/-HTML-FF0000?style=for-the-badge&logo=html5&logoColor=white&color=green)!
-![skills](https://img.shields.io/badge/-CSS-FF0000?style=for-the-badge&logo=css3&logoColor=white&color=blue)
+![skills](https://img.shields.io/badge/-CSS-FF0000?style=for-the-badge&logo=css3&logoColor=white&color=indigo)
 ![skills](https://img.shields.io/badge/-TAILWIND_CSS-FF0000?style=for-the-badge&logo=tailwindcss&logoColor=white&color=22D3EE)
 ![skills](https://img.shields.io/badge/-REACT_JS-FF0000?style=for-the-badge&logo=react&logoColor=white&color=38BDF8)
 ![skills](https://img.shields.io/badge/-FIGMA-FF0000?style=for-the-badge&logo=figma&logoColor=white&color=red)

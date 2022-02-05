@@ -80,9 +80,9 @@ function Releases({
 
   return (
     data.releases.length ? (
-      <div className="mt-8">
+      <div>
         <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
-          <Icon icon="uil:box" className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
+          <Icon icon="uil:box" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
           Releases
           <span className="text-xs mt-2">
             (
@@ -96,15 +96,15 @@ function Releases({
               <h4 className="text-4xl font-bold">{e.name}</h4>
               <div className="text-lg flex mt-2 gap-6">
                 <div className="flex items-center gap-2">
-                  <Icon icon="uil:tag-alt" className="w-5 h-5 text-indigo-500" />
+                  <Icon icon="uil:tag-alt" className="w-5 h-5 text-custom-500" />
                   {e.tag_name}
                 </div>
                 <div className="flex items-center gap-2">
-                  <Icon icon="ph:git-commit-bold" className="w-5 h-5 text-indigo-500" />
+                  <Icon icon="ph:git-commit-bold" className="w-5 h-5 text-custom-500" />
                   {e.target_commitish.slice(0, 6)}
                 </div>
               </div>
-              <Readme content={e.body} />
+              <Readme data={{ readmeContent: e.body }} />
               <div className="mt-6">
                 <h5 className="text-2xl">
                   Assets
@@ -118,7 +118,7 @@ function Releases({
                 <div className="flex flex-col gap-2 mt-3">
                   {e.assets.map((a) => (
                     <div className="flex items-center gap-1 text-lg">
-                      <Icon icon="uil:cube" className="text-indigo-500 w-6 h-6" />
+                      <Icon icon="uil:cube" className="text-custom-500 w-6 h-6" />
                       <a href={a.browser_download_url} target="_blank" rel="noopener noreferrer">{a.name}</a>
                       <span className="text-xs mt-1">
                         (
@@ -128,11 +128,11 @@ function Releases({
                     </div>
                   ))}
                   <div className="flex items-center gap-1 text-lg">
-                    <Icon icon="tabler:file-zip" className="text-indigo-500 w-6 h-6" />
+                    <Icon icon="tabler:file-zip" className="text-custom-500 w-6 h-6" />
                     <a href={e.zipball_url} target="_blank" rel="noopener noreferrer">Source code (zip)</a>
                   </div>
                   <div className="flex items-center gap-1 text-lg">
-                    <Icon icon="tabler:file-zip" className="text-indigo-500 w-6 h-6" />
+                    <Icon icon="tabler:file-zip" className="text-custom-500 w-6 h-6" />
                     <a href={e.tarball_url} target="_blank" rel="noopener noreferrer">Source code (.tar.gz)</a>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ function Releases({
                         </div>
                       ) : ''
                     ))}
-                    <button type="button" onClick={() => showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-zinc-500 hover:underline transition-all duration-200 hover:text-indigo-500">
+                    <button type="button" onClick={() => showReactedPeopleList(e.reactions.url)} className="ml-1 text-sm dark:text-zinc-500 hover:underline transition-all duration-200 hover:text-custom-500">
                       {e.reactions.total_count}
                       {' '}
                       people reacted
@@ -159,7 +159,7 @@ function Releases({
           ))}
         </div>
         {nextReleasesPage ? (
-          <button onClick={fetchNextReleasesPage} type="button" className="text-lg text-white h-14 w-full bg-indigo-500 rounded-md shadow-md mt-6">
+          <button onClick={fetchNextReleasesPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
             {isReleasesLoading ? 'Loading...' : 'Load more'}
           </button>
         ) : ''}
@@ -198,7 +198,7 @@ function Releases({
             </div>
           )}
           {nextReactionPage ? (
-            <button onClick={fetchNextReactionPage} type="button" className="text-lg text-white h-14 flex-shrink-0 w-full bg-indigo-500 rounded-md shadow-md mt-4">
+            <button onClick={fetchNextReactionPage} type="button" className="text-lg text-white h-14 flex-shrink-0 w-full bg-custom-500 rounded-md shadow-md mt-4">
               {isReactionLoading ? (
                 <Lottie
                   options={{
