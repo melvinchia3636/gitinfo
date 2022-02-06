@@ -6,8 +6,8 @@ import { Icon } from '@iconify/react';
 import emoji from 'emoji-dictionary';
 import Lottie from 'react-lottie';
 import Readme from './Readme';
-import FETCH_HEADERS from '../constants';
-import loadingWhiteAnim from '../assets/loading-white.json';
+import FETCH_HEADERS from '../../constants';
+import loadingWhiteAnim from '../../assets/loading-white.json';
 
 const reactionMap = {
   '+1': '+1',
@@ -96,7 +96,7 @@ function Releases({
               <div className="text-lg flex mt-2 gap-6">
                 <div className="flex items-center gap-2">
                   <Icon icon="uil:tag-alt" className="w-5 h-5 text-custom-500" />
-                  {e.tag_namexko}
+                  {e.tag_name}
                 </div>
                 <div className="flex items-center gap-2">
                   <Icon icon="ph:git-commit-bold" className="w-5 h-5 text-custom-500" />

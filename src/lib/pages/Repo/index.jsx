@@ -7,7 +7,8 @@
 import { Icon } from '@iconify/react';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import FETCH_HEADERS from '../constants';
+import ReactStickyBox from 'react-sticky-box';
+import FETCH_HEADERS from '../../constants';
 
 import Header from './Header';
 import Stats from './Stats';
@@ -77,15 +78,6 @@ function Repo() {
           if (issuesCount > 20) setNextIssuesPage(2);
           else setNextIssuesPage(null);
 
-          const README_URL = ['README.md', 'readme.md', '.github/README.md', 'README.rst'].map((e) => `https://cors-anywhere.thecodeblog.net/raw.githubusercontent.com/${d.full_name}/${d.default_branch}/${e}`);
-          let readmeContent;
-          // eslint-disable-next-line no-restricted-syntax
-          for await (const i of README_URL) {
-            readmeContent = await fetch(i, FETCH_HEADERS)
-              .then((res) => (res.status === 200 ? res.text() : ''));
-            if (readmeContent) break;
-          }
-
           setData({
             ...d,
             langs,
@@ -93,7 +85,6 @@ function Repo() {
             subscribers,
             stargazers,
             contributorsCount,
-            readmeContent,
             releases,
             releasesCount,
             branchesCount,
@@ -117,36 +108,48 @@ function Repo() {
         data !== 'finished' ? (
           <>
             <Header data={data} />
-            <div className="pb-8 min-h-0 flex items-start justify-between gap-8 h-full">
-              <div className="flex flex-col gap-4 text-zinc-600 dark:text-zinc-200 text-lg">
-                {[['uil:info-circle',
-                  'Overview'],
-                ['lucide:file-code', 'Source Code'],
-                ['ic:round-code',
-                  'Languages'],
-                ['uil:users-alt',
-                  'Contributors'],
-                ['uil:eye',
-                  'Subscribers'],
-                ['uil:star',
-                  'Stargazers'],
-                ['uil:document-info',
-                  'README.md'],
-                ['uil:box',
-                  'Releases'],
-                ['uil:tag',
-                  'Tags'],
-                ['uil:tag-alt',
-                  'Labels'],
-                ['octicon:issue-opened-16',
-                  'Issues']].map(([icon, name], index) => (
-                    <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-2 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-white bg-custom-500 shadow-md' : ''}`} type="button">
-                      <Icon icon={icon} className="w-6 h-6" />
-                      {name}
-                    </button>
-                ))}
-              </div>
-              <div className="min-w-0 flex-1 h-full overflow-y-auto">
+            <div className="flex items-start justify-between gap-8 h-full overflow-y-auto">
+              <ReactStickyBox>
+                <div className="flex flex-col gap-4 mb-4 text-zinc-600 dark:text-zinc-200 text-lg">
+                  {[['uil:info-circle',
+                    'Overview'],
+                  ['lucide:file-code', 'Source Code'],
+                  ['ic:round-code',
+                    'Languages'],
+                  ['uil:users-alt',
+                    'Contributors'],
+                  ['uil:eye',
+                    'Subscribers'],
+                  ['uil:star',
+                    'Stargazers'],
+                  ['uil:document-info',
+                    'README.md'],
+                  ['uil:globe',
+                    'GitHub Pages'],
+                  ['uil:box',
+                    'Releases'],
+                  ['uil:tag',
+                    'Tags'],
+                  ['uil:tag-alt',
+                    'Labels'],
+                  ['octicon:git-commit-16',
+                    'Commits'],
+                  ['octicon:repo-forked-16',
+                    'Forks'],
+                  ['octicon:issue-opened-16',
+                    'Issues'],
+                  ['octicon:git-pull-request-16',
+                    'Pull Requests'],
+                  ['octicon:project-16',
+                    'Projects']].map(([icon, name], index) => (
+                      <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-3 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-white bg-custom-500 shadow-md' : ''}`} type="button">
+                        <Icon icon={icon} className={icon.startsWith('octicon') ? 'w-[1.3rem] h-[1.3rem]' : 'w-6 h-6'} />
+                        {name}
+                      </button>
+                  ))}
+                </div>
+              </ReactStickyBox>
+              <div className="min-w-0 pb-8 flex-1 flex flex-col">
                 {[
                   <div>
                     <Stats data={data} />
@@ -177,7 +180,7 @@ function Repo() {
                     nextStargazersPage={nextStargazersPage}
                     setNextStargazersPage={setNextStargazersPage}
                   />,
-                  <ReadmeMD data={data} />,
+                  <ReadmeMD data={data} setData={setData} />,
                   <Releases
                     data={data}
                     setData={setData}

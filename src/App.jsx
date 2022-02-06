@@ -2,10 +2,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './lib/Home';
-import Repo from './lib/Repo';
+import Repo from './lib/pages/Repo';
 import Navbar from './lib/Navbar';
-import User from './lib/User';
+import User from './lib/pages/User';
 import { ThemeContext } from './lib/themeContext';
+import Emojis from './lib/pages/Emojis';
 
 function App() {
   const [theme, setTheme] = React.useState(localStorage.theme);
@@ -37,6 +38,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/repo/:user/:reponame" element={<Repo />} />
             <Route path="/user/:username" element={<User />} />
+            <Route path="/emojis" element={<Emojis />} />
           </Routes>
         </Router>
       </div>

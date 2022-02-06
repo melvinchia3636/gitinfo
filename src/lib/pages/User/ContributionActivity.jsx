@@ -6,7 +6,7 @@ import { Icon } from '@iconify/react';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import StickyBox from 'react-sticky-box';
-import FETCH_HEADERS from '../constants';
+import FETCH_HEADERS from '../../constants';
 import IssueCommentEvent from './Events/IssueCommentEvent';
 import PushEvent from './Events/PushEvent';
 import IssueEvent from './Events/IssueEvent';

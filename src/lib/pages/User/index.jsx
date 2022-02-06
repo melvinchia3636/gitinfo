@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import ReactStickyBox from 'react-sticky-box';
-import FETCH_HEADERS from '../constants';
+import FETCH_HEADERS from '../../constants';
 
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';

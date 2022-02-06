@@ -4,8 +4,8 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import Lottie from 'react-lottie';
-import FETCH_HEADERS from '../constants';
-import loadingWhiteAnim from '../assets/loading-white.json';
+import FETCH_HEADERS from '../../constants';
+import loadingWhiteAnim from '../../assets/loading-white.json';
 import { applySaturationToHexColor, shadeColor, hexIsLight } from './Issues';
 
 function Labels({

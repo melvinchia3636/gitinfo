@@ -3,9 +3,9 @@
 import { Icon } from '@iconify/react';
 import React, { useState, useEffect } from 'react';
 import Lottie from 'react-lottie';
-import colors from '../assets/colors.json';
-import FETCH_HEADERS from '../constants';
-import loadingWhiteAnim from '../assets/loading-white.json';
+import colors from '../../assets/colors.json';
+import FETCH_HEADERS from '../../constants';
+import loadingWhiteAnim from '../../assets/loading-white.json';
 
 function Repositories({ repos_url, repos_count }) {
   const [data, setData] = useState([]);

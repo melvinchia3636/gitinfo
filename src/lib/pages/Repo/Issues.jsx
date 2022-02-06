@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
-import FETCH_HEADERS from '../constants';
+import FETCH_HEADERS from '../../constants';
 
 export function hexIsLight(color) {
   const hex = color.replace('#', '');

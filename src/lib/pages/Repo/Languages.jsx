@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { Icon } from '@iconify/react';
-import colors from '../assets/colors.json';
+import colors from '../../assets/colors.json';
 
 function Languages({ data }) {
   useEffect(() => {

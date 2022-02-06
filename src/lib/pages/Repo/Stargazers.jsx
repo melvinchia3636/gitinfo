@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import Lottie from 'react-lottie';
-import FETCH_HEADERS from '../constants';
-import loadingWhiteAnim from '../assets/loading-white.json';
+import FETCH_HEADERS from '../../constants';
+import loadingWhiteAnim from '../../assets/loading-white.json';
 
 function Stargazers({
   data, nextStargazersPage, setNextStargazersPage, setData,

@@ -3,48 +3,48 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import Lottie from 'react-lottie';
-import FETCH_HEADERS from '../constants';
-import loadingWhiteAnim from '../assets/loading-white.json';
+import FETCH_HEADERS from '../../constants';
+import loadingWhiteAnim from '../../assets/loading-white.json';
 
-function Subscribers({
-  data, nextSubscribersPage, setNextSubscribersPage, setData,
+function Contributors({
+  data, nextContributorsPage, setNextContributorsPage, setData,
 }) {
-  const [isSubscribersLoading, setSubscribersLoading] = useState(false);
-  const fetchNextSubscribersPage = () => {
-    setSubscribersLoading(true);
-    fetch(`${data.subscribers_url}?page=${nextSubscribersPage}&per_page=90`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
-      setData({ ...data, subscribers: data.subscribers.concat(e) });
+  const [isContributorsLoading, setContributorsLoading] = useState(false);
+  const fetchNextContributorsPage = () => {
+    setContributorsLoading(true);
+    fetch(`${data.contributors_url}?page=${nextContributorsPage}&per_page=90`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
+      setData({ ...data, contributors: data.contributors.concat(e) });
       if (e.length === 90) {
-        setNextSubscribersPage(nextSubscribersPage + 1);
+        setNextContributorsPage(nextContributorsPage + 1);
       } else {
-        setNextSubscribersPage(null);
+        setNextContributorsPage(null);
       }
-      setSubscribersLoading(false);
+      setContributorsLoading(false);
     });
   };
 
   return (
-    <>
+    <div>
       <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
-        <Icon icon="uil:eye" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
-        Subscribers
+        <Icon icon="uil:users-alt" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
+        Contributors
         <span className="text-xs mt-2">
           (
-          {data.subscribers_count.toLocaleString()}
+          {parseInt(data.contributorsCount, 10).toLocaleString()}
           )
         </span>
       </div>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-x-5 gap-y-5 mt-4 flex-wrap">
-        {data.subscribers.map((e) => (
+        {data.contributors.map((e) => (
           <Link to={`/user/${e.login}`} className="text-zinc-600 break-all dark:text-zinc-200 text-lg flex items-center gap-2">
             <img src={e.avatar_url} alt={e.login} className="w-6 h-6 rounded-full" />
             {e.login}
           </Link>
         ))}
       </div>
-      {nextSubscribersPage ? (
-        <button onClick={fetchNextSubscribersPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-4">
-          {isSubscribersLoading ? (
+      {nextContributorsPage ? (
+        <button onClick={fetchNextContributorsPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-4">
+          {isContributorsLoading ? (
             <Lottie
               options={{
                 loop: true,
@@ -62,8 +62,8 @@ function Subscribers({
           ) : 'Load more'}
         </button>
       ) : ''}
-    </>
+    </div>
   );
 }
 
-export default Subscribers;
+export default Contributors;

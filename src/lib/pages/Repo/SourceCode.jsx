@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Icon } from '@iconify/react';
 import React, { useState, useEffect } from 'react';
-import FETCH_HEADERS from '../constants';
+import FETCH_HEADERS from '../../constants';
 
 function SourceCode({ data }) {
   const [currentURL, setCurrentURL] = useState(data.contents_url.replace(/\{.*?}/, ''));
@@ -34,7 +34,7 @@ function SourceCode({ data }) {
   }, [currentURL]);
 
   return (
-    <div className="flex flex-col overflow-hidden h-full text-zinc-600">
+    <div className="flex flex-col h-full text-zinc-600">
       <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
         <Icon icon="lucide:file-code" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Source Code
@@ -88,7 +88,7 @@ function SourceCode({ data }) {
                 <Icon icon={e.type === 'dir' ? 'mdi-folder' : 'uil:file'} className={`w-6 h-6 ${e.type === 'dir' ? 'text-custom-500' : 'text-zinc-600'}`} />
                 {e.name}
               </div>
-              {e.size > 0 && (
+              {e.type === 'file' && (
               <span>
                 {(e.size / (e.size < 1024 ? 1 : 1024)).toFixed(2).toLocaleString()}
                 {' '}

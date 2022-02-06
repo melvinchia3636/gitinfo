@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
 import Readme from '../Repo/Readme';
-import FETCH_HEADERS from '../constants';
+import FETCH_HEADERS from '../../constants';
 
 function ReadmeMD({ username }) {
   const [data, setData] = useState('');

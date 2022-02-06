@@ -14,7 +14,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeRaw from 'rehype-raw';
 import emoji from 'emoji-dictionary';
-import '../assets/markdown.css';
+import '../../assets/markdown.css';
 
 function flatten(text, child) {
   return typeof child === 'string'
