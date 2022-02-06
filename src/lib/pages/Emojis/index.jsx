@@ -10,8 +10,8 @@ function Emojis() {
   }, []);
 
   return (
-    <div className="overflow-y-auto flex h-full mt-4 flex-col overflow-x-hidden">
-      <div className="px-4 text-slate-600 flex items-center justify-between">
+    <div className="overflow-y-auto text-slate-600 dark:text-zinc-200 flex h-full mt-4 flex-col overflow-x-hidden">
+      <div className="px-4 flex items-center justify-between">
         <h3 className="font-bold text-3xl flex items-end">
           <span>
             Github
@@ -24,7 +24,7 @@ function Emojis() {
             )
           </span>
         </h3>
-        <div className="flex items-center gap-2 bg-zinc-50 p-4 rounded-lg shadow-md">
+        <div className="flex items-center gap-2 bg-zinc-50 dark:bg-zinc-600 p-4 rounded-lg shadow-md">
           <Icon icon="uil:search" className="w-6 h-6 text-zinc-300" />
           <input
             value={query}
@@ -35,14 +35,14 @@ function Emojis() {
         </div>
       </div>
       {JSON.stringify(data) !== '{}' ? (
-        <div className="w-full text-zinc-600 grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] mt-4 gap-2 min-w-0 px-4 py-4">
+        <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] mt-4 gap-2 min-w-0 px-4 py-4">
           {Object
             .entries(data)
             .filter(([name]) => (
               query ? name.toLowerCase().includes(query.toLowerCase()) : true
             )).map(
               ([name, images]) => (
-                <div className="flex items-center justify-center px-4 py-6 flex-col gap-8 bg-zinc-50 rounded-lg shadow-md">
+                <div className="flex items-center justify-center px-4 py-6 flex-col gap-8 bg-zinc-50 dark:bg-zinc-600 rounded-lg shadow-md">
                   <img src={images} alt={name} />
                   <p className="break-all text-center">{name}</p>
                 </div>

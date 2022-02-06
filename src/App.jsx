@@ -36,6 +36,7 @@ function App() {
           <Navbar theme={theme} setTheme={setTheme} />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Home />} />
             <Route path="/repo/:user/:reponame" element={<Repo />} />
             <Route path="/user/:username" element={<User />} />
             <Route path="/emojis" element={<Emojis />} />
