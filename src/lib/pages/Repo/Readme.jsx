@@ -88,6 +88,7 @@ function Readme({ data }) {
               </code>
             );
           },
+          ...data.custom,
         }}
       />
     </div>

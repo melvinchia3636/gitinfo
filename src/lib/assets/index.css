@@ -316,3 +316,13 @@ input:checked ~ .dot {
     stroke-dashoffset: -124;
   }
 }
+
+.dangerousHTML a {
+	@apply text-custom-500
+}
+
+.license code {
+	width: 100%;
+	overflow: hidden;
+	@apply !whitespace-normal text-center
+}

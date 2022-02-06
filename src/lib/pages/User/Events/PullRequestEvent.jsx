@@ -33,14 +33,14 @@ function PullRequestEvent({ e }) {
           </p>
         </div>
         <div className="flex items-center gap-2 mt-4 dark:text-zinc-200">
-          <div className="bg-custom-200 dark:bg-transparent dark:border border-custom-500 py-0.5 px-4 rounded-full">
-            <span className="text-custom-500 font-bold">{e.payload.pull_request.base.user.login}</span>
+          <div className="bg-custom-100 dark:bg-transparent dark:border border-custom-500 py-0.5 px-4 rounded-full">
+            <span className="text-custom-500 ">{e.payload.pull_request.base.user.login}</span>
             :
             {e.payload.pull_request.base.ref}
           </div>
           <Icon icon="octicon:arrow-left-16" className="w-5 h-5" />
-          <div className="bg-custom-200 dark:bg-transparent dark:border border-custom-500 py-0.5 px-4 rounded-full whitespace-nowrap overflow-hidden overflow-ellipsis">
-            <span className="text-custom-500 font-bold">{e.payload.pull_request.head.user.login}</span>
+          <div className="bg-custom-100 dark:bg-transparent dark:border border-custom-500 py-0.5 px-4 rounded-full whitespace-nowrap overflow-hidden overflow-ellipsis">
+            <span className="text-custom-500">{e.payload.pull_request.head.user.login}</span>
             :
             {e.payload.pull_request.head.ref}
           </div>

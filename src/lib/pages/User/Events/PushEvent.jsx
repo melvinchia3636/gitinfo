@@ -25,7 +25,7 @@ function PushEvent({ e }) {
       <div className="mt-4 flex flex-col gap-2">
         {e.payload.commits.map((c) => (
           <div className="flex gap-3">
-            <div className="text-custom-500 dark:text-zinc-200 bg-custom-200 dark:bg-custom-500 rounded-full w-[4.6rem] flex-shrink-0 text-sm flex justify-center py-0.5 h-min">{c.sha.slice(0, 7)}</div>
+            <div className="text-custom-500 dark:text-zinc-200 bg-custom-100 dark:bg-custom-500 rounded-full w-[4.6rem] flex-shrink-0 text-sm flex justify-center py-0.5 h-min">{c.sha.slice(0, 7)}</div>
             <div className="-mt-[1.55rem]">
               <Readme data={{ readmeContent: c.message }} />
             </div>

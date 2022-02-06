@@ -12,6 +12,7 @@ import { ThemeContext } from './lib/themeContext';
 import Emojis from './lib/pages/Emojis';
 import Templates from './lib/pages/Templates';
 import tailwindConfig from './tailwind.config';
+import Explore from './lib/pages/Explore';
 
 function App() {
   const [theme, setTheme] = React.useState(localStorage.theme);
@@ -68,7 +69,7 @@ function App() {
             <Route path="/user/:username" element={<User />} />
             <Route path="/emojis" element={<Emojis />} />
             <Route path="/templates" element={<Templates />} />
-            <Route path="/assets/favicon.png" element={<Favicon />} />
+            <Route path="/explore" element={<Explore />} />
           </Routes>
         </Router>
       </div>

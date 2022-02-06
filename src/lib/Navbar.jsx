@@ -30,7 +30,6 @@ function Navbar({ theme, setTheme }) {
           'Explore',
           'Emojis',
           'Templates',
-          'Plans',
         ].map((e, i) => <Link to={`/${e.toLowerCase()}`} className={(location.pathname.slice(1) === e.toLowerCase() || (!location.pathname.slice(1) && !i)) ? 'font-bold text-custom-500' : ''}>{e}</Link>)}
       </div>
       <div className="flex gap-2">
@@ -65,7 +64,7 @@ function Navbar({ theme, setTheme }) {
             'brown',
             'grey',
           ].map((e) => (
-            <button type="button" onClick={() => setThemeColor(`theme-${e}`)} className="w-full flex items-center justify-between border-b border-zinc-200 dark:border-zinc-500 px-2 py-4 hover:bg-zinc-200 dark:hover:bg-zinc-600 hover:rounded-md duration-300">
+            <button type="button" onClick={() => setThemeColor(`theme-${e}`)} className="w-full flex items-center justify-between border-b border-zinc-300 dark:border-zinc-500 px-2 py-4 hover:bg-zinc-200 dark:hover:bg-zinc-600 hover:rounded-md duration-300">
               <div className="flex items-center gap-4">
                 <span className={`w-4 h-4 rounded-full theme-${e} bg-custom-500 block`} />
                 {e}
