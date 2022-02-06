@@ -7,6 +7,7 @@ import Navbar from './lib/Navbar';
 import User from './lib/pages/User';
 import { ThemeContext } from './lib/themeContext';
 import Emojis from './lib/pages/Emojis';
+import Templates from './lib/pages/Templates';
 
 function App() {
   const [theme, setTheme] = React.useState(localStorage.theme);
@@ -40,6 +41,7 @@ function App() {
             <Route path="/repo/:user/:reponame" element={<Repo />} />
             <Route path="/user/:username" element={<User />} />
             <Route path="/emojis" element={<Emojis />} />
+            <Route path="/templates" element={<Templates />} />
           </Routes>
         </Router>
       </div>
