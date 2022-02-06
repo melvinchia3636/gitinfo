@@ -83,9 +83,18 @@ function SourceCode({ data }) {
       {contents.length ? (
         <div className="mt-4">
           {contents.sort((a, b) => ['file', 'dir'].indexOf(b.type) - ['file', 'dir'].indexOf(a.type)).map((e) => (
-            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex w-full items-center gap-4 px-4 py-4 border-b text-lg hover:bg-zinc-200 hover:rounded-md border-zinc-200">
-              <Icon icon={e.type === 'dir' ? 'mdi-folder' : 'uil:file'} className={`w-6 h-6 ${e.type === 'dir' ? 'text-custom-500' : 'text-zinc-600'}`} />
-              {e.name}
+            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex w-full items-center justify-between px-4 py-4 border-b text-lg hover:bg-zinc-200 hover:rounded-md border-zinc-200">
+              <div className="flex items-center gap-4">
+                <Icon icon={e.type === 'dir' ? 'mdi-folder' : 'uil:file'} className={`w-6 h-6 ${e.type === 'dir' ? 'text-custom-500' : 'text-zinc-600'}`} />
+                {e.name}
+              </div>
+              {e.size > 0 && (
+              <span>
+                {(e.size / (e.size < 1024 ? 1 : 1024)).toFixed(2).toLocaleString()}
+                {' '}
+                {e.size < 1024 ? 'KB' : 'MB'}
+              </span>
+              )}
             </button>
           ))}
         </div>
