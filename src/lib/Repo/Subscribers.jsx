@@ -24,7 +24,7 @@ function Subscribers({
   };
 
   return (
-    <div>
+    <>
       <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
         <Icon icon="uil:eye" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Subscribers
@@ -62,7 +62,7 @@ function Subscribers({
           ) : 'Load more'}
         </button>
       ) : ''}
-    </div>
+    </>
   );
 }
 

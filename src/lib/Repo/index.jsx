@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react/prop-types */
@@ -8,10 +7,7 @@
 import { Icon } from '@iconify/react';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Lottie from 'react-lottie';
-import ReactStickyBox from 'react-sticky-box';
 import FETCH_HEADERS from '../constants';
-import loadingAnim from '../assets/loading.json';
 
 import Header from './Header';
 import Stats from './Stats';
@@ -30,6 +26,7 @@ import Releases from './Releases';
 import Tags from './Tags';
 import Labels from './Labels';
 import Issues from './Issues';
+import SourceCode from './SourceCode';
 
 function Repo() {
   const [data, setData] = useState({});
@@ -113,42 +110,41 @@ function Repo() {
   }, []);
 
   return (
-    <div className="h-full w-full pt-4 pb-0 overflow-scroll">
+    <div className="w-full h-full pt-4 pb-0 overflow-hidden flex flex-col">
       {JSON.stringify(data) !== '{}' ? (
         data !== 'finished' ? (
           <>
             <Header data={data} />
-            <div className="pb-8 flex items-start justify-between gap-8">
-              <ReactStickyBox>
-                <div className="flex flex-col gap-4 text-zinc-600 dark:text-zinc-200 text-lg">
-                  {[['uil:info-circle',
-                    'Overview'],
-                  ['ic:round-code',
-                    'Languages'],
-                  ['uil:users-alt',
-                    'Contributors'],
-                  ['uil:eye',
-                    'Subscribers'],
-                  ['uil:star',
-                    'Stargazers'],
-                  ['uil:document-info',
-                    'README.md'],
-                  ['uil:box',
-                    'Releases'],
-                  ['uil:tag',
-                    'Tags'],
-                  ['uil:tag-alt',
-                    'Labels'],
-                  ['octicon:issue-opened-16',
-                    'Issues']].map(([icon, name], index) => (
-                      <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-2 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-white bg-custom-500 shadow-md' : ''}`} type="button">
-                        <Icon icon={icon} className="w-6 h-6" />
-                        {name}
-                      </button>
-                  ))}
-                </div>
-              </ReactStickyBox>
-              <div className="min-w-0 flex-1">
+            <div className="pb-8 min-h-0 flex items-start justify-between gap-8 h-full">
+              <div className="flex flex-col gap-4 text-zinc-600 dark:text-zinc-200 text-lg">
+                {[['uil:info-circle',
+                  'Overview'],
+                ['lucide:file-code', 'Source Code'],
+                ['ic:round-code',
+                  'Languages'],
+                ['uil:users-alt',
+                  'Contributors'],
+                ['uil:eye',
+                  'Subscribers'],
+                ['uil:star',
+                  'Stargazers'],
+                ['uil:document-info',
+                  'README.md'],
+                ['uil:box',
+                  'Releases'],
+                ['uil:tag',
+                  'Tags'],
+                ['uil:tag-alt',
+                  'Labels'],
+                ['octicon:issue-opened-16',
+                  'Issues']].map(([icon, name], index) => (
+                    <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-2 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-white bg-custom-500 shadow-md' : ''}`} type="button">
+                      <Icon icon={icon} className="w-6 h-6" />
+                      {name}
+                    </button>
+                ))}
+              </div>
+              <div className="min-w-0 flex-1 h-full overflow-y-auto">
                 {[
                   <div>
                     <Stats data={data} />
@@ -159,6 +155,7 @@ function Repo() {
                     <RepoSize data={data} />
                     <Topics data={data} />
                   </div>,
+                  <SourceCode data={data} />,
                   <Languages data={data} />,
                   <Contributors
                     data={data}
@@ -214,21 +211,10 @@ function Repo() {
           </div>
         )
       ) : (
-        <div className="w-full h-full flex items-center justify-center pb-12">
-          <Lottie
-            options={{
-              loop: true,
-              autoplay: true,
-              animationData: loadingAnim,
-              rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
-              },
-            }}
-            height={60}
-            width={60}
-            isStopped={false}
-            isPaused={false}
-          />
+        <div className="w-full min-h-0 h-full flex items-center justify-center pb-32 mt-6 transition-none">
+          <svg className="spinner" viewBox="0 0 50 50">
+            <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
+          </svg>
         </div>
       )}
 

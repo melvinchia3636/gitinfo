@@ -1,10 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
-import Lottie from 'react-lottie';
 import { Link } from 'react-router-dom';
 import color from './assets/colors.json';
-import loadingAnim from './assets/loading.json';
 import FETCH_HEADERS from './constants';
 
 function Home() {
@@ -26,7 +24,7 @@ function Home() {
   };
 
   return (
-    <div className="h-full w-full flex items-center justify-center pb-8">
+    <div className="h-full w-full flex items-center justify-center pb-8 transition-none">
       <div className="bg-white dark:bg-zinc-600 rounded-lg shadow-lg overflow-hidden w-1/2">
         <form onSubmit={fetchResult} className="flex items-center gap-4">
           <Icon icon="uil:search" className="w-6 h-6 ml-4 text-zinc-300 flex-shrink-0" />
@@ -73,20 +71,11 @@ function Home() {
             ) : (!firstSearch ? <p className="text-center p-4 text-zinc-400">No results were found.</p> : '')}
           </div>
         ) : (
-          <Lottie
-            options={{
-              loop: true,
-              autoplay: true,
-              animationData: loadingAnim,
-              rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
-              },
-            }}
-            height={60}
-            width={60}
-            isStopped={false}
-            isPaused={false}
-          />
+          <div className="w-full min-h-0 h-full flex items-center justify-center transition-none py-4 px-4">
+            <svg className="spinner" viewBox="0 0 50 50">
+              <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
+            </svg>
+          </div>
         )}
       </div>
       <p className="absolute left-1/2 bottom-4 transform -translate-x-1/2 text-zinc-600 dark:text-zinc-200">

@@ -2,10 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Lottie from 'react-lottie';
 import ReactStickyBox from 'react-sticky-box';
 import FETCH_HEADERS from '../constants';
-import loadingAnim from '../assets/loading.json';
 
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
@@ -43,21 +41,10 @@ function User() {
           </div>
         )
       ) : (
-        <div className="w-full h-full flex items-center justify-center pb-12">
-          <Lottie
-            options={{
-              loop: true,
-              autoplay: true,
-              animationData: loadingAnim,
-              rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
-              },
-            }}
-            height={60}
-            width={60}
-            isStopped={false}
-            isPaused={false}
-          />
+        <div className="w-full min-h-0 h-full flex items-center justify-center pb-32 mt-6 transition-none">
+          <svg className="spinner" viewBox="0 0 50 50">
+            <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
+          </svg>
         </div>
       )}
     </div>

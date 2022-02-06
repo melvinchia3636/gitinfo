@@ -8,7 +8,6 @@ import Lottie from 'react-lottie';
 import Readme from './Readme';
 import FETCH_HEADERS from '../constants';
 import loadingWhiteAnim from '../assets/loading-white.json';
-import loadingAnim from '../assets/loading.json';
 
 const reactionMap = {
   '+1': '+1',
@@ -180,21 +179,10 @@ function Releases({
               </div>
             </div>
           )) : (
-            <div className="flex w-full h-full items-center justify-center">
-              <Lottie
-                options={{
-                  loop: true,
-                  autoplay: true,
-                  animationData: loadingAnim,
-                  rendererSettings: {
-                    preserveAspectRatio: 'xMidYMid slice',
-                  },
-                }}
-                height={60}
-                width={60}
-                isStopped={false}
-                isPaused={false}
-              />
+            <div className="w-full min-h-0 h-full flex items-center justify-center transition-none">
+              <svg className="spinner" viewBox="0 0 50 50">
+                <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
+              </svg>
             </div>
           )}
           {nextReactionPage ? (
@@ -219,7 +207,11 @@ function Releases({
           ) : ''}
         </div>
       </div>
-    ) : ''
+    ) : (
+      <div className="w-full h-full flex items-center justify-center">
+        <p className="text-xl text-zinc-400 mb-16">Not Available</p>
+      </div>
+    )
   );
 }
 
