@@ -1,4 +1,4 @@
-<h1 align="center">🗄 Git Dev Info</h1>
+<center><h1 align="center">🗄 Git Dev Info</h1></center>
 
 <p align="center">A nice looking API explorer of Github REST API.</p>
 
