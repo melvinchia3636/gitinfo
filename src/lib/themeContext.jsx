@@ -6,7 +6,7 @@ import './assets/index.css';
 
 export const ThemeContext = React.createContext();
 
-export default function ({ children }) {
+export default function themeContext({ children }) {
   const storedColour = (localStorage.getItem('themeColor')) ? (localStorage.getItem('themeColor')) : 'theme-orange';
   const [themeColor, setThemeColor] = React.useState(storedColour);
 
