@@ -9,7 +9,7 @@ function Deployments({ data }) {
   useEffect(() => {
     fetch(data.deployments_url, FETCH_HEADERS)
       .then((res) => res.json())
-      .then((d) => setContent(d));
+      .then((d) => setContent(d.length ? d : null));
   }, []);
 
   return (
@@ -19,7 +19,7 @@ function Deployments({ data }) {
         Deployments
       </div>
       <div className="mt-4">
-        {content.length > 0 && content.map((e) => (
+        {content !== null ? content.length > 0 && content.map((e) => (
           <div className="px-2 py-4 border-b border-slate-300">
             <h3 className="text-2xl">
               {e.environment}
@@ -40,7 +40,11 @@ function Deployments({ data }) {
               {new Date(e.created_at).toLocaleString()}
             </div>
           </div>
-        ))}
+        )) : (
+          <div className="w-full flex items-center justify-center">
+            <p className="text-xl text-zinc-400 mt-16">Not Available</p>
+          </div>
+        )}
       </div>
     </div>
   );
