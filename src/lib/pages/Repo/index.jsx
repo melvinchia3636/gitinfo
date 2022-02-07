@@ -28,6 +28,7 @@ import Tags from './Tags';
 import Labels from './Labels';
 import Issues from './Issues';
 import SourceCode from './SourceCode';
+import Deployments from './Deployments';
 
 function Repo() {
   const [data, setData] = useState({});
@@ -124,8 +125,8 @@ function Repo() {
                     'Stargazers'],
                   ['uil:document-info',
                     'README.md'],
-                  ['uil:globe',
-                    'GitHub Pages'],
+                  ['uil:rocket',
+                    'Deployments'],
                   ['uil:box',
                     'Releases'],
                   ['uil:tag',
@@ -181,6 +182,7 @@ function Repo() {
                     setNextStargazersPage={setNextStargazersPage}
                   />,
                   <ReadmeMD data={data} setData={setData} />,
+                  <Deployments data={data} />,
                   <Releases
                     data={data}
                     setData={setData}

@@ -56,8 +56,8 @@ function Readme({ data }) {
           ),
           img: (props) => (
             <img
-              src={props.src.startsWith('/')
-                ? `https://raw.githubusercontent.com/${data.full_name}/${data.default_branch}${props.src}`
+              src={!props.src.startsWith('https://')
+                ? `https://raw.githubusercontent.com/${data.full_name}/${data.default_branch}${!props.src.startsWith('/') ? '/' : ''}${props.src}`
                 : (props.src.startsWith('https://github.com')
                   ? props.src.replace(/^https:\/\/github\.com/, 'https://raw.githubusercontent.com').replace('/blob', '')
                   : props.src)}

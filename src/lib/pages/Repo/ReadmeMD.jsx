@@ -6,7 +6,7 @@ import FETCH_HEADERS from '../../constants';
 
 function ReadmeMD({ data, setData }) {
   const fetchReadme = async () => {
-    const README_URL = ['README.md', 'readme.md', 'README', '.github/README.md', 'README.rst'].map((e) => `https://cors-anywhere.thecodeblog.net/raw.githubusercontent.com/${data.full_name}/${data.default_branch}/${e}`);
+    const README_URL = ['README.md', 'readme.md', 'README', 'Readme.md', '.github/README.md', 'README.rst'].map((e) => `https://cors-anywhere.thecodeblog.net/raw.githubusercontent.com/${data.full_name}/${data.default_branch}/${e}`);
     let rmContent;
     // eslint-disable-next-line no-restricted-syntax
     for await (const i of README_URL) {

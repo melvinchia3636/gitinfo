@@ -21,7 +21,7 @@ function Gist() {
           <p className="text-lg mt-2">{e.description}</p>
           <div className="mt-4 flex flex-col gap-2">
             {Object.values(e.files).map((f) => (
-              <div className="shadow-md rounded-md p-4 flex flex-col w-full bg-zinc-50">
+              <div className="shadow-md rounded-md p-4 flex flex-col w-full bg-zinc-50 dark:bg-zinc-600">
                 <h3 className="text-lg text-custom-500 whitespace-nowrap overflow-ellipsis overflow-hidden">
                   {f.filename}
                 </h3>
