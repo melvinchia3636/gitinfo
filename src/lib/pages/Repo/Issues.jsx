@@ -146,11 +146,11 @@ function Issues({
                 <Icon icon="octicon:issue-opened-16" className="text-green-700 dark:text-green-500 w-5 h-5 flex-shrink-0" />
                 <h4 className="text-xl flex-shrink overflow-hidden overflow-ellipsis whitespace-nowrap font-bold pr-2">{e.title}</h4>
                 <div className="flex items-center gap-2">
-                  {e.labels.map((t) => {
+                  {e.labels.slice(0, 5).map((t) => {
                     const color = !hexIsLight(t.color) ? applySaturationToHexColor(shadeColor(`#${t.color}`, 100), 80) : `#${t.color}`;
                     return (
                       <>
-                        <div className={`text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap pt-1.5 pb-1 inline dark:hidden ${hexIsLight(t.color) ? 'text-zinc-600' : 'text-zinc-200'}`} style={{ backgroundColor: `#${t.color}` }}>{t.name}</div>
+                        <div className={`text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap pt-1.5 pb-1 inline dark:hidden ${hexIsLight(t.color) ? 'text-zinc-600' : 'text-white'}`} style={{ backgroundColor: `#${t.color}` }}>{t.name}</div>
                         <div
                           className="text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap outline outline-1 pt-1.5 pb-1 hidden dark:inline"
                           style={{
@@ -164,6 +164,14 @@ function Issues({
                       </>
                     );
                   })}
+                  {e.labels.length - 5 > 0 && (
+                  <span className="whitespace-nowrap">
+                    +
+                    {e.labels.length - 5}
+                    {' '}
+                    more
+                  </span>
+                  )}
                 </div>
               </div>
               <div className="flex gap-4 items-center text-zinc-400 text-sm ml-7 mt-1.5">
@@ -196,7 +204,7 @@ function Issues({
           ))}
         </div>
         {nextIssuesPage ? (
-          <button onClick={fetchNextIssuesPage} type="button" className="text-lg text-zinc-200 h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
+          <button onClick={fetchNextIssuesPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
             {isIssuesLoading ? 'Loading...' : 'Load more'}
           </button>
         ) : ''}

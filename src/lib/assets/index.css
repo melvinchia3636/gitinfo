@@ -9,9 +9,9 @@
   src: local('Proxima Nova'), url(./Proxima.otf) format('opentype')
 }
 
-body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+body, #root, .main {
+  height: 100vh;
+  height: -webkit-fill-available;
 }
 
 html {

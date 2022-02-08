@@ -55,8 +55,8 @@ function App() {
   }, [theme]);
 
   return (
-    <main className={`${themeColor} min-w-0 w-full h-full overflow-hidden relative bg-custom-500 dark:bg-custom-700 flex items-center justify-center`}>
-      <div className="h-full shadow-2xl w-full mx-3 md:mx-24 lg:mx-32 xl:mx-44 bg-zinc-100 dark:bg-zinc-700 p-6 pb-0 flex flex-col">
+    <main className={`${themeColor} min-w-0 min-h-0 w-full overflow-hidden relative bg-custom-500 dark:bg-custom-700 flex items-center justify-center`}>
+      <div className="h-full min-w-0 shadow-2xl w-full mx-3 md:mx-24 lg:mx-32 bg-zinc-100 dark:bg-zinc-700 p-6 pb-0 flex flex-col">
         <Router>
           <Navbar theme={theme} setTheme={setTheme} />
           <Routes>
