@@ -1,9 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Favicon from 'react-favicon';
-import resolveConfig from 'tailwindcss/resolveConfig';
 import Home from './lib/Home';
 import Repo from './lib/pages/Repo';
 import Navbar from './lib/Navbar';
@@ -58,8 +55,8 @@ function App() {
   }, [theme]);
 
   return (
-    <div className={`${themeColor} w-full h-screen overflow-hidden relative bg-custom-500 dark:bg-custom-700 flex items-center justify-center`}>
-      <div className="h-full shadow-2xl w-[calc(100vw-20rem)] bg-zinc-100 dark:bg-zinc-700 p-6 pb-0 flex flex-col">
+    <main className={`${themeColor} min-w-0 w-full h-full overflow-hidden relative bg-custom-500 dark:bg-custom-700 flex items-center justify-center`}>
+      <div className="h-full shadow-2xl w-full mx-3 md:mx-24 lg:mx-32 xl:mx-44 bg-zinc-100 dark:bg-zinc-700 p-6 pb-0 flex flex-col">
         <Router>
           <Navbar theme={theme} setTheme={setTheme} />
           <Routes>
@@ -73,7 +70,7 @@ function App() {
           </Routes>
         </Router>
       </div>
-    </div>
+    </main>
   );
 }
 

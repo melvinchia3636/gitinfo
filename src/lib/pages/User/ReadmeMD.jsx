@@ -35,7 +35,7 @@ function ReadmeMD({ username }) {
           <Icon icon="uil:info-circle" className="w-8 h-8 text-custom-500 dark:text-custom-400 -mt-1" />
           README.md
         </div>
-        <Readme data={{ readmeContent: data, full_name: 'melvinchia3636/melvinchia3636', default_branch: 'main' }} />
+        <Readme data={{ readmeContent: data, full_name: `${username}/${username}`, default_branch: 'master' }} />
       </div>
     ) : ''
   );

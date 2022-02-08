@@ -43,7 +43,7 @@ function Subscribers({
         ))}
       </div>
       {nextSubscribersPage ? (
-        <button onClick={fetchNextSubscribersPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-4">
+        <button onClick={fetchNextSubscribersPage} type="button" className="text-lg text-zinc-200 h-14 w-full bg-custom-500 rounded-md shadow-md mt-8">
           {isSubscribersLoading ? (
             <Lottie
               options={{

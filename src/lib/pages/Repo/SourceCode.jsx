@@ -40,7 +40,7 @@ function SourceCode({ data }) {
         Source Code
       </div>
       <div className="flex items-center gap-8 mt-8">
-        <button type="button" className="text-white bg-custom-500 shadow-md rounded-md px-4 py-2 pr-3 flex items-center gap-2">
+        <button type="button" className="text-zinc-200 bg-custom-500 shadow-md rounded-md px-4 py-2 pr-3 flex items-center gap-2">
           <Icon icon="mdi:source-branch" width="20" height="20" />
           {data.default_branch}
           <Icon icon="uil:angle-down" width="20" height="20" />
@@ -83,7 +83,7 @@ function SourceCode({ data }) {
       {contents.length ? (
         <div className="mt-4">
           {contents.sort((a, b) => ['file', 'dir'].indexOf(b.type) - ['file', 'dir'].indexOf(a.type)).map((e) => (
-            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex w-full items-center justify-between px-4 py-4 border-b text-lg hover:bg-zinc-200 dark:hover:bg-zinc-600 hover:rounded-md border-zinc-300 dark:border-zinc-500">
+            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex w-full items-center justify-between px-4 py-4 border-b text-lg hover:bg-zinc-50 dark:hover:bg-zinc-600 hover:rounded-md border-zinc-300 dark:border-zinc-500">
               <div className="flex items-center gap-4">
                 <Icon icon={e.type === 'dir' ? 'mdi-folder' : 'uil:file'} className={`w-6 h-6 ${e.type === 'dir' ? 'text-custom-500' : 'text-zinc-600 dark:text-zinc-200'}`} />
                 {e.name}

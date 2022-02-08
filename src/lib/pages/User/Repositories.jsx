@@ -81,7 +81,7 @@ function Repositories({ repos_url, repos_count }) {
           </a>
         ))}
         {nextReposPage ? (
-          <button onClick={fetchNextReposPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
+          <button onClick={fetchNextReposPage} type="button" className="text-lg text-zinc-200 h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
             {isReposLoading ? (
               <Lottie
                 options={{

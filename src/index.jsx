@@ -5,10 +5,8 @@ import ThemeContextWrapper from './lib/themeContext';
 import App from './App';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeContextWrapper>
-      <App />
-    </ThemeContextWrapper>
-  </React.StrictMode>,
+  <ThemeContextWrapper>
+    <App />
+  </ThemeContextWrapper>,
   document.getElementById('root'),
 );

@@ -43,7 +43,7 @@ function Labels({
             const color = !hexIsLight(e.color) ? applySaturationToHexColor(shadeColor(`#${e.color}`, 100), 80) : `#${e.color}`;
             return (
               <div className={`w-full p-4 ${i ? 'border-t border-zinc-300 dark:border-zinc-600' : 'pt-0'}`}>
-                <div className={`text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap pt-1.5 pb-1 inline dark:hidden ${hexIsLight(e.color) ? 'text-zinc-600' : 'text-white'}`} style={{ backgroundColor: `#${e.color}` }}>{e.name}</div>
+                <div className={`text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap pt-1.5 pb-1 inline dark:hidden ${hexIsLight(e.color) ? 'text-zinc-600' : 'text-zinc-200'}`} style={{ backgroundColor: `#${e.color}` }}>{e.name}</div>
                 <div
                   className="text-xs font-bold shadow-md rounded-full px-3 whitespace-nowrap outline outline-1 pt-1.5 pb-1 hidden dark:inline"
                   style={{
@@ -60,7 +60,7 @@ function Labels({
           })}
         </div>
         {nextLabelsPage ? (
-          <button onClick={fetchNextLabelsPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
+          <button onClick={fetchNextLabelsPage} type="button" className="text-lg text-zinc-200 h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
             {isLabelsLoading ? (
               <Lottie
                 options={{

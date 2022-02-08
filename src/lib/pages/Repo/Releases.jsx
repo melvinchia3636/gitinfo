@@ -159,15 +159,15 @@ function Releases({
             ))}
           </div>
           {nextReleasesPage ? (
-            <button onClick={fetchNextReleasesPage} type="button" className="text-lg text-white h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
+            <button onClick={fetchNextReleasesPage} type="button" className="text-lg text-zinc-200 h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
               {isReleasesLoading ? 'Loading...' : 'Load more'}
             </button>
           ) : ''}
           <div
             onClick={() => setReactedPeopleListShow(false)}
-            className={`absolute top-0 left-0 flex overflow-hidden items-center justify-center w-full h-screen bg-black transition-all ${isReactedPeopleListShow ? 'z-0 bg-opacity-20 duration-200' : 'z-[-1] bg-opacity-0 duration-500'}`}
+            className={`absolute top-0 left-0 flex overflow-hidden items-center justify-center w-full bg-black transition-all ${isReactedPeopleListShow ? 'z-0 bg-opacity-20 duration-200' : 'z-[-1] bg-opacity-0 duration-500'}`}
           />
-          <div className={`w-96 h-[80vh] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-white shadow-2xl text-zinc-600 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${isReactedPeopleListShow ? '-translate-y-1/2' : 'translate-y-[100%]'}`}>
+          <div className={`w-96 h-[80vh] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-zinc-50 shadow-2xl text-zinc-600 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${isReactedPeopleListShow ? '-translate-y-1/2' : 'translate-y-[100%]'}`}>
             {reactionData.length ? reactionData.map((e) => (
               <div className="flex items-center gap-4">
                 <div className="relative inline-block">
@@ -187,7 +187,7 @@ function Releases({
               </div>
             )}
             {nextReactionPage ? (
-              <button onClick={fetchNextReactionPage} type="button" className="text-lg text-white h-14 flex-shrink-0 w-full bg-custom-500 rounded-md shadow-md mt-4">
+              <button onClick={fetchNextReactionPage} type="button" className="text-lg text-zinc-200 h-14 flex-shrink-0 w-full bg-custom-500 rounded-md shadow-md mt-4">
                 {isReactionLoading ? (
                   <Lottie
                     options={{

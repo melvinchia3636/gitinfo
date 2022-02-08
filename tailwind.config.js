@@ -19,6 +19,9 @@ module.exports = {
           900: () => 'var(--color-custom-900)',
         },
       },
+      screens: {
+        440: '440px',
+      },
     },
   },
   plugins: [],

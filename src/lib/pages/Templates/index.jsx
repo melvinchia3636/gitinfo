@@ -69,7 +69,7 @@ function Templates() {
               'Gitignore'],
             ['octicon:law-16', 'License'],
             ].map(([icon, name], index) => (
-              <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-3 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-white bg-custom-500 shadow-md' : ''}`} type="button">
+              <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-3 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} type="button">
                 <Icon icon={icon} className={icon.startsWith('octicon') ? 'w-[1.3rem] h-[1.3rem]' : 'w-6 h-6'} />
                 {name}
               </button>
@@ -79,14 +79,14 @@ function Templates() {
         <div className="min-w-0 pb-8 flex-1 flex flex-col text-zinc-600 dark:text-zinc-200">
           {data.length > 0 && (
             section === 0 && typeof data[0] === 'string' ? data.filter((e) => (query ? e.toLowerCase().includes(query.toLowerCase()) : true)).map((e) => (
-              <button type="button" onClick={() => setShowContent(e)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-200 dark:hover:bg-zinc-600 dark:border-zinc-600 duration-300 hover:rounded-md">
+              <button type="button" onClick={() => setShowContent(e)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-600 dark:border-zinc-600 duration-300 hover:rounded-md">
                 <span className="w-4 h-4 rounded-full block shadow-sm" style={{ backgroundColor: ((Object.entries(colors).filter(([name]) => name.toLowerCase() === e.toLowerCase()))[0] || [])[1]?.color || 'white' }} />
                 {e}
               </button>
             )) : data.filter((e) => (
               query ? e.name?.toLowerCase().includes(query.toLowerCase()) : true
             )).map((e) => (
-              <button type="button" onClick={() => setShowContent(e.key)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-200 dark:hover:bg-zinc-600 dark:border-zinc-600 duration-300 hover:rounded-md">
+              <button type="button" onClick={() => setShowContent(e.key)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-600 dark:border-zinc-600 duration-300 hover:rounded-md">
                 <span className="w-28 flex items-center font-bold justify-center py-1 text-custom-500 bg-custom-100 dark:bg-custom-500 dark:text-zinc-200 overflow-hidden rounded-full text-sm shadow-sm whitespace-nowrap">{e.key}</span>
                 {e.name}
               </button>
@@ -94,7 +94,7 @@ function Templates() {
           )}
         </div>
       </div>
-      <button type="button" aria-label="hideContent" onClick={() => setShowContent(null)} className={`bg-black absolute w-full h-screen top-0 left-0 ${showContent ? 'bg-opacity-[1%] z-40' : 'bg-opacity-0 z-[-1]'}`} />
+      <button type="button" aria-label="hideContent" onClick={() => setShowContent(null)} className={`bg-black absolute w-full top-0 left-0 ${showContent ? 'bg-opacity-[1%] z-40' : 'bg-opacity-0 z-[-1]'}`} />
       <div className={`absolute ${showContent ? 'top-1/2 -translate-y-1/2 shadow-2xl' : 'top-0 -translate-y-full shadow-0'} left-1/2 -translate-x-1/2 p-8 z-50 overflow-scroll h-[calc(100vh-16rem)] w-[46rem] bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-200 rounded-lg`}>
         {section === 0 && (
         <>
@@ -137,7 +137,7 @@ function Templates() {
             </div>
           </>
           )}
-          <div className="license p-4 bg-zinc-100 shadow-md rounded-lg mt-6 flex flex-col gap-4">
+          <div className="license p-4 bg-zinc-100 dark:bg-zinc-600 shadow-md rounded-lg mt-6 flex flex-col gap-4">
             <Readme data={{
               readmeContent: content.body,
               custom: {

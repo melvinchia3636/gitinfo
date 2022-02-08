@@ -123,7 +123,7 @@ function ContributionActivity({ username, eventsUrl }) {
           <StickyBox offsetTop={20} offsetBottom={20}>
             <div className="flex flex-col text-zinc-600 dark:text-zinc-200">
               {years.map((e, i) => (
-                <button className={`block px-4 py-2 pt-2.5 rounded-md ${!i ? 'text-white bg-custom-500 shadow-md' : ''}`} key={`yearbtn-${e}`} type="button">
+                <button className={`block px-4 py-2 pt-2.5 rounded-md ${!i ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} key={`yearbtn-${e}`} type="button">
                   {e}
                 </button>
               ))}

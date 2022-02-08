@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import color from './assets/colors.json';
 import FETCH_HEADERS from './constants';
+import { hexIsLight } from './pages/Repo/Issues';
 
 function Home() {
   const [query, setQuery] = useState('');
@@ -25,11 +26,11 @@ function Home() {
 
   return (
     <div className="h-full w-full flex items-center justify-center pb-8 transition-none">
-      <div className="bg-white dark:bg-zinc-600 rounded-lg shadow-lg overflow-hidden w-1/2">
+      <div className="bg-zinc-50 dark:bg-zinc-600 rounded-lg shadow-lg overflow-hidden w-full mx-0 440:mx-6 sm:mx-24 md:mx-32 lg:mx-0 lg:w-1/2">
         <form onSubmit={fetchResult} className="flex items-center gap-4">
           <Icon icon="uil:search" className="w-6 h-6 ml-4 text-zinc-300 flex-shrink-0" />
-          <input onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Search Github" className="placeholder-zinc-300 caret-custom-500 py-4 w-full text-xl focus:border-none focus:outline-none text-zinc-600 dark:text-zinc-200 bg-white dark:bg-zinc-600" />
-          <button aria-label="search" type="submit" className="bg-custom-500 text-lg py-3 m-1 rounded-md text-white h-full p-3 flex items-center gap-1"><Icon icon="uil:arrow-right" className="w-8 h-8" /></button>
+          <input onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Search Github" className="placeholder-zinc-300 caret-custom-500 py-4 w-full text-xl focus:border-none focus:outline-none text-zinc-600 dark:text-zinc-200 bg-zinc-50 dark:bg-zinc-600" />
+          <button aria-label="search" type="submit" className="bg-custom-500 text-lg py-3 m-1 rounded-md text-zinc-200 h-full p-3 flex items-center gap-1"><Icon icon="uil:arrow-right" className="w-8 h-8" /></button>
         </form>
         {!isLoading ? (
           <div className={`border-t-zinc-50 dark:border-t-zinc-500 max-h-[24rem] overflow-y-scroll transition-all duration-500 flex flex-col gap-4 px-4 ${result?.users?.items?.length || result?.repo?.items?.length ? 'py-4 border-t-2' : '0'}`}>
@@ -60,7 +61,7 @@ function Home() {
                     <div>
                       {result.repo.items.slice(0, 5).map((e) => (
                         <Link to={`/repo/${e.full_name}`} className="flex items-center gap-3 py-2 border-b border-zinc-50 dark:border-zinc-600 px-2 hover:bg-custom-50 dark:hover:bg-zinc-500 transition-all duration-200 hover:rounded-md">
-                          <span className="bg-custom-500 px-4 whitespace-nowrap py-1 text-white font-medium text-xs rounded-full" style={{ backgroundColor: color[e.language]?.color }}>{e.language || 'NaN'}</span>
+                          <span className={`bg-custom-500 px-4 whitespace-nowrap py-1 ${hexIsLight(color[e.language]?.color || '#000000') ? 'text-zinc-600' : 'text-zinc-50'} font-medium text-xs rounded-full`} style={{ backgroundColor: color[e.language]?.color }}>{e.language || 'NaN'}</span>
                           <h3 className="text-lg text-zinc-600 dark:text-zinc-200 w-[99%] overflow-hidden whitespace-nowrap overflow-ellipsis">{e.full_name}</h3>
                         </Link>
                       ))}
@@ -78,7 +79,7 @@ function Home() {
           </div>
         )}
       </div>
-      <p className="absolute left-1/2 bottom-4 transform -translate-x-1/2 text-zinc-600 dark:text-zinc-200">
+      <p className="w-full px-8 absolute left-1/2 bottom-4 transform -translate-x-1/2 text-zinc-600 dark:text-zinc-200 text-center">
         Created by
         {' '}
         <a href="https://thecodeblog.net" className="underline text-custom-500">Melvin Chia</a>
