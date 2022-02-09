@@ -2,6 +2,7 @@ import { Icon } from '@iconify/react';
 import React, { useState } from 'react';
 import ReactStickyBox from 'react-sticky-box';
 import Gist from './Gists';
+import Organization from './Organization';
 import Repo from './Repo';
 import User from './User';
 
@@ -63,6 +64,7 @@ function Explore() {
             <User />,
             <Repo />,
             <Gist />,
+            <Organization />,
           ][section]}
         </div>
       </div>
