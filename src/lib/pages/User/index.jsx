@@ -24,14 +24,18 @@ function User() {
       }
     });
   }, []);
+
   return (
-    <div className="h-full w-full flex pb-0">
+    <div className="h-full w-full flex pb-0 lg:mt-0 mt-4">
       {JSON.stringify(data) !== '{}' ? (
         data !== 'finished' ? (
-          <div className="w-full h-full overflow-y-scroll flex justify-between gap-12 items-start">
-            <ReactStickyBox offsetBottom={60}>
+          <div className="w-full h-full overflow-y-scroll flex flex-col lg:flex-row justify-between gap-6 xl:gap-12 items-start">
+            <ReactStickyBox className="hidden lg:block">
               <LeftSide data={data} />
             </ReactStickyBox>
+            <div className="block lg:hidden w-full">
+              <LeftSide data={data} />
+            </div>
             <RightSide data={data} />
           </div>
         ) : (

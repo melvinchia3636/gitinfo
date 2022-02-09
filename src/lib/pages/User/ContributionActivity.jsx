@@ -22,20 +22,22 @@ function Heatmap({ data }) {
   }, []);
 
   return (
-    <CalendarHeatmap
-      startDate={(() => {
-        const date = new Date();
-        date.setFullYear(date.getFullYear() - 1);
-        return date;
-      })()}
-      values={data}
-      classForValue={(value) => {
-        if (!value) {
-          return 'color-empty';
-        }
-        return `color-scale-${value.count}`;
-      }}
-    />
+    <div className="hidden sm:block">
+      <CalendarHeatmap
+        startDate={(() => {
+          const date = new Date();
+          date.setFullYear(date.getFullYear() - 1);
+          return date;
+        })()}
+        values={data}
+        classForValue={(value) => {
+          if (!value) {
+            return 'color-empty';
+          }
+          return `color-scale-${value.count}`;
+        }}
+      />
+    </div>
   );
 }
 
@@ -93,13 +95,13 @@ function ContributionActivity({ username, eventsUrl }) {
           <Icon icon="mdi:puzzle-edit-outline" className="w-8 h-8 text-custom-500 dark:text-custom-400 -mt-1" />
           Contribution Activities
         </div>
-        <div className="flex gap-8 mt-6 items-start">
-          <div className="flex flex-col min-w-0">
-            <Heatmap data={contributionCalendar} />
+        <div className="flex gap-8 mt-6 items-start min-w-0 w-full">
+          <div className="flex flex-col min-w-0 w-full">
+            <Heatmap data={contributionCalendar} className="hidden sm:block" />
             {contributionEvents.length > 0 && (
-            <div className="text-zinc-600 flex flex-col mt-4">
+            <div className="text-zinc-600 flex flex-col sm:mt-4 w-full">
               {contributionEvents.map((e) => (
-                <div className="border-zinc-300 dark:border-zinc-600 border-b p-4 pt-5">
+                <div className="border-zinc-300 dark:border-zinc-600 border-b p-4 pt-5 min-w-0 flex flex-col w-full">
                   {e.type === 'PushEvent' ? (
                     <PushEvent e={e} />
                   ) : ''}
@@ -120,7 +122,7 @@ function ContributionActivity({ username, eventsUrl }) {
             </div>
             )}
           </div>
-          <StickyBox offsetTop={20} offsetBottom={20}>
+          <StickyBox offsetTop={20} offsetBottom={20} className="hidden lg:block">
             <div className="flex flex-col text-zinc-600 dark:text-zinc-200">
               {years.map((e, i) => (
                 <button className={`block px-4 py-2 pt-2.5 rounded-md ${!i ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} key={`yearbtn-${e}`} type="button">

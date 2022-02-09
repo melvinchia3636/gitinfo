@@ -2,6 +2,7 @@ import { Icon } from '@iconify/react';
 import React, { useEffect, useState } from 'react';
 
 function Emojis() {
+  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState({});
   const [query, setQuery] = useState('');
 
@@ -11,7 +12,7 @@ function Emojis() {
 
   return (
     <div className="overflow-y-auto text-slate-600 dark:text-zinc-200 flex h-full mt-4 flex-col overflow-x-hidden">
-      <div className="px-4 flex items-center justify-between">
+      <div className="px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
         <h3 className="font-bold text-3xl flex items-end">
           <span>
             Github
@@ -24,13 +25,13 @@ function Emojis() {
             )
           </span>
         </h3>
-        <div className="flex items-center gap-2 bg-zinc-50 dark:bg-zinc-600 p-4 rounded-lg shadow-md">
-          <Icon icon="uil:search" className="w-6 h-6 text-zinc-300" />
+        <div className="flex items-center gap-2 bg-zinc-50 dark:bg-zinc-600 p-4 rounded-lg shadow-md w-full sm:w-auto">
+          <Icon icon="uil:search" className="w-6 h-6 text-zinc-300 flex-shrink-0" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search emojis"
-            className="bg-transparent placeholder-zinc-300 text-lg focus:outline-none"
+            className="bg-transparent w-full placeholder-zinc-300 text-lg focus:outline-none"
           />
         </div>
       </div>

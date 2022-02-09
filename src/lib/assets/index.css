@@ -301,7 +301,7 @@ input:checked ~ .dot {
 
 .spinner {
   animation: rotate 2s linear infinite;
-  z-index: 2;
+  z-index: 200;
   width: 32px;
   height: 32px;
 }

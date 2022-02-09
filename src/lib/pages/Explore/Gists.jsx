@@ -13,7 +13,7 @@ function Gist() {
   return (
     <div>
       {data.map((e) => (
-        <div className="py-4 px-2 border-b border-zinc-300 gap-4">
+        <div className="py-4 px-2 border-b border-zinc-300 dark:border-zinc-600 gap-4">
           <div className="flex items-center gap-2 text-lg">
             <img src={e.owner.avatar_url} alt={e.owner.login} className="w-6 h-6 rounded-full" />
             {e.owner.login}

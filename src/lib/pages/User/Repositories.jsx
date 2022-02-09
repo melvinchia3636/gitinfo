@@ -45,12 +45,12 @@ function Repositories({ repos_url, repos_count }) {
           )
         </span>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 min-w-0">
         {data.map((e) => (
           <a href={`/repo/${e.full_name}`} target="_blank" rel="noreferrer" className="w-full p-4 border-b border-zinc-300 dark:border-zinc-600 block text-zinc-600 dark:text-zinc-200">
-            <h3 className="text-3xl font-semibold">{e.name}</h3>
+            <h3 className="text-3xl font-semibold text-custom-500 break-all">{e.name}</h3>
             {e.description && <p className="text-lg pl-0.5 mt-2">{e.description}</p>}
-            <div className="text-lg flex mt-4 gap-6">
+            <div className="text-lg flex mt-4 gap-x-6 gap-y-2 flex-wrap">
               {e.language && (
               <div className="flex items-center gap-2">
                 <span className="w-4 h-4 inline-block rounded-full mb-0.5" style={{ backgroundColor: colors[e.language]?.color }} />

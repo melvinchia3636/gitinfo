@@ -6,11 +6,11 @@ import Readme from '../../Repo/Readme';
 
 function PushEvent({ e }) {
   return (
-    <div>
-      <div className="flex gap-2 text-xl overflow-hidden font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+    <div className="flex flex-col min-w-0 w-full">
+      <div className="flex gap-2 text-xl overflow-hidden font-medium text-zinc-600 dark:text-zinc-200 tracking-wide min-w-0 w-full">
         <Icon icon="octicon:repo-push-16" className="w-6 h-6 mt-1.5 flex-shrink-0 text-custom-500 dark:text-custom-400" />
-        <div className="flex flex-col min-w-0">
-          <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">
+        <div className="flex flex-col min-w-0 w-full">
+          <p className="whitespace-nowrap overflow-hidden overflow-ellipsis min-w-0">
             Created
             {' '}
             {e.payload.size}

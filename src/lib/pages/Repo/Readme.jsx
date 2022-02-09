@@ -50,6 +50,7 @@ function Readme({ data }) {
               href={props.href}
               target={!props.href.startsWith('#') ? '_blank' : ''}
               rel="noreferrer"
+              className="break-all"
             >
               {props.children}
             </a>
