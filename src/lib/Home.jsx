@@ -26,7 +26,7 @@ function Home() {
 
   return (
     <div className="h-full w-full flex items-center justify-center pb-8 transition-none">
-      <div className="bg-zinc-50 dark:bg-zinc-600 rounded-lg shadow-lg overflow-hidden w-full mx-0 440:mx-6 sm:mx-24 md:mx-32 lg:mx-0 lg:w-1/2">
+      <div className="bg-zinc-50 dark:bg-zinc-600 relative z-10 mt-4 rounded-lg shadow-lg overflow-hidden w-full mx-0 440:mx-6 sm:mx-24 md:mx-32 lg:mx-0 lg:w-1/2">
         <form onSubmit={fetchResult} className="flex items-center gap-4">
           <Icon icon="uil:search" className="w-6 h-6 ml-4 text-zinc-300 flex-shrink-0" />
           <input onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Search Github" className="placeholder-zinc-300 caret-custom-500 py-4 w-full text-xl focus:border-none focus:outline-none text-zinc-600 dark:text-zinc-200 bg-zinc-50 dark:bg-zinc-600" />
