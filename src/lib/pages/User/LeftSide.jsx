@@ -10,9 +10,9 @@ function LeftSide({ data }) {
       <div className="w-full lg:w-auto lg:ml-0.5">
         <div className="flex items-center gap-4">
           <img src={data.avatar_url} alt={data.login} className="w-[3.6rem] h-[3.6rem] rounded-full -mt-2 lg:hidden" />
-          <div>
+          <div className="w-full lg:w-72">
             <h2 className="text-4xl mt-0 lg:mt-4 font-bold">{data.name}</h2>
-            <p className="text-xl text-custom-500 -mt-1">{data.login}</p>
+            <p className="text-xl text-custom-500 -mt-1 lg:mt-0">{data.login}</p>
           </div>
         </div>
         <p className="text-lg mt-4 w-full lg:w-72">{data.bio}</p>

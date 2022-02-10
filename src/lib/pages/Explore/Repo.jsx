@@ -34,7 +34,7 @@ function Repo() {
     data.length ? (
       <div className="pb-8">
         {data.map((e) => (
-          <div className="py-4 px-4 border-b border-zinc-300 dark:border-zinc-600 gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-500 duration-300 hover:rounded-md">
+          <div className="py-4 px-4 border-b border-zinc-300 dark:border-zinc-600 gap-4 hover:bg-zinc-200 dark:hover:bg-zinc-500 duration-300 hover:rounded-md">
             <h3 className="text-2xl">
               <Link className="text-custom-500" to={`/user/${e.owner.login}`}>{e.owner.login}</Link>
               {' '}

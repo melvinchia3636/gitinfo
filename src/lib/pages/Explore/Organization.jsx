@@ -34,9 +34,12 @@ function Organization() {
     data.length ? (
       <div className="pb-8">
         {data.map((e) => (
-          <Link to={`/user/${e.login}`} className="py-4 px-2 flex border-b border-zinc-300 dark:border-zinc-600 gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-500 duration-300 hover:rounded-md">
-            <img src={e.avatar_url} alt={e.login} className="rounded-full w-8 h-8" />
-            <h3 className="text-xl">{e.login}</h3>
+          <Link to={`/user/${e.login}`} className="py-4 px-2 flex flex-col border-b border-zinc-300 dark:border-zinc-600 hover:bg-zinc-200 dark:hover:bg-zinc-500 duration-300 hover:rounded-md">
+            <div className="flex items-center gap-4">
+              <img src={e.avatar_url} alt={e.login} className="rounded-full w-8 h-8" />
+              <h3 className="text-xl text-custom-500 font-semibold">{e.login}</h3>
+            </div>
+            {e.description?.length > 0 && <p className="mt-2">{e.description}</p>}
           </Link>
         ))}
         {nextPage ? (
