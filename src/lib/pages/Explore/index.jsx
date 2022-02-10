@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import React, { useState } from 'react';
 import ReactStickyBox from 'react-sticky-box';
+import Event from './Event';
 import Gist from './Gists';
 import Organization from './Organization';
 import Repo from './Repo';
@@ -49,7 +50,7 @@ function Explore() {
               ['uil:book-alt', 'Repositories'],
               ['lucide:file-code', 'Gists'],
               ['octicon:organization-16', 'Organizations'],
-              ['uil:calendar-alt', 'Events'],
+              ['mdi:puzzle-edit-outline', 'Events'],
               ['uil:apps', 'Apps'],
             ].map(([icon, name], index) => (
               <button onClick={() => setSection(index)} className={`flex items-center transition-all ${icon.startsWith('octicon') ? 'gap-[1.2rem]' : 'gap-4'} w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} type="button">
@@ -65,6 +66,7 @@ function Explore() {
             <Repo />,
             <Gist />,
             <Organization />,
+            <Event />,
           ][section]}
         </div>
       </div>
