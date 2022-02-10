@@ -15,21 +15,25 @@ function SourceCode({ data }) {
   };
 
   const navigateTo = (index) => {
-    const newPath = currentPath.slice(0, index + 1);
-    setCurrentURL(`${data.contents_url.replace(/\{.*?}/, '')}/${newPath.join('/')}?ref=main`);
+    if (index) {
+      const newPath = currentPath.slice(0, index + 1);
+      setCurrentURL(`${data.contents_url.replace(/\{.*?}/, '')}/${newPath.join('/')}?ref=main`);
+    } else {
+      setCurrentURL(`${data.contents_url.replace(/\{.*?}/, '')}`);
+    }
   };
 
   useEffect(() => {
     fetchContents();
     if (currentURL) {
-      setCurrentPath((currentURL
+      setCurrentPath(['root'].concat((currentURL
         .split('?')
         .shift()
         .split(/^.+\/contents\/(.+)?/)
         .filter((e) => e)
         .pop() || '')
         .split('/')
-        .filter((e) => e));
+        .filter((e) => e)));
     }
   }, [currentURL]);
 
@@ -39,13 +43,13 @@ function SourceCode({ data }) {
         <Icon icon="lucide:file-code" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Source Code
       </div>
-      <div className="flex items-center gap-8 mt-8">
-        <button type="button" className="text-zinc-200 bg-custom-500 shadow-md rounded-md px-4 py-2 pr-3 flex items-center gap-2">
-          <Icon icon="mdi:source-branch" width="20" height="20" />
-          {data.default_branch}
-          <Icon icon="uil:angle-down" width="20" height="20" />
-        </button>
-        {currentPath.length ? (
+      <div className="flex items-center justify-between mt-8">
+        <div className="flex items-center gap-8">
+          <button type="button" className="text-zinc-200 bg-custom-500 shadow-md rounded-md px-4 py-2 pr-3 flex items-center gap-2">
+            <Icon icon="mdi:source-branch" width="20" height="20" />
+            {data.default_branch}
+            <Icon icon="uil:angle-down" width="20" height="20" />
+          </button>
           <p className="text-lg">
             {currentPath.map((e, i) => (
               <button onClick={() => navigateTo(i)} type="button">
@@ -57,28 +61,27 @@ function SourceCode({ data }) {
               </button>
             ))}
           </p>
-        ) : (
-          <>
-            <div className="flex items-center text-lg gap-2">
-              <Icon icon="mdi:source-branch" width="20" height="20" />
-              <span>
-                {data.branchesCount}
-                {' '}
-                branch
-                {data.branchesCount > 1 ? 'es' : ''}
-              </span>
-            </div>
-            <div className="flex items-center text-lg gap-2">
-              <Icon icon="uil:tag" width="20" height="20" />
-              <span>
-                {data.tagsCount}
-                {' '}
-                tag
-                {data.tagsCount > 1 ? 's' : ''}
-              </span>
-            </div>
-          </>
-        )}
+        </div>
+        <div className="flex items-center gap-8 mr-2">
+          <div className="flex items-center text-lg gap-2">
+            <Icon icon="mdi:source-branch" width="20" height="20" />
+            <span>
+              {data.branchesCount}
+              {' '}
+              branch
+              {data.branchesCount > 1 ? 'es' : ''}
+            </span>
+          </div>
+          <div className="flex items-center text-lg gap-2">
+            <Icon icon="uil:tag" width="20" height="20" />
+            <span>
+              {data.tagsCount}
+              {' '}
+              tag
+              {data.tagsCount > 1 ? 's' : ''}
+            </span>
+          </div>
+        </div>
       </div>
       {contents.length ? (
         <div className="mt-4">
