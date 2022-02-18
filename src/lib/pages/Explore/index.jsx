@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ReactStickyBox from 'react-sticky-box';
 import Event from './Event';
 import Gist from './Gists';
@@ -10,6 +10,12 @@ import User from './User';
 function Explore() {
   const [section, setSection] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const scrollArea = useRef();
+
+  useEffect(() => {
+    scrollArea.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [scrollArea, section]);
 
   return (
     <>
@@ -42,7 +48,7 @@ function Explore() {
           </div>
         </div>
       </div>
-      <div className="flex items-start justify-between gap-8 mt-6 h-full overflow-y-auto">
+      <div ref={scrollArea} className="flex items-start justify-between gap-8 mt-6 h-full overflow-y-auto">
         <ReactStickyBox className="hidden sm:block">
           <div className="flex flex-col h-full gap-4 mb-4 text-zinc-600 dark:text-zinc-200 text-lg">
             {[
@@ -60,7 +66,7 @@ function Explore() {
             ))}
           </div>
         </ReactStickyBox>
-        <div className="min-w-0 pb-8 flex-1 h-[200vh] flex flex-col text-zinc-600 dark:text-zinc-200">
+        <div className="min-w-0 pb-8 flex-1 h-full flex flex-col text-zinc-600 dark:text-zinc-200">
           {[
             <User />,
             <Repo />,

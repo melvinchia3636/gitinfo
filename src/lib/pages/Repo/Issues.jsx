@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import FETCH_HEADERS from '../../constants';
 
@@ -110,9 +110,28 @@ export function applySaturationToHexColor(hex, saturationPercent) {
 }
 
 function Issues({
-  data, nextIssuesPage, setNextIssuesPage, setData,
+  data, setData,
 }) {
   const [isIssuesLoading, setIssuesLoading] = useState(false);
+  const [nextIssuesPage, setNextIssuesPage] = useState(1);
+
+  useEffect(() => {
+    fetch('https://api.github.com/rate_limit', FETCH_HEADERS).then((res) => res.json()).then(async ({ resources: { core } }) => {
+      if (core.remaining) {
+        const issues = await fetch(`${data.issues_url.replace(/\{.*?\}/, '')}?per_page=20`, FETCH_HEADERS).then((r) => r.json());
+        const issuesCount = await fetch(`${data.issues_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
+
+        if (issuesCount > 20) setNextIssuesPage(2);
+        else setNextIssuesPage(null);
+
+        setData({
+          ...data,
+          issues,
+          issuesCount,
+        });
+      }
+    });
+  }, []);
 
   const fetchNextIssuesPage = () => {
     setIssuesLoading(true);
@@ -128,7 +147,7 @@ function Issues({
   };
 
   return (
-    data.issues.length ? (
+    data.issues?.length ? (
       <div>
         <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
           <Icon icon="octicon:issue-opened-16" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
@@ -209,7 +228,13 @@ function Issues({
           </button>
         ) : ''}
       </div>
-    ) : ''
+    ) : (
+      <div className="w-full min-h-0 h-full flex items-center justify-center pb-32 mt-6 transition-none">
+        <svg className="spinner" viewBox="0 0 50 50">
+          <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
+        </svg>
+      </div>
+    )
   );
 }
 

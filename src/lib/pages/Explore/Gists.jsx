@@ -85,7 +85,13 @@ function Gist() {
           </button>
         ) : ''}
       </div>
-    ) : ''
+    ) : (
+      <div className="w-full min-h-0 h-full flex items-center justify-center pb-32 mt-6 transition-none">
+        <svg className="spinner" viewBox="0 0 50 50">
+          <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
+        </svg>
+      </div>
+    )
   );
 }
 

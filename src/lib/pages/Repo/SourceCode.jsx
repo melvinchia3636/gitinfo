@@ -3,9 +3,8 @@ import { Icon } from '@iconify/react';
 import React, { useState, useEffect } from 'react';
 import FETCH_HEADERS from '../../constants';
 
-function SourceCode({ data }) {
+function SourceCode({ data, setData }) {
   const [currentURL, setCurrentURL] = useState(data.contents_url.replace(/\{.*?}/, ''));
-  const [currentPath, setCurrentPath] = useState([]);
   const [contents, setContents] = useState([]);
 
   const fetchContents = async () => {
@@ -16,8 +15,8 @@ function SourceCode({ data }) {
 
   const navigateTo = (index) => {
     if (index) {
-      const newPath = currentPath.slice(0, index + 1);
-      setCurrentURL(`${data.contents_url.replace(/\{.*?}/, '')}/${newPath.join('/')}?ref=main`);
+      const newPath = data.currentPath.slice(1, index + 1);
+      setCurrentURL(`${data.contents_url.replace(/\{.*?}/, '').replace(/\/^/, '')}/${newPath.join('/')}`);
     } else {
       setCurrentURL(`${data.contents_url.replace(/\{.*?}/, '')}`);
     }
@@ -26,14 +25,17 @@ function SourceCode({ data }) {
   useEffect(() => {
     fetchContents();
     if (currentURL) {
-      setCurrentPath(['root'].concat((currentURL
-        .split('?')
-        .shift()
-        .split(/^.+\/contents\/(.+)?/)
-        .filter((e) => e)
-        .pop() || '')
-        .split('/')
-        .filter((e) => e)));
+      setData({
+        ...data,
+        currentPath: ['root'].concat((currentURL
+          .split('?')
+          .shift()
+          .split(/^.+\/contents\/(.+)?/)
+          .filter((e) => e)
+          .pop() || '')
+          .split('/')
+          .filter((e) => e)),
+      });
     }
   }, [currentURL]);
 
@@ -51,9 +53,9 @@ function SourceCode({ data }) {
             <Icon icon="uil:angle-down" width="20" height="20" />
           </button>
           <p className="text-lg">
-            {currentPath.map((e, i) => (
+            {data.currentPath.map((e, i) => (
               <button onClick={() => navigateTo(i)} type="button">
-                <span className={currentPath.length - 1 !== i ? 'text-custom-500' : ''}>
+                <span className={data.currentPath.length - 1 !== i ? 'text-custom-500' : ''}>
                   {e}
                 </span>
                 {' '}

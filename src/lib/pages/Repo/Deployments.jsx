@@ -18,34 +18,32 @@ function Deployments({ data }) {
         <Icon icon="uil:rocket" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Deployments
       </div>
-      <div className="mt-4">
-        {content !== null ? content.length > 0 && content.map((e) => (
-          <div className="px-2 py-4 border-b border-slate-300">
-            <h3 className="text-2xl">
-              {e.environment}
+      {content !== null ? content.length > 0 && content.map((e) => (
+        <div className="px-2 py-4 border-b border-slate-300">
+          <h3 className="text-2xl">
+            {e.environment}
+            {' '}
+            <span className="text-slate-400 text-sm">
+              at
               {' '}
-              <span className="text-slate-400 text-sm">
-                at
-                {' '}
-                {e.sha.slice(0, 7)}
-              </span>
-            </h3>
-            <div className="mt-2">
-              Deployed by
-              {' '}
-              <img src={e.creator.avatar_url} alt={e.creator.login} className="w-4 h-4 rounded-sm inline" />
-              {' '}
-              {e.creator.login}
-              {' on '}
-              {new Date(e.created_at).toLocaleString()}
-            </div>
+              {e.sha.slice(0, 7)}
+            </span>
+          </h3>
+          <div className="mt-2">
+            Deployed by
+            {' '}
+            <img src={e.creator.avatar_url} alt={e.creator.login} className="w-4 h-4 rounded-sm inline" />
+            {' '}
+            {e.creator.login}
+            {' on '}
+            {new Date(e.created_at).toLocaleString()}
           </div>
-        )) : (
-          <div className="w-full flex items-center justify-center">
-            <p className="text-xl text-zinc-400 mt-16">Not Available</p>
-          </div>
-        )}
-      </div>
+        </div>
+      )) : (
+        <div className="w-full flex items-center justify-center">
+          <p className="text-xl text-zinc-400 mt-16">Not Available</p>
+        </div>
+      )}
     </div>
   );
 }

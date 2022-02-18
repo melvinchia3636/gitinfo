@@ -28,7 +28,7 @@ html {
 #root * {
     font-family: "Proxima Nova";
     scroll-behavior: smooth;
-    transition: all 0.5s;
+    transition: background-color 0.5s, color 0.5s, fill 0.5s;
 }
 
 input:checked ~ .dot {
@@ -341,4 +341,8 @@ input:checked ~ .dot {
 	width: 100%;
 	overflow: hidden;
 	@apply !whitespace-normal text-center
+}
+
+.yellow-btn {
+	@apply bg-amber-500 text-white px-8 py-4 rounded-md shadow-sm;
 }
