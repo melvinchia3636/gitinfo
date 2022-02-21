@@ -37,8 +37,8 @@ function Stargazers({
         </div>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-x-5 gap-y-5 mt-6 flex-wrap">
           {data.stargazers.map((e) => (
-            <Link to={`/user/${e.login}`} className="text-zinc-600 break-all dark:text-zinc-200 text-lg flex items-center gap-2">
-              <img src={e.avatar_url} alt={e.login} className="w-6 h-6 rounded-full" />
+            <Link to={`/user/${e.login}`} className="text-zinc-600 truncate dark:text-zinc-200 text-lg block items-center">
+              <img src={e.avatar_url} alt={e.login} className="w-6 h-6 rounded-full inline mr-3" />
               {e.login}
             </Link>
           ))}

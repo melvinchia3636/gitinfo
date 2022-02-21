@@ -19,11 +19,11 @@ function Deployments({ data }) {
         Deployments
       </div>
       {content !== null ? content.length > 0 && content.map((e) => (
-        <div className="px-2 py-4 border-b border-slate-300">
+        <div className="px-2 py-4 border-b border-zinc-300 dark:border-zinc-500">
           <h3 className="text-2xl">
             {e.environment}
             {' '}
-            <span className="text-slate-400 text-sm">
+            <span className="text-zinc-400 text-sm">
               at
               {' '}
               {e.sha.slice(0, 7)}

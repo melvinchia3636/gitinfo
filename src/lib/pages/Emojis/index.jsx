@@ -11,7 +11,7 @@ function Emojis() {
   }, []);
 
   return (
-    <div className="overflow-y-auto text-slate-600 dark:text-zinc-200 flex h-full mt-4 flex-col overflow-x-hidden">
+    <div className="overflow-y-auto text-zinc-600 dark:text-zinc-200 flex h-full mt-4 flex-col overflow-x-hidden">
       <div className="px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
         <h3 className="font-bold text-3xl flex items-end">
           <span>
