@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import Lottie from 'react-lottie';
@@ -7,9 +7,27 @@ import FETCH_HEADERS from '../../constants';
 import loadingWhiteAnim from '../../assets/loading-white.json';
 
 function Stargazers({
-  data, nextStargazersPage, setNextStargazersPage, setData,
+  data, setData,
 }) {
   const [isStargazersLoading, setStargazersLoading] = useState(false);
+  const [nextStargazersPage, setNextStargazersPage] = useState(1);
+
+  useEffect(() => {
+    fetch('https://api.github.com/rate_limit', FETCH_HEADERS).then((res) => res.json()).then(async ({ resources: { core } }) => {
+      if (core.remaining) {
+        const stargazers = await fetch(`${data.stargazers_url.replace(/\{.*?\}/, '')}?per_page=90`, FETCH_HEADERS).then((r) => r.json());
+
+        if (data.stargazers_count > 90) setNextStargazersPage(2);
+        else setNextStargazersPage(null);
+
+        setData({
+          ...data,
+          stargazers,
+        });
+      }
+    });
+  }, []);
+
   const fetchNextStargazersPage = () => {
     setStargazersLoading(true);
     fetch(`${data.stargazers_url}?page=${nextStargazersPage}&per_page=90`, FETCH_HEADERS).then((res) => res.json()).then((e) => {
@@ -24,7 +42,7 @@ function Stargazers({
   };
 
   return (
-    data.stargazers.length ? (
+    data.stargazers?.length ? (
       <div>
         <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
           <Icon icon="uil:star" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
@@ -64,7 +82,13 @@ function Stargazers({
           </button>
         ) : ''}
       </div>
-    ) : ''
+    ) : (
+      <div className="w-full min-h-0 h-full flex items-center justify-center pb-32 mt-6 transition-none">
+        <svg className="spinner" viewBox="0 0 50 50">
+          <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
+        </svg>
+      </div>
+    )
   );
 }
 

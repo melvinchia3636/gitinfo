@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import emoji from 'emoji-dictionary';
 import Lottie from 'react-lottie';
@@ -28,14 +28,25 @@ function bytesToSize(bytes) {
 }
 
 function Releases({
-  data, nextReleasesPage, setNextReleasesPage, setData,
+  data, setData,
 }) {
   const [isReleasesLoading, setReleasesLoading] = useState(false);
+  const [nextReleasesPage, setNextReleasesPage] = useState(1);
   const [isReactionLoading, setReactionLoading] = useState(false);
   const [nextReactionPage, setNextReactionPage] = useState(null);
   const [isReactedPeopleListShow, setReactedPeopleListShow] = useState(false);
   const [reactionData, setReactionData] = useState([]);
   const [currentReactionURL, setCurrentReactionURL] = useState(null);
+
+  useEffect(() => {
+    fetch('https://api.github.com/rate_limit', FETCH_HEADERS).then((res) => res.json()).then(async ({ resources: { core } }) => {
+      if (core.remaining) {
+        const releases = await fetch(`${data.releases_url.replace(/\{.*?\}/, '')}?per_page=90`, FETCH_HEADERS).then((r) => r.json());
+        const releasesCount = await fetch(`${data.releases_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
+        setData({ ...data, releases, releasesCount });
+      }
+    });
+  }, []);
 
   const fetchNextReleasesPage = () => {
     setReleasesLoading(true);
@@ -84,11 +95,11 @@ function Releases({
         Releases
         <span className="text-xs mt-2">
           (
-          {data.releasesCount.toLocaleString()}
+          {data.releasesCount?.toLocaleString() || 0}
           )
         </span>
       </div>
-      {data.releases.length ? (
+      {data.releases?.length ? (
         <div>
           <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-200">
             {data.releases.map((e, i) => (
@@ -165,7 +176,7 @@ function Releases({
           ) : ''}
           <div
             onClick={() => setReactedPeopleListShow(false)}
-            className={`absolute top-0 left-0 flex overflow-hidden items-center justify-center w-full bg-black transition-all ${isReactedPeopleListShow ? 'z-0 bg-opacity-20 duration-200' : 'z-[-1] bg-opacity-0 duration-500'}`}
+            className={`absolute top-0 left-0 flex overflow-hidden items-center justify-center w-full h-full bg-black transition-all ${isReactedPeopleListShow ? 'z-0 bg-opacity-20 duration-200' : 'z-[-1] bg-opacity-0 duration-500'}`}
           />
           <div className={`w-96 h-[80vh] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-zinc-50 shadow-2xl text-zinc-600 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${isReactedPeopleListShow ? '-translate-y-1/2' : 'translate-y-[100%]'}`}>
             {reactionData.length ? reactionData.map((e) => (

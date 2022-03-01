@@ -37,10 +37,6 @@ function Repo() {
 
   const scrollArea = useRef();
 
-  const [nextContributorsPage, setNextContributorsPage] = useState(1);
-  const [nextSubscribersPage, setNextSubscribersPage] = useState(1);
-  const [nextStargazersPage, setNextStargazersPage] = useState(1);
-  const [nextReleasesPage, setNextReleasesPage] = useState(1);
   const [nextTagsPage, setNextTagsPage] = useState(1);
 
   const params = useParams();
@@ -50,37 +46,17 @@ function Repo() {
       if (core.remaining) {
         fetch(`https://api.github.com/repos/${params.user}/${params.reponame}`, FETCH_HEADERS).then((res) => res.json()).then(async (d) => {
           const langs = await fetch(d.languages_url, FETCH_HEADERS).then((r) => r.json());
-          const contributors = await fetch(`${d.contributors_url}?per_page=90`, FETCH_HEADERS).then((r) => r.json());
-          const subscribers = await fetch(`${d.subscribers_url}?per_page=90`, FETCH_HEADERS).then((r) => r.json());
-          const stargazers = await fetch(`${d.stargazers_url}?per_page=90`, FETCH_HEADERS).then((r) => r.json());
-          const releases = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=5`, FETCH_HEADERS).then((r) => r.json());
           const tags = await fetch(`${d.tags_url}?per_page=10`, FETCH_HEADERS).then((r) => r.json());
 
-          const contributorsCount = await fetch(`${d.contributors_url}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
-          const releasesCount = await fetch(`${d.releases_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
           const branchesCount = await fetch(`${d.branches_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
           const tagsCount = await fetch(`${d.tags_url}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
 
-          if (contributorsCount > 90) setNextContributorsPage(2);
-          else setNextContributorsPage(null);
-          if (d.subscribers_count > 90) setNextSubscribersPage(2);
-          else setNextSubscribersPage(null);
-          if (d.stargazers_count > 90) setNextStargazersPage(2);
-          else setNextStargazersPage(null);
-          if (releasesCount > 5) setNextReleasesPage(2);
-          else setNextReleasesPage(null);
           if (tagsCount > 10) setNextTagsPage(2);
           else setNextTagsPage(null);
 
           setData({
             ...d,
             langs,
-            contributors,
-            subscribers,
-            stargazers,
-            contributorsCount,
-            releases,
-            releasesCount,
             branchesCount,
             tags,
             tagsCount,
@@ -154,20 +130,14 @@ function Repo() {
                   <Contributors
                     data={data}
                     setData={setData}
-                    nextContributorsPage={nextContributorsPage}
-                    setNextContributorsPage={setNextContributorsPage}
                   />,
                   <Subscribers
                     data={data}
                     setData={setData}
-                    nextSubscribersPage={nextSubscribersPage}
-                    setNextSubscribersPage={setNextSubscribersPage}
                   />,
                   <Stargazers
                     data={data}
                     setData={setData}
-                    nextStargazersPage={nextStargazersPage}
-                    setNextStargazersPage={setNextStargazersPage}
                   />,
                   <ReadmeMD data={data} setData={setData} />,
                   <Deployments data={data} />,
@@ -180,8 +150,6 @@ function Repo() {
                   <Releases
                     data={data}
                     setData={setData}
-                    nextReleasesPage={nextReleasesPage}
-                    setNextReleasesPage={setNextReleasesPage}
                   />,
                   <></>,
                   <></>,

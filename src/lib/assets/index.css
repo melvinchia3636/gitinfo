@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "Proxima Nova";
-  src: local('Proxima Nova'), url(./Proxima.otf) format('opentype')
+  src: local('Proxima Nova'), url(./Proxima.otf) format('opentype');
 }
 
 body, #root, .main {
@@ -28,7 +28,6 @@ html {
 #root * {
     font-family: "Proxima Nova";
     scroll-behavior: smooth;
-    transition: background-color 0.5s, color 0.5s, fill 0.5s;
 }
 
 input:checked ~ .dot {
