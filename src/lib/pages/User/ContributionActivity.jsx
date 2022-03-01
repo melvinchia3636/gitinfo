@@ -118,6 +118,9 @@ function ContributionActivity({ username, eventsUrl }) {
                     {e.type === 'PullRequestEvent' ? (
                       <PullRequestEvent e={e} />
                     ) : '' }
+                    {e.type === 'PullRequestReviewCommentEvent' ? (
+                      <IssueCommentEvent e={e} />
+                    ) : '' }
                   </div>
                 ))}
               </div>

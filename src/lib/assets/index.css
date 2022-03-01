@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 @font-face {
   font-family: "Proxima Nova";
@@ -344,4 +345,28 @@ input:checked ~ .dot {
 
 .yellow-btn {
 	@apply bg-amber-500 text-white px-8 py-4 rounded-md shadow-sm;
+}
+
+.file-diff * {
+	font-family: "Source Code Pro" !important
+}
+
+.diff-header {
+	@apply text-custom-500 text-base mb-2
+}
+
+:root {
+    --diff-background-color: initial;
+    --diff-text-color: initial;
+    --diff-font-family: Consolas, Courier, monospace;
+    --diff-selection-background-color: #b3d7ff;
+    --diff-gutter-insert-background-color: #dcfce7;
+    --diff-gutter-delete-background-color: #ffe4e6;
+    --diff-gutter-selected-background-color: #fffce0;
+    --diff-code-insert-background-color: #f0fdf4;
+    --diff-code-delete-background-color: #fff1f2;
+    --diff-code-insert-edit-background-color: #c0dc91;
+    --diff-code-delete-edit-background-color: #ffccbc;
+    --diff-code-selected-background-color: #fffce0;
+    --diff-omit-gutter-line-color: #cb2a1d;
 }

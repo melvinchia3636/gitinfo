@@ -17,7 +17,7 @@ function PushEvent({ e }) {
             {' '}
             commits in
             {' '}
-            <Link to={`/repo/${e.repo.name}`} className="font-bold">{e.repo.name}</Link>
+            <Link to={`/repo/${e.repo.name}`} className="font-bold text-custom-500">{e.repo.name}</Link>
           </p>
           <p className="text-sm text-zinc-400">{new Date(e.created_at).toLocaleString()}</p>
         </div>

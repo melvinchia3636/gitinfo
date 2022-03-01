@@ -25,7 +25,7 @@ function IssueCommentEvent({ e }) {
           <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">
             Commented on an issue of
             {' '}
-            <Link to={`/repo/${e.repo.name}`} className="font-bold">{e.repo.name}</Link>
+            <Link to={`/repo/${e.repo.name}`} className="font-bold text-custom-500">{e.repo.name}</Link>
           </p>
           <p className="text-sm text-zinc-400">{new Date(e.created_at).toLocaleString()}</p>
         </div>

@@ -7,6 +7,7 @@ import IssueEvent from './Events/IssueEvent';
 import IssueCommentEvent from './Events/IssueCommentEvent';
 import DeleteEvent from './Events/DeleteEvent';
 import PullRequestEvent from './Events/PullRequestEvent';
+import PullRequestReviewCommentEvent from './Events/PullRequestReviewComment';
 
 function Event() {
   const [data, setData] = useState([]);
@@ -36,7 +37,7 @@ function Event() {
 
   return (
     data.length ? (
-      <div className="pb-8">
+      <div className="pb-8 min-w-0">
         {data.map((e) => (
           <div className="border-zinc-300 dark:border-zinc-600 border-b p-4 pt-5 min-w-0 flex flex-col w-full">
             <div className="text-custom-500 flex items-center gap-2 mb-4 text-xl font-semibold">
@@ -57,6 +58,9 @@ function Event() {
             ) : '' }
             {e.type === 'PullRequestEvent' ? (
               <PullRequestEvent e={e} />
+            ) : '' }
+            {e.type === 'PullRequestReviewCommentEvent' ? (
+              <PullRequestReviewCommentEvent e={e} />
             ) : '' }
           </div>
         ))}

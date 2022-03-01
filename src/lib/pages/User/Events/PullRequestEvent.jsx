@@ -33,7 +33,7 @@ function PullRequestEvent({ e }) {
           </p>
         </div>
         <div className="flex items-center gap-2 mt-4 dark:text-zinc-200">
-          <div className="bg-custom-100 dark:bg-transparent dark:border border-custom-500 py-0.5 px-4 rounded-full">
+          <div className="bg-custom-100 dark:bg-transparent dark:border whitespace-nowrap border-custom-500 py-0.5 px-4 rounded-full">
             <span className="text-custom-500 ">{e.payload.pull_request.base.user.login}</span>
             :
             {e.payload.pull_request.base.ref}
