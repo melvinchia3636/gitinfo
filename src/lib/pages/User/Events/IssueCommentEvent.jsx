@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Icon } from '@iconify/react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import emoji from 'emoji-dictionary';
 import Readme from '../../Repo/Readme';
 
@@ -25,7 +24,7 @@ function IssueCommentEvent({ e }) {
           <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">
             Commented on an issue of
             {' '}
-            <Link to={`/repo/${e.repo.name}`} className="font-bold">{e.repo.name}</Link>
+            <a href={`/repo/${e.repo.name}`} target="_blank" rel="noreferrer" className="text-custom-500">{e.repo.name}</a>
           </p>
           <p className="text-sm text-zinc-400">{new Date(e.created_at).toDateString()}</p>
         </div>
