@@ -40,10 +40,10 @@ function Event() {
       <div className="pb-8 min-w-0">
         {data.map((e) => (
           <div className="border-zinc-300 dark:border-zinc-600 border-b p-4 pt-5 min-w-0 flex flex-col w-full">
-            <div className="text-custom-500 flex items-center gap-2 mb-4 text-xl font-semibold">
+            <a href={`/user/${e.actor.login}`} target="_blank" rel="noreferrer" className="text-custom-500 flex items-center gap-2 mb-4 text-xl font-semibold">
               <img src={e.actor.avatar_url} alt={e.actor.login} className="w-8 h-8 rounded-full" />
               {e.actor.login}
-            </div>
+            </a>
             {e.type === 'PushEvent' ? (
               <PushEvent e={e} />
             ) : ''}

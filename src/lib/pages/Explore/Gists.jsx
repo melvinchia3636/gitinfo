@@ -34,10 +34,10 @@ function Gist() {
       <div className="pb-8">
         {data.map((e) => (
           <div className="py-4 px-2 border-b border-zinc-300 dark:border-zinc-600 gap-4">
-            <div className="flex items-center gap-2 text-lg">
-              <img src={e.owner.avatar_url} alt={e.owner.login} className="w-6 h-6 rounded-full" />
+            <a href={`/user/${e.owner.login}`} target="_blank" rel="noreferrer" className="text-custom-500 flex items-center gap-2 mb-4 text-xl font-semibold">
+              <img src={e.owner.avatar_url} alt={e.owner.login} className="w-8 h-8 rounded-full" />
               {e.owner.login}
-            </div>
+            </a>
             <p className="text-lg mt-2">{e.description}</p>
             <div className="mt-4 flex flex-col gap-2">
               {Object.values(e.files).map((f) => (

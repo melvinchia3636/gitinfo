@@ -5,7 +5,6 @@ import React from 'react';
 import {
   parseDiff, Diff, Hunk, Decoration,
 } from 'react-diff-view';
-import { Link } from 'react-router-dom';
 import Readme from '../../Repo/Readme';
 
 function Appdiff({ diffText }) {
@@ -48,7 +47,7 @@ ${e.payload.comment.diff_hunk}
             {' '}
             for
             {' '}
-            <Link to={`/repo/${e.repo.name}`} className="font-bold text-custom-500">{e.repo.name}</Link>
+            <a href={`/repo/${e.repo.name}`} target="_blank" rel="noreferrer" className="text-custom-500">{e.repo.name}</a>
           </p>
           <p className="text-sm text-zinc-400">{new Date(e.payload.comment.created_at).toLocaleString()}</p>
         </div>

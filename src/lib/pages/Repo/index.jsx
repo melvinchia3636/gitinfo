@@ -84,15 +84,15 @@ function Repo() {
                 <div className="flex flex-col gap-4 mb-4 text-zinc-600 dark:text-zinc-200 text-lg">
                   {[
                     ['uil:info-circle', 'Overview'],
+                    ['uil:document-info', 'README.md'],
+                    ['uil:rocket', 'Deployments'],
+
                     ['lucide:file-code', 'Source Code'],
                     ['ic:round-code', 'Languages'],
 
                     ['uil:users-alt', 'Contributors'],
                     ['uil:eye', 'Subscribers'],
                     ['uil:star', 'Stargazers'],
-
-                    ['uil:document-info', 'README.md'],
-                    ['uil:rocket', 'Deployments'],
 
                     ['uil:tag', 'Tags'],
                     ['uil:box', 'Releases'],
@@ -125,6 +125,8 @@ function Repo() {
                       <Topics data={data} />
                     </div>
                   </div>,
+                  <ReadmeMD data={data} setData={setData} />,
+                  <Deployments data={data} />,
                   <SourceCode data={data} setData={setData} />,
                   <Languages data={data} />,
                   <Contributors
@@ -139,8 +141,6 @@ function Repo() {
                     data={data}
                     setData={setData}
                   />,
-                  <ReadmeMD data={data} setData={setData} />,
-                  <Deployments data={data} />,
                   <Tags
                     data={data}
                     setData={setData}

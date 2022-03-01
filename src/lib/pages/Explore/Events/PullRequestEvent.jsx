@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Icon } from '@iconify/react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function PullRequestEvent({ e }) {
   return (
@@ -16,7 +15,7 @@ function PullRequestEvent({ e }) {
             {' '}
             for
             {' '}
-            <Link to={`/repo/${e.repo.name}`} className="font-bold text-custom-500">{e.repo.name}</Link>
+            <a href={`/repo/${e.repo.name}`} target="_blank" rel="noreferrer" className="text-custom-500">{e.repo.name}</a>
           </p>
         </div>
       </div>
