@@ -41,8 +41,12 @@ function Releases({
   useEffect(() => {
     fetch('https://api.github.com/rate_limit', FETCH_HEADERS).then((res) => res.json()).then(async ({ resources: { core } }) => {
       if (core.remaining) {
-        const releases = await fetch(`${data.releases_url.replace(/\{.*?\}/, '')}?per_page=90`, FETCH_HEADERS).then((r) => r.json());
+        const releases = await fetch(`${data.releases_url.replace(/\{.*?\}/, '')}?per_page=5`, FETCH_HEADERS).then((r) => r.json());
         const releasesCount = await fetch(`${data.releases_url.replace(/\{.*?\}/, '')}?per_page=1`, FETCH_HEADERS).then((r) => r.headers?.get('Link')?.match(/&page=(?<page>\d+)>; rel="last/)?.groups?.page || 0);
+
+        if (releases.length === 5) setNextReleasesPage(2);
+        else setNextReleasesPage(null);
+
         setData({ ...data, releases, releasesCount });
       }
     });

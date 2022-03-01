@@ -92,15 +92,15 @@ function ContributionActivity({ username, eventsUrl }) {
       <div className="relative">
         {contributionCalendar.length > 0 && (
         <>
-          <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+          <div className="flex items-center gap-2 mb-4 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
             <Icon icon="mdi:puzzle-edit-outline" className="w-8 h-8 text-custom-500 dark:text-custom-400 -mt-1" />
             Contribution Activities
           </div>
-          <div className="flex gap-8 mt-6 items-start min-w-0 w-full">
+          <Heatmap data={contributionCalendar} className="hidden sm:block" />
+          <div className="flex gap-8 items-start min-w-0 w-full mt-6">
             <div className="flex flex-col min-w-0 w-full">
-              <Heatmap data={contributionCalendar} className="hidden sm:block" />
               {contributionEvents.length > 0 && (
-              <div className="text-zinc-600 flex flex-col sm:mt-4 w-full">
+              <div className="text-zinc-600 flex flex-col -mt-4 w-full">
                 {contributionEvents.map((e) => (
                   <div className="border-zinc-300 dark:border-zinc-600 border-b p-4 pt-5 min-w-0 flex flex-col w-full">
                     {e.type === 'PushEvent' ? (
