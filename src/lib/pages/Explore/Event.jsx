@@ -8,6 +8,8 @@ import IssueCommentEvent from './Events/IssueCommentEvent';
 import DeleteEvent from './Events/DeleteEvent';
 import PullRequestEvent from './Events/PullRequestEvent';
 import PullRequestReviewCommentEvent from './Events/PullRequestReviewComment';
+import CreateEvent from './Events/CreateEvent';
+import ReleaseEvent from './Events/ReleaseEvent';
 
 function Event() {
   const [data, setData] = useState([]);
@@ -61,6 +63,12 @@ function Event() {
             ) : '' }
             {e.type === 'PullRequestReviewCommentEvent' ? (
               <PullRequestReviewCommentEvent e={e} />
+            ) : '' }
+            {e.type === 'CreateEvent' ? (
+              <CreateEvent e={e} />
+            ) : '' }
+            {e.type === 'ReleaseEvent' ? (
+              <ReleaseEvent e={e} />
             ) : '' }
           </div>
         ))}

@@ -12,6 +12,8 @@ import PushEvent from './Events/PushEvent';
 import IssueEvent from './Events/IssueEvent';
 import DeleteEvent from './Events/DeleteEvent';
 import PullRequestEvent from './Events/PullRequestEvent';
+import CreateEvent from './Events/CreateEvent';
+import ReleaseEvent from './Events/ReleaseEvent';
 
 function Heatmap({ data }) {
   useEffect(() => {
@@ -61,6 +63,7 @@ function ContributionActivity({ username, eventsUrl }) {
         const yrs = Array.from(html.querySelectorAll('[id*=year-link]')).map((e) => e.innerText);
         setYears(yrs);
       });
+
     fetch(eventsUrl, FETCH_HEADERS).then((res) => res.json()).then((d) => {
       if (d.length) {
         const contributions = [d[0]];
@@ -88,42 +91,47 @@ function ContributionActivity({ username, eventsUrl }) {
   }, []);
 
   return (
-    contributionCalendar.length ? (
-      <div className="relative">
-        {contributionCalendar.length > 0 && (
-        <>
-          <div className="flex items-center gap-2 mb-4 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
-            <Icon icon="mdi:puzzle-edit-outline" className="w-8 h-8 text-custom-500 dark:text-custom-400 -mt-1" />
-            Contribution Activities
-          </div>
-          <Heatmap data={contributionCalendar} className="hidden sm:block" />
-          <div className="flex gap-8 items-start min-w-0 w-full mt-6">
+    <div>
+      <div className="flex items-center gap-2 mb-6 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+        <Icon icon="mdi:puzzle-edit-outline" className="w-8 h-8 text-custom-500 dark:text-custom-400 -mt-1" />
+        Contribution Activities
+      </div>
+      {contributionCalendar.length || contributionEvents.length ? (
+        <div className="relative flex flex-col gap-6">
+          {contributionCalendar.length > 0 && <Heatmap data={contributionCalendar} className="hidden sm:block" />}
+          <div className="flex gap-8 items-start min-w-0 w-full">
             <div className="flex flex-col min-w-0 w-full">
               {contributionEvents.length > 0 && (
-              <div className="text-zinc-600 flex flex-col -mt-4 w-full">
-                {contributionEvents.map((e) => (
-                  <div className="border-zinc-300 dark:border-zinc-600 border-b p-4 pt-5 min-w-0 flex flex-col w-full">
-                    {e.type === 'PushEvent' ? (
-                      <PushEvent e={e} />
-                    ) : ''}
-                    {e.type === 'IssuesEvent' ? (
-                      <IssueEvent e={e} />
-                    ) : '' }
-                    {e.type === 'IssueCommentEvent' ? (
-                      <IssueCommentEvent e={e} />
-                    ) : '' }
-                    {e.type === 'DeleteEvent' ? (
-                      <DeleteEvent e={e} />
-                    ) : '' }
-                    {e.type === 'PullRequestEvent' ? (
-                      <PullRequestEvent e={e} />
-                    ) : '' }
-                    {e.type === 'PullRequestReviewCommentEvent' ? (
-                      <IssueCommentEvent e={e} />
-                    ) : '' }
-                  </div>
-                ))}
-              </div>
+                <div className="text-zinc-600 flex flex-col -mt-4 w-full">
+                  {contributionEvents.map((e) => (
+                    <div className="border-zinc-300 dark:border-zinc-600 border-b p-4 pt-5 min-w-0 flex flex-col w-full">
+                      {e.type === 'PushEvent' ? (
+                        <PushEvent e={e} />
+                      ) : ''}
+                      {e.type === 'IssuesEvent' ? (
+                        <IssueEvent e={e} />
+                      ) : '' }
+                      {e.type === 'IssueCommentEvent' ? (
+                        <IssueCommentEvent e={e} />
+                      ) : '' }
+                      {e.type === 'DeleteEvent' ? (
+                        <DeleteEvent e={e} />
+                      ) : '' }
+                      {e.type === 'PullRequestEvent' ? (
+                        <PullRequestEvent e={e} />
+                      ) : '' }
+                      {e.type === 'PullRequestReviewCommentEvent' ? (
+                        <IssueCommentEvent e={e} />
+                      ) : '' }
+                      {e.type === 'CreateEvent' ? (
+                        <CreateEvent e={e} />
+                      ) : '' }
+                      {e.type === 'ReleaseEvent' ? (
+                        <ReleaseEvent e={e} />
+                      ) : '' }
+                    </div>
+                  ))}
+                </div>
               )}
             </div>
             <StickyBox offsetTop={20} offsetBottom={20} className="hidden lg:block">
@@ -136,10 +144,15 @@ function ContributionActivity({ username, eventsUrl }) {
               </div>
             </StickyBox>
           </div>
-        </>
-        )}
-      </div>
-    ) : <div className="-mb-12" />
+        </div>
+      ) : (
+        <div className="w-full min-h-0 h-full flex items-center justify-center pb-32 mt-6 transition-none">
+          <svg className="spinner" viewBox="0 0 50 50">
+            <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
+          </svg>
+        </div>
+      )}
+    </div>
   );
 }
 

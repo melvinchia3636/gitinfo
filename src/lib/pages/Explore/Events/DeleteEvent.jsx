@@ -13,9 +13,7 @@ function DeleteEvent({ e }) {
             {' '}
             {e.payload.ref_type}
             {' '}
-            &quot;
-            {e.payload.ref}
-            &quot;
+            <span className="font-bold">{e.payload.ref}</span>
             {' '}
             in
             {' '}
