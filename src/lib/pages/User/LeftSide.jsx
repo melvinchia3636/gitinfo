@@ -41,7 +41,7 @@ function LeftSide({ data }) {
             </div>
             )}
             {Boolean(data.blog) && (
-            <a href={data.blog} target="_blank" rel="noreferrer" className="text-lg flex items-center gap-3 mt-2 flex-nowrap break-all">
+            <a href={(!data.blog.startsWith('http') ? '//' : '') + data.blog} target="_blank" rel="noreferrer" className="text-lg flex items-center gap-3 mt-2 flex-nowrap break-all">
               <Icon icon="uil:link" className="text-custom-500 w-6 h-6 flex-shrink-0" />
               {data.blog}
             </a>
