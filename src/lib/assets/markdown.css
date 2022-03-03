@@ -114,6 +114,7 @@
 .markdown-body samp {
   font-family: monospace,monospace;
   font-size: 1em;
+  overflow-x: auto !important;
 }
 
 .markdown-body figure {
@@ -336,6 +337,7 @@
   font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
   font-size: 12px;
   word-wrap: normal;
+  overflow-x: auto !important;
 }
 
 .markdown-body .octicon {
@@ -816,6 +818,7 @@
   white-space: pre;
   background: transparent;
   border: 0;
+  overflow-x: auto !important;
 }
 
 .markdown-body .highlight {
@@ -836,6 +839,7 @@
   background-color: #f6f8fa;
   @apply shadow-md dark:bg-zinc-700;
   border-radius: 6px;
+  overflow-x: auto !important;
 }
 
 .markdown-body pre code,
@@ -849,6 +853,7 @@
   word-wrap: normal;
   background-color: transparent;
   border: 0;
+  overflow-x: auto !important;
 }
 
 .markdown-body .csv-data td,

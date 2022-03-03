@@ -361,3 +361,7 @@ input:checked ~ .dot {
     --diff-code-insert-background-color: #f0fdf4;
     --diff-code-delete-background-color: #fff1f2;
 }
+
+pre {
+	overflow-x: auto !important;
+}

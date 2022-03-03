@@ -30,6 +30,7 @@ import Labels from './Labels';
 import Issues from './Issues';
 import SourceCode from './SourceCode';
 import Deployments from './Deployments';
+import CloneCode from './CloneCode';
 
 function Repo() {
   const [data, setData] = useState({});
@@ -116,6 +117,7 @@ function Repo() {
                 {[
                   <div>
                     <Stats data={data} />
+                    <CloneCode data={data} />
                     <div className="grid grid-cols-2 gap-8">
                       <Description data={data} />
                       <License data={data} />

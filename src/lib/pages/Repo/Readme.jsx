@@ -84,7 +84,7 @@ function Readme({ data }) {
                 {...props}
               />
             ) : (
-              <code className={className} {...props}>
+              <code className={`${className} break-all`} {...props}>
                 {children}
               </code>
             );
