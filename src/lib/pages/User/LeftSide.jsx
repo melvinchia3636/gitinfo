@@ -5,8 +5,8 @@ import Moment from 'react-moment';
 
 function LeftSide({ data }) {
   return (
-    <div className="text-zinc-600 lg:pb-16 dark:text-zinc-200 overflow-y-scroll h-full mb-8 no-scrollbar flex flex-col sm:flex-row lg:flex-col justify-between sm:items-center lg:justify-start w-full lg:w-[19rem] gap-8">
-      <img src={data.avatar_url} alt={data.login} className="rounded-2xl hidden lg:block w-72 h-72 object-contain bg-zinc-50 dark:bg-zinc-600 shadow-lg" />
+    <div className="text-zinc-600 lg:pb-16 dark:text-zinc-300 overflow-y-scroll h-full mb-8 no-scrollbar flex flex-col sm:flex-row lg:flex-col justify-between sm:items-center lg:justify-start w-full lg:w-[19rem] gap-8">
+      <img src={data.avatar_url} alt={data.login} className="rounded-2xl hidden lg:block w-72 h-72 object-contain bg-zinc-50 dark:bg-zinc-700 shadow-lg" />
       <div className="w-full lg:w-auto lg:ml-0.5">
         <div className="flex items-center gap-4">
           <img src={data.avatar_url} alt={data.login} className="w-[3.6rem] h-[3.6rem] rounded-full -mt-2 lg:hidden" />

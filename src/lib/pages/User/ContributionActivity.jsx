@@ -12,6 +12,7 @@ import PushEvent from './Events/PushEvent';
 import IssueEvent from './Events/IssueEvent';
 import DeleteEvent from './Events/DeleteEvent';
 import PullRequestEvent from './Events/PullRequestEvent';
+import PullRequestReviewCommentEvent from './Events/PullRequestReviewCommentEvent';
 import CreateEvent from './Events/CreateEvent';
 import ReleaseEvent from './Events/ReleaseEvent';
 
@@ -56,10 +57,12 @@ function ContributionActivity({ username, eventsUrl }) {
         const HTMLParser = new DOMParser();
         const html = HTMLParser.parseFromString(raw, 'text/html');
         const calendar = html.querySelector('svg.js-calendar-graph-svg');
-        setContributionCalendar(Array.from(calendar.querySelectorAll('rect')).map((e) => ({
-          date: e.getAttribute('data-date'),
-          count: parseInt(e.getAttribute('data-level'), 10),
-        })));
+        if (calendar) {
+          setContributionCalendar(Array.from(calendar.querySelectorAll('rect')).map((e) => ({
+            date: e.getAttribute('data-date'),
+            count: parseInt(e.getAttribute('data-level'), 10),
+          })));
+        }
         const yrs = Array.from(html.querySelectorAll('[id*=year-link]')).map((e) => e.innerText);
         setYears(yrs);
       });
@@ -92,7 +95,7 @@ function ContributionActivity({ username, eventsUrl }) {
 
   return (
     <div>
-      <div className="flex items-center gap-2 mb-6 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+      <div className="flex items-center gap-2 mb-6 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
         <Icon icon="mdi:puzzle-edit-outline" className="w-8 h-8 text-custom-500 dark:text-custom-400 -mt-1" />
         Contribution Activities
       </div>
@@ -108,10 +111,10 @@ function ContributionActivity({ username, eventsUrl }) {
                       {e.type === 'PushEvent' ? (
                         <PushEvent e={e} />
                       ) : ''}
-                      {e.type === 'IssuesEvent' ? (
+                      {e.type === 'IssuesEvent' && e.payload.issue ? (
                         <IssueEvent e={e} />
                       ) : '' }
-                      {e.type === 'IssueCommentEvent' ? (
+                      {e.type === 'IssueCommentEvent' && e.payload.issue ? (
                         <IssueCommentEvent e={e} />
                       ) : '' }
                       {e.type === 'DeleteEvent' ? (
@@ -121,7 +124,7 @@ function ContributionActivity({ username, eventsUrl }) {
                         <PullRequestEvent e={e} />
                       ) : '' }
                       {e.type === 'PullRequestReviewCommentEvent' ? (
-                        <IssueCommentEvent e={e} />
+                        <PullRequestReviewCommentEvent e={e} />
                       ) : '' }
                       {e.type === 'CreateEvent' ? (
                         <CreateEvent e={e} />
@@ -135,7 +138,7 @@ function ContributionActivity({ username, eventsUrl }) {
               )}
             </div>
             <StickyBox offsetTop={20} offsetBottom={20} className="hidden lg:block">
-              <div className="flex flex-col text-zinc-600 dark:text-zinc-200">
+              <div className="flex flex-col text-zinc-600 dark:text-zinc-300">
                 {years.map((e, i) => (
                   <button className={`block px-4 py-2 pt-2.5 rounded-md ${!i ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} key={`yearbtn-${e}`} type="button">
                     {e}

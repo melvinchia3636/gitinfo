@@ -18,7 +18,7 @@ const reactionMap = {
 function IssueCommentEvent({ e }) {
   return (
     <div>
-      <div className="flex gap-2 text-xl overflow-hidden font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+      <div className="flex gap-2 text-xl overflow-hidden font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
         <Icon icon="uil:comment-alt" className="w-6 h-6 mt-1 flex-shrink-0 text-custom-500 dark:text-custom-400" />
         <div className="flex flex-col min-w-0">
           <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">
@@ -30,7 +30,7 @@ function IssueCommentEvent({ e }) {
         </div>
       </div>
       <div className="w-full border mt-4 rounded-md border-zinc-300 dark:border-zinc-600 shadow-sm p-4">
-        <div className="flex gap-2 text-xl overflow-hidden font-bold text-zinc-600 dark:text-zinc-200 tracking-wide">
+        <div className="flex gap-2 text-xl overflow-hidden font-bold text-zinc-600 dark:text-zinc-300 tracking-wide">
           <Icon icon={`octicon:issue-${e.payload.issue.state === 'closed' ? 'closed' : 'opened'}-16`} className={`flex-shrink-0 w-5 h-5 mt-1 ${e.payload.issue.state === 'closed' ? 'text-custom-500' : 'text-green-600'}`} />
           <p>
             {e.payload.issue.title}

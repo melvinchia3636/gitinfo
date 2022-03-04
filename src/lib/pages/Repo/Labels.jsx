@@ -48,7 +48,7 @@ function Labels({
   return (
     data.labels?.length ? (
       <div>
-        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
           <Icon icon="uil:tag-alt" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
           Labels
           <span className="text-xs mt-2">
@@ -57,7 +57,7 @@ function Labels({
             )
           </span>
         </div>
-        <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-200">
+        <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-300">
           {data.labels.map((e, i) => {
             const color = !hexIsLight(e.color) ? applySaturationToHexColor(shadeColor(`#${e.color}`, 100), 80) : `#${e.color}`;
             return (

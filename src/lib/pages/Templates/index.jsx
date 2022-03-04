@@ -45,7 +45,7 @@ function Templates() {
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row items-center justify-between text-zinc-600 dark:text-zinc-200">
+      <div className="flex flex-col sm:flex-row items-center justify-between text-zinc-600 dark:text-zinc-300">
         <h3 className="font-bold text-3xl flex items-end whitespace-nowrap">
           <span>
             Github
@@ -53,7 +53,7 @@ function Templates() {
             <span className="text-custom-500">Templates</span>
           </span>
         </h3>
-        <div className="flex items-center w-full sm:w-auto gap-2 mt-4 sm:mt-0 bg-zinc-50 dark:bg-zinc-600 p-4 rounded-lg shadow-md">
+        <div className="flex items-center w-full sm:w-auto gap-2 mt-4 sm:mt-0 bg-zinc-50 dark:bg-zinc-700 p-4 rounded-lg shadow-md">
           <Icon icon="uil:search" className="w-6 h-6 text-zinc-300" />
           <input
             value={query}
@@ -66,7 +66,7 @@ function Templates() {
           <Icon icon="ion:menu" className="w-6 h-6 text-zinc-50" />
         </button>
         <div className={`w-full overflow-hidden block sm:hidden ${menuOpen ? 'max-h-32' : 'max-h-0'}`}>
-          <div className="flex flex-col gap-4 mb-4 pt-4 text-zinc-600 dark:text-zinc-200 text-lg">
+          <div className="flex flex-col gap-4 mb-4 pt-4 text-zinc-600 dark:text-zinc-300 text-lg">
             {[['uil:github-alt',
               'Gitignore'],
             ['octicon:law-16', 'License'],
@@ -81,7 +81,7 @@ function Templates() {
       </div>
       <div className="flex items-start justify-between gap-8 mt-6 h-full overflow-y-auto">
         <ReactStickyBox className="hidden sm:block">
-          <div className="flex flex-col gap-4 mb-4 text-zinc-600 dark:text-zinc-200 text-lg">
+          <div className="flex flex-col gap-4 mb-4 text-zinc-600 dark:text-zinc-300 text-lg">
             {[['uil:github-alt',
               'Gitignore'],
             ['octicon:law-16', 'License'],
@@ -93,18 +93,18 @@ function Templates() {
             ))}
           </div>
         </ReactStickyBox>
-        <div className="min-w-0 pb-8 flex-1 flex flex-col text-zinc-600 dark:text-zinc-200">
+        <div className="min-w-0 pb-8 flex-1 flex flex-col text-zinc-600 dark:text-zinc-300">
           {data.length > 0 && (
             section === 0 && typeof data[0] === 'string' ? data.filter((e) => (query ? e.toLowerCase().includes(query.toLowerCase()) : true)).map((e) => (
-              <button type="button" onClick={() => setShowContent(e)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-600 dark:border-zinc-600 duration-300 hover:rounded-md">
+              <button type="button" onClick={() => setShowContent(e)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-700 dark:border-zinc-600 duration-300 hover:rounded-md">
                 <span className="w-4 h-4 rounded-full block shadow-sm" style={{ backgroundColor: ((Object.entries(colors).filter(([name]) => name.toLowerCase() === e.toLowerCase()))[0] || [])[1]?.color || 'white' }} />
                 {e}
               </button>
             )) : data.filter((e) => (
               query ? e.name?.toLowerCase().includes(query.toLowerCase()) : true
             )).map((e) => (
-              <button type="button" onClick={() => setShowContent(e.key)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-600 dark:border-zinc-600 duration-300 hover:rounded-md text-left">
-                <span className="w-28 flex items-center font-bold justify-center py-1 text-custom-500 bg-custom-100 dark:bg-custom-500 dark:text-zinc-200 overflow-hidden rounded-full text-sm shadow-sm whitespace-nowrap flex-shrink-0">{e.key}</span>
+              <button type="button" onClick={() => setShowContent(e.key)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-700 dark:border-zinc-600 duration-300 hover:rounded-md text-left">
+                <span className="w-28 flex items-center font-bold justify-center py-1 text-custom-500 bg-custom-100 dark:bg-custom-500 dark:text-zinc-300 overflow-hidden rounded-full text-sm shadow-sm whitespace-nowrap flex-shrink-0">{e.key}</span>
                 {e.name}
               </button>
             ))
@@ -112,7 +112,7 @@ function Templates() {
         </div>
       </div>
       <button type="button" aria-label="hideContent" onClick={() => setShowContent(null)} className={`bg-black absolute w-full h-full top-0 left-0 ${showContent ? 'bg-opacity-[1%] z-40' : 'bg-opacity-0 z-[-1]'}`} />
-      <div className={`absolute ${showContent ? 'top-1/2 -translate-y-1/2 shadow-2xl' : 'top-0 -translate-y-full shadow-0'} left-1/2 -translate-x-1/2 p-6 440:p-8 z-50 overflow-scroll h-[calc(100vh-16rem)] w-[calc(100vw-2rem)] md:w-[46rem] bg-zinc-100 dark:bg-zinc-600 text-zinc-600 dark:text-zinc-200 rounded-lg`}>
+      <div className={`absolute ${showContent ? 'top-1/2 -translate-y-1/2 shadow-2xl' : 'top-0 -translate-y-full shadow-0'} left-1/2 -translate-x-1/2 p-6 440:p-8 z-50 overflow-scroll h-[calc(100vh-16rem)] w-[calc(100vw-2rem)] md:w-[46rem] bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300 rounded-lg`}>
         {section === 0 && (
         <>
           <h3 className="text-3xl font-bold mb-3">{content.name}</h3>

@@ -82,7 +82,7 @@ function Repo() {
             <Header data={data} />
             <div ref={scrollArea} className="flex items-start justify-between gap-8 h-full overflow-y-auto">
               <ReactStickyBox>
-                <div className="flex flex-col gap-4 mb-4 text-zinc-600 dark:text-zinc-200 text-lg">
+                <div className="flex flex-col gap-4 mb-4 text-zinc-600 dark:text-zinc-300 text-lg">
                   {[
                     ['uil:info-circle', 'Overview'],
                     ['uil:document-info', 'README.md'],
@@ -168,7 +168,7 @@ function Repo() {
             </div>
           </>
         ) : (
-          <div className="w-full h-full flex items-center pb-12 flex-col gap-2 justify-center text-zinc-600 dark:text-zinc-200 text-2xl">
+          <div className="w-full h-full flex items-center pb-12 flex-col gap-2 justify-center text-zinc-600 dark:text-zinc-300 text-2xl">
             <Icon icon="uil:exclamation-triangle" className="w-12 h-12" />
             API rate limit exceeded
           </div>

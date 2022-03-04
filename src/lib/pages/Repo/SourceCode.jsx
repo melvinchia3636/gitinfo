@@ -40,7 +40,7 @@ function SourceCode({ data, setData }) {
   }, [currentURL]);
 
   return (
-    <div className="flex flex-col h-full text-zinc-600 dark:text-zinc-200">
+    <div className="flex flex-col h-full text-zinc-600 dark:text-zinc-300">
       <div className="flex items-center gap-2 text-2xl font-medium tracking-wide">
         <Icon icon="lucide:file-code" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Source Code
@@ -88,9 +88,9 @@ function SourceCode({ data, setData }) {
       {contents.length ? (
         <div className="mt-4">
           {contents.sort((a, b) => ['file', 'dir'].indexOf(b.type) - ['file', 'dir'].indexOf(a.type)).map((e) => (
-            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex w-full items-center justify-between px-4 py-4 border-b text-lg hover:bg-zinc-50 dark:hover:bg-zinc-600 hover:rounded-md border-zinc-300 dark:border-zinc-500">
+            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex w-full items-center justify-between px-4 py-4 border-b text-lg hover:bg-zinc-50 dark:hover:bg-zinc-700 hover:rounded-md border-zinc-300 dark:border-zinc-500">
               <div className="flex items-center gap-4">
-                <Icon icon={e.type === 'dir' ? 'mdi-folder' : 'uil:file'} className={`w-6 h-6 ${e.type === 'dir' ? 'text-custom-500' : 'text-zinc-600 dark:text-zinc-200'}`} />
+                <Icon icon={e.type === 'dir' ? 'mdi-folder' : 'uil:file'} className={`w-6 h-6 ${e.type === 'dir' ? 'text-custom-500' : 'text-zinc-600 dark:text-zinc-300'}`} />
                 {e.name}
               </div>
               {e.type === 'file' && (

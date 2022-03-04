@@ -295,7 +295,7 @@
   margin: 0;
   padding: 0 1em;
   color: #57606a;
-  @apply dark:text-zinc-200;
+  @apply dark:text-zinc-300;
   border-left: .25em solid #d0d7de;
   @apply dark:border-zinc-600;
 }
@@ -680,7 +680,7 @@
 }
 
 .markdown-body table tr:nth-child(2n) {
-  @apply bg-custom-50 dark:bg-zinc-700
+  @apply bg-custom-50 dark:bg-zinc-800
 }
 
 .markdown-body table img {
@@ -837,7 +837,7 @@
   font-size: 85%;
   line-height: 1.45;
   background-color: #f6f8fa;
-  @apply shadow-md dark:bg-zinc-700;
+  @apply shadow-md dark:bg-zinc-800;
   border-radius: 6px;
   overflow-x: auto !important;
 }

@@ -149,7 +149,7 @@ function Issues({
   return (
     data.issues?.length ? (
       <div>
-        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
           <Icon icon="octicon:issue-opened-16" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
           Issues
           <span className="text-xs mt-2">
@@ -158,14 +158,14 @@ function Issues({
             )
           </span>
         </div>
-        <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-200">
+        <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-300">
           {data.issues.map((e, i) => (
             <div className={`w-full p-4 ${i ? 'border-t border-zinc-300 dark:border-zinc-600' : 'pt-0'}`}>
               <div className="flex items-center gap-2">
                 <Icon icon="octicon:issue-opened-16" className="text-green-700 dark:text-green-500 w-5 h-5 flex-shrink-0" />
                 <h4 className="text-xl flex-shrink overflow-hidden overflow-ellipsis whitespace-nowrap font-bold pr-2">{e.title}</h4>
                 <div className="flex items-center gap-2">
-                  {e.labels.slice(0, 5).map((t) => {
+                  {e.labels.slice(0, 3).map((t) => {
                     const color = !hexIsLight(t.color) ? applySaturationToHexColor(shadeColor(`#${t.color}`, 100), 80) : `#${t.color}`;
                     return (
                       <>
@@ -183,10 +183,10 @@ function Issues({
                       </>
                     );
                   })}
-                  {e.labels.length - 5 > 0 && (
+                  {e.labels.length - 3 > 0 && (
                   <span className="whitespace-nowrap">
                     +
-                    {e.labels.length - 5}
+                    {e.labels.length - 3}
                     {' '}
                     more
                   </span>

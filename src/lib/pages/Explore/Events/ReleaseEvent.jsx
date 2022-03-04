@@ -7,7 +7,7 @@ import { bytesToSize } from '../../Repo/Releases';
 function ReleaseEvent({ e }) {
   return (
     <div className="flex flex-col min-w-0 w-full">
-      <div className="flex gap-2 text-xl overflow-hidden font-medium text-zinc-600 dark:text-zinc-200 tracking-wide min-w-0 w-full">
+      <div className="flex gap-2 text-xl overflow-hidden font-medium text-zinc-600 dark:text-zinc-300 tracking-wide min-w-0 w-full">
         <Icon icon="uil:box" className="w-7 h-7 mt-1 flex-shrink-0 text-custom-500 dark:text-custom-400" />
         <div className="flex flex-col min-w-0 w-full">
           <p className="whitespace-nowrap overflow-hidden overflow-ellipsis min-w-0">

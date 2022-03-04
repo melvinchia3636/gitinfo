@@ -24,7 +24,7 @@ function ReadmeMD({ data, setData }) {
   return (
     data.readmeContent ? (
       <>
-        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
           <Icon icon="codicon:law" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
           README.md
         </div>

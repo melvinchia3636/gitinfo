@@ -33,7 +33,7 @@ function HeadingRenderer(props) {
 function Readme({ data }) {
   return (
     data ? JSON.stringify(data) !== '{}' && (
-    <div className="markdown-body mt-6 text-zinc-600 dark:text-zinc-200 !break-words">
+    <div className="markdown-body mt-6 text-zinc-600 dark:text-zinc-300 !break-words">
       <ReactMarkdown
         children={data.readmeContent?.replace(/:\w+:/gi, (name) => emoji.getUnicode(name))}
         plugins={[remarkGfm]}

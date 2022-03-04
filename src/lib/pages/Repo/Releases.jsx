@@ -94,7 +94,7 @@ function Releases({
 
   return (
     <>
-      <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+      <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
         <Icon icon="uil:box" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Releases
         <span className="text-xs mt-2">
@@ -105,7 +105,7 @@ function Releases({
       </div>
       {data.releases?.length ? (
         <div>
-          <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-200">
+          <div className="mt-6 flex flex-col text-zinc-600 dark:text-zinc-300">
             {data.releases.map((e, i) => (
               <div className={`w-full p-6 ${i ? 'border-t border-zinc-300 dark:border-zinc-600' : 'pt-0'}`}>
                 <h4 className="text-4xl font-bold">{e.name}</h4>
@@ -182,7 +182,7 @@ function Releases({
             onClick={() => setReactedPeopleListShow(false)}
             className={`absolute top-0 left-0 flex overflow-hidden items-center justify-center w-full h-full bg-black transition-all ${isReactedPeopleListShow ? 'z-0 bg-opacity-20 duration-200' : 'z-[-1] bg-opacity-0 duration-500'}`}
           />
-          <div className={`w-96 h-[80vh] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-zinc-50 shadow-2xl text-zinc-600 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${isReactedPeopleListShow ? '-translate-y-1/2' : 'translate-y-[100%]'}`}>
+          <div className={`w-96 h-[80vh] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-zinc-50 dark:bg-zinc-800 shadow-2xl text-zinc-600 dark:text-zinc-300 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${isReactedPeopleListShow ? '-translate-y-1/2' : 'translate-y-[100%]'}`}>
             {reactionData.length ? reactionData.map((e) => (
               <div className="flex items-center gap-4">
                 <div className="relative inline-block">

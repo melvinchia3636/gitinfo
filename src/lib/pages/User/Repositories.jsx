@@ -36,7 +36,7 @@ function Repositories({ repos_url, repos_count }) {
   }, []);
   return (
     <div>
-      <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+      <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
         <Icon icon="uil:book-alt" className="w-8 h-8 text-custom-500 dark:text-custom-400 -mt-1" />
         Repositories
         <span className="text-xs mt-2">
@@ -47,7 +47,7 @@ function Repositories({ repos_url, repos_count }) {
       </div>
       <div className="mt-4 min-w-0">
         {data.map((e) => (
-          <a href={`/repo/${e.full_name}`} target="_blank" rel="noreferrer" className="w-full p-4 border-b border-zinc-300 dark:border-zinc-600 block text-zinc-600 dark:text-zinc-200">
+          <a href={`/repo/${e.full_name}`} target="_blank" rel="noreferrer" className="w-full p-4 border-b border-zinc-300 dark:border-zinc-600 block text-zinc-600 dark:text-zinc-300">
             <h3 className="text-3xl font-semibold text-custom-500 break-all">{e.name}</h3>
             {e.description && <p className="text-lg pl-0.5 mt-2">{e.description}</p>}
             <div className="text-lg flex mt-4 gap-x-6 gap-y-2 flex-wrap">

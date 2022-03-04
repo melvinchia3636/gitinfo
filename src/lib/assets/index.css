@@ -362,6 +362,14 @@ input:checked ~ .dot {
     --diff-code-delete-background-color: #fff1f2;
 }
 
+:root.dark {
+    --diff-gutter-insert-background-color: #16A34A50;
+    --diff-gutter-delete-background-color: #ffe4e6;
+    --diff-code-insert-background-color: #14532D60;
+    --diff-code-delete-background-color: #fff1f2;
+}
+
+
 pre {
 	overflow-x: auto !important;
 }

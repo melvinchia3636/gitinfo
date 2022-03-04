@@ -31,7 +31,7 @@ function Navbar({ theme, setTheme }) {
             </svg>
           </Link>
         </div>
-        <div className="hidden lg:flex items-center gap-12 text-zinc-600 dark:text-zinc-200">
+        <div className="hidden lg:flex items-center gap-12 text-zinc-600 dark:text-zinc-300">
           {[
             'Search',
             'Explore',
@@ -43,13 +43,13 @@ function Navbar({ theme, setTheme }) {
           <button type="button" className="bg-custom-500 p-3 rounded-md shadow-md" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
             <Icon icon={`uil:${theme === 'dark' ? 'moon' : 'sun'}`} className="w-6 h-6 text-zinc-100" />
           </button>
-          <button type="button" className="p-3 rounded-md shadow-md dark:bg-zinc-600" onClick={() => setPaletteOpen(!paletteOpen)}>
+          <button type="button" className="p-3 rounded-md shadow-md dark:bg-zinc-700" onClick={() => setPaletteOpen(!paletteOpen)}>
             <Icon icon="mdi:palette-swatch-outline" className="w-6 h-6 text-custom-500" />
           </button>
         </div>
       </nav>
       <button type="button" aria-label="closePalette" onClick={() => setPaletteOpen(false)} className={`bg-black absolute w-full h-screen top-0 left-0 ${paletteOpen ? 'bg-opacity-[1%] z-20' : 'bg-opacity-0 z-[-1]'}`} />
-      <div className={`absolute ${paletteOpen ? 'top-1/2 -translate-y-1/2 shadow-2xl' : 'top-0 -translate-y-full shadow-0'} left-1/2 -translate-x-1/2 p-8 z-50 overflow-scroll h-[calc(100vh-16rem)] w-[calc(100vw-2rem)] 440:w-96 bg-zinc-100 dark:bg-zinc-700 dark:text-zinc-200 rounded-lg`}>
+      <div className={`absolute ${paletteOpen ? 'top-1/2 -translate-y-1/2 shadow-2xl' : 'top-0 -translate-y-full shadow-0'} left-1/2 -translate-x-1/2 p-8 z-50 overflow-scroll h-[calc(100vh-16rem)] w-[calc(100vw-2rem)] 440:w-96 bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-300 rounded-lg`}>
         <h2 className="text-2xl">Theme Colors</h2>
         <div className="mt-4">
           {[
@@ -72,7 +72,7 @@ function Navbar({ theme, setTheme }) {
             'brown',
             'grey',
           ].map((e) => (
-            <button type="button" onClick={() => setThemeColor(`theme-${e}`)} className="w-full flex items-center justify-between border-b border-zinc-300 dark:border-zinc-500 px-2 py-4 hover:bg-zinc-200 dark:hover:bg-zinc-600 hover:rounded-md duration-300">
+            <button type="button" onClick={() => setThemeColor(`theme-${e}`)} className="w-full flex items-center justify-between border-b border-zinc-300 dark:border-zinc-500 px-2 py-4 hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:rounded-md duration-300">
               <div className="flex items-center gap-4">
                 <span className={`w-4 h-4 rounded-full theme-${e} bg-custom-500 block`} />
                 {e}
@@ -82,8 +82,8 @@ function Navbar({ theme, setTheme }) {
           ))}
         </div>
       </div>
-      <div className={`w-full h-screen z-30 bg-zinc-50 dark:bg-zinc-600 absolute top-0 left-0 ${navOpen ? 'translate-0' : '-translate-x-full'}`}>
-        <div className="flex flex-col justify-center h-full items-center gap-12 text-zinc-600 dark:text-zinc-200 text-lg">
+      <div className={`w-full h-screen z-30 bg-zinc-50 dark:bg-zinc-700 absolute top-0 left-0 ${navOpen ? 'translate-0' : '-translate-x-full'}`}>
+        <div className="flex flex-col justify-center h-full items-center gap-12 text-zinc-600 dark:text-zinc-300 text-lg">
           {[
             'Search',
             'Explore',

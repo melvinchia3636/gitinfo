@@ -11,7 +11,7 @@ function Languages({ data }) {
   console.log(data.langs);
   return (
     <div>
-      <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+      <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
         <Icon icon="ic:round-code" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Languages
       </div>
@@ -31,7 +31,7 @@ function Languages({ data }) {
         </div>
         <div className="flex gap-x-5 gap-y-3 mt-4 flex-wrap">
           {Object.keys(data.langs).map((k) => (
-            <div className="text-zinc-600 dark:text-zinc-200 text-lg flex items-center gap-2">
+            <div className="text-zinc-600 dark:text-zinc-300 text-lg flex items-center gap-2">
               <span className="w-4 h-4 rounded-full border border-zinc-300 dark:border-zinc-600" style={{ backgroundColor: colors[k]?.color }} />
               {k}
             </div>

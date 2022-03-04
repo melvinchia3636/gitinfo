@@ -13,7 +13,7 @@ function Deployments({ data }) {
   }, []);
 
   return (
-    <div className="text-zinc-600 dark:text-zinc-200">
+    <div className="text-zinc-600 dark:text-zinc-300">
       <div className="flex items-center gap-2 text-2xl font-medium tracking-wide">
         <Icon icon="uil:rocket" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Deployments

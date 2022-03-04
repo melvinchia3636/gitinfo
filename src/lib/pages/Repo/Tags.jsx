@@ -26,7 +26,7 @@ function Tags({
   return (
     data.tags.length ? (
       <div>
-        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
           <Icon icon="uil:tag" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
           Tags
           <span className="text-xs mt-2">
@@ -35,7 +35,7 @@ function Tags({
             )
           </span>
         </div>
-        <div className="mt-7 flex flex-col text-zinc-600 dark:text-zinc-200">
+        <div className="mt-7 flex flex-col text-zinc-600 dark:text-zinc-300">
           {data.tags.map((e, i) => (
             <div className={`w-full p-6 ${i ? 'border-t border-zinc-300 dark:border-zinc-600 pt-7' : 'pt-0'}`}>
               <h4 className="text-2xl font-bold">{e.name}</h4>

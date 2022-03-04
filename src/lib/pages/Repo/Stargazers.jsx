@@ -44,7 +44,7 @@ function Stargazers({
   return (
     data.stargazers?.length ? (
       <div>
-        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-200 tracking-wide">
+        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
           <Icon icon="uil:star" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
           Stargazers
           <span className="text-xs mt-2">
@@ -55,7 +55,7 @@ function Stargazers({
         </div>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-x-5 gap-y-5 mt-6 flex-wrap">
           {data.stargazers.map((e) => (
-            <Link to={`/user/${e.login}`} className="text-zinc-600 truncate dark:text-zinc-200 text-lg block items-center">
+            <Link to={`/user/${e.login}`} className="text-zinc-600 truncate dark:text-zinc-300 text-lg block items-center">
               <img src={e.avatar_url} alt={e.login} className="w-6 h-6 rounded-full inline mr-3" />
               {e.login}
             </Link>

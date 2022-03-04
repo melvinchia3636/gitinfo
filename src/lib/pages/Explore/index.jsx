@@ -19,7 +19,7 @@ function Explore() {
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row items-center relative text-zinc-600 dark:text-zinc-200">
+      <div className="flex flex-col sm:flex-row items-center relative text-zinc-600 dark:text-zinc-300">
         <h3 className="font-bold text-3xl flex items-end whitespace-nowrap">
           <span>
             <span className="text-custom-500">Explore</span>
@@ -31,7 +31,7 @@ function Explore() {
           <Icon icon="ion:menu" className="w-6 h-6 text-zinc-50" />
         </button>
         <div className={`w-full overflow-hidden ${menuOpen ? 'max-h-96' : 'max-h-0'}`}>
-          <div className="flex flex-col h-full gap-4 mt-4 w-full text-zinc-600 dark:text-zinc-200 text-lg">
+          <div className="flex flex-col h-full gap-4 mt-4 w-full text-zinc-600 dark:text-zinc-300 text-lg">
             {[
               ['uil:users-alt', 'Users'],
               ['uil:book-alt', 'Repositories'],
@@ -50,7 +50,7 @@ function Explore() {
       </div>
       <div ref={scrollArea} className="flex items-start justify-between gap-8 mt-6 h-full overflow-y-auto">
         <ReactStickyBox className="hidden sm:block">
-          <div className="flex flex-col h-full gap-4 mb-4 text-zinc-600 dark:text-zinc-200 text-lg">
+          <div className="flex flex-col h-full gap-4 mb-4 text-zinc-600 dark:text-zinc-300 text-lg">
             {[
               ['uil:users-alt', 'Users'],
               ['uil:book-alt', 'Repositories'],
@@ -66,7 +66,7 @@ function Explore() {
             ))}
           </div>
         </ReactStickyBox>
-        <div className="min-w-0 pb-8 flex-1 h-full flex flex-col text-zinc-600 dark:text-zinc-200">
+        <div className="min-w-0 pb-8 flex-1 h-full flex flex-col text-zinc-600 dark:text-zinc-300">
           {[
             <User />,
             <Repo />,
