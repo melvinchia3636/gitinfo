@@ -373,3 +373,7 @@ input:checked ~ .dot {
 pre {
 	overflow-x: auto !important;
 }
+
+code, code * {
+	font-family: "Source Code Pro" !important
+}

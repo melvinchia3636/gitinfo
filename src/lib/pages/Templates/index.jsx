@@ -96,14 +96,14 @@ function Templates() {
         <div className="min-w-0 pb-8 flex-1 flex flex-col text-zinc-600 dark:text-zinc-300">
           {data.length > 0 && (
             section === 0 && typeof data[0] === 'string' ? data.filter((e) => (query ? e.toLowerCase().includes(query.toLowerCase()) : true)).map((e) => (
-              <button type="button" onClick={() => setShowContent(e)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-700 dark:border-zinc-600 duration-300 hover:rounded-md">
+              <button type="button" onClick={() => setShowContent(e)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-200 dark:hover:bg-zinc-700 dark:border-zinc-600 duration-300 hover:rounded-md">
                 <span className="w-4 h-4 rounded-full block shadow-sm" style={{ backgroundColor: ((Object.entries(colors).filter(([name]) => name.toLowerCase() === e.toLowerCase()))[0] || [])[1]?.color || 'white' }} />
                 {e}
               </button>
             )) : data.filter((e) => (
               query ? e.name?.toLowerCase().includes(query.toLowerCase()) : true
             )).map((e) => (
-              <button type="button" onClick={() => setShowContent(e.key)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-700 dark:border-zinc-600 duration-300 hover:rounded-md text-left">
+              <button type="button" onClick={() => setShowContent(e.key)} className="px-2 w-full py-4 border-b border-gray-300 text-lg flex items-center gap-4 hover:bg-zinc-200 dark:hover:bg-zinc-700 dark:border-zinc-600 duration-300 hover:rounded-md text-left">
                 <span className="w-28 flex items-center font-bold justify-center py-1 text-custom-500 bg-custom-100 dark:bg-custom-500 dark:text-zinc-300 overflow-hidden rounded-full text-sm shadow-sm whitespace-nowrap flex-shrink-0">{e.key}</span>
                 {e.name}
               </button>

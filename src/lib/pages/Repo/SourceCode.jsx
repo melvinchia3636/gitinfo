@@ -1,6 +1,11 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
 import { Icon } from '@iconify/react';
 import React, { useState, useEffect } from 'react';
+import languageMap from 'language-map';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import bytes from 'bytes';
 import FETCH_HEADERS from '../../constants';
 
 function SourceCode({ data, setData }) {
@@ -59,7 +64,7 @@ function SourceCode({ data, setData }) {
                   {e}
                 </span>
                 {' '}
-                /&nbsp;
+                {contents.type === 'file' && i === data.currentPath.length - 1 ? '' : <>/&nbsp;</>}
               </button>
             ))}
           </p>
@@ -85,19 +90,17 @@ function SourceCode({ data, setData }) {
           </div>
         </div>
       </div>
-      {contents.length ? (
+      {Array.isArray(contents) ? (contents.length ? (
         <div className="mt-4">
           {contents.sort((a, b) => ['file', 'dir'].indexOf(b.type) - ['file', 'dir'].indexOf(a.type)).map((e) => (
-            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex w-full items-center justify-between px-4 py-4 border-b text-lg hover:bg-zinc-50 dark:hover:bg-zinc-700 hover:rounded-md border-zinc-300 dark:border-zinc-500">
+            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex w-full items-center justify-between px-4 py-4 border-b text-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:rounded-md border-zinc-300 dark:border-zinc-500">
               <div className="flex items-center gap-4">
                 <Icon icon={e.type === 'dir' ? 'mdi-folder' : 'uil:file'} className={`w-6 h-6 ${e.type === 'dir' ? 'text-custom-500' : 'text-zinc-600 dark:text-zinc-300'}`} />
                 {e.name}
               </div>
               {e.type === 'file' && (
               <span>
-                {(e.size / (e.size < 1024 ? 1 : 1024)).toFixed(2).toLocaleString()}
-                {' '}
-                {e.size < 1024 ? 'KB' : 'MB'}
+                {bytes(e.size)}
               </span>
               )}
             </button>
@@ -109,6 +112,42 @@ function SourceCode({ data, setData }) {
             <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
           </svg>
         </div>
+      )) : (
+        contents.type === 'file'
+          ? (
+            <div className="mt-8 text-sm bg-zinc-50 rounded-md shadow-md">
+              <div className="mb-1 p-4 pb-0 flex justify-between items-center w-full">
+                <div className="!font-['Source_Code_Pro']">
+                  {window.atob(contents.content).split('\n').length.toLocaleString()}
+                  {' '}
+                  lines |
+                  {' '}
+                  {bytes(contents.size)}
+                </div>
+                <div className="flex items-center gap-4">
+                  <a href={`https://raw.githubusercontent.com/${data.full_name}/${data.default_branch}/${data.currentPath.slice(1).join('/')}`} target="_blank" rel="noreferrer">
+                    <Icon icon="octicon:code-square-16" className="w-4 h-4" />
+                  </a>
+                  <button aria-label="copy" type="button"><Icon icon="octicon:copy-16" className="w-4 h-4" /></button>
+                </div>
+              </div>
+              <div className="flex">
+                <div className="flex flex-col items-end my-2 ml-3 mr-2">
+                  {window.atob(contents.content).split('\n').map((e, i) => <span className="text-zinc-300 !font-['Source_Code_Pro']">{i}</span>)}
+                </div>
+                <SyntaxHighlighter
+                  customStyle={{
+                    fontFamily: 'Source Code Pro',
+                  }}
+                  style={atomOneLight}
+                  language={((Object.entries(languageMap).filter((e) => e[1].extensions?.includes(contents.name.split('.').pop())) || [null])[0] || [null])[0]}
+                >
+                  {window.atob(contents.content)}
+                </SyntaxHighlighter>
+              </div>
+            </div>
+          )
+          : ''
       )}
     </div>
   );
