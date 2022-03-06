@@ -40,7 +40,7 @@ function Explore() {
               ['uil:calendar-alt', 'Events'],
               ['uil:apps', 'Apps'],
             ].map(([icon, name], index) => (
-              <button onClick={() => { setSection(index); setMenuOpen(false); }} className={`flex w-full items-center transition-all ${icon.startsWith('octicon') ? 'gap-[1.2rem]' : 'gap-4'} text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} type="button">
+              <button onClick={() => { setSection(index); setMenuOpen(false); }} className={`flex w-full items-center transition-all ${icon.startsWith('octicon') ? 'gap-[1.2rem]' : 'gap-4'} text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-100 bg-custom-500 shadow-md' : ''}`} type="button">
                 <Icon icon={icon} className={icon.startsWith('octicon') ? 'w-[1.3rem] h-[1.3rem]' : 'w-6 h-6'} />
                 {name}
               </button>
@@ -59,7 +59,7 @@ function Explore() {
               ['mdi:puzzle-edit-outline', 'Events'],
               ['uil:apps', 'Apps'],
             ].map(([icon, name], index) => (
-              <button onClick={() => setSection(index)} className={`flex items-center transition-all ${icon.startsWith('octicon') ? 'gap-[1.2rem]' : 'gap-4'} w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} type="button">
+              <button onClick={() => setSection(index)} className={`flex items-center transition-all ${icon.startsWith('octicon') ? 'gap-[1.2rem]' : 'gap-4'} w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-100 bg-custom-500 shadow-md' : ''}`} type="button">
                 <Icon icon={icon} className={icon.startsWith('octicon') ? 'w-[1.3rem] h-[1.3rem]' : 'w-6 h-6'} />
                 {name}
               </button>

@@ -25,8 +25,8 @@ function CloneCode({ data }) {
 
   return (
     <div className="px-1">
-      <button onClick={() => setCloneCodeBoxShow(true)} type="button" className="text-zinc-200 text-xl w-full flex items-center justify-center bg-custom-500 shadow-md rounded-md px-4 py-4 pr-3 mt-4 gap-2">
-        <Icon icon="octicon:terminal" className="stroke-[0.4px] stroke-white mr-1 w-6 h-6 -mt-0.5" />
+      <button onClick={() => setCloneCodeBoxShow(true)} type="button" className="text-zinc-100 text-xl w-full flex items-center justify-center bg-custom-500 shadow-md rounded-md px-4 py-4 pr-3 mt-4 gap-2">
+        <Icon icon="octicon:terminal" className="stroke-[0.4px] stroke-zinc-100 mr-1 w-6 h-6 -mt-0.5" />
         Clone
         <Icon icon="uil:angle-down" className="w-6 h-6" />
       </button>
@@ -36,7 +36,7 @@ function CloneCode({ data }) {
       />
       <div className={`w-[40vw] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-zinc-50 dark:bg-zinc-800 shadow-2xl text-zinc-600 dark:text-zinc-300 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${cloneCodeBoxShow ? '-translate-y-1/2' : 'translate-y-[100vh]'}`}>
         <h2 className="flex items-center text-2xl gap-1 font-bold">
-          <Icon icon="octicon:terminal" className="stroke-[0.4px] stroke-zinc-600 mr-1 w-7 h-7 -mt-0.5" />
+          <Icon icon="octicon:terminal" className="stroke-[0.4px] stroke-custom-500 text-custom-500 mr-1 w-7 h-7 -mt-0.5" />
           Clone
         </h2>
         <header className="flex items-center gap-4">
@@ -57,7 +57,7 @@ function CloneCode({ data }) {
           </button>
         </code>
         <p>{description[section]}</p>
-        <a href={`https://github.com/${data.full_name}/archive/refs/heads/${data.default_branch}.zip`} className="text-zinc-200 text-xl w-full flex items-center justify-center bg-custom-500 shadow-md rounded-md px-4 py-4 pr-3 mt-4 gap-2">
+        <a href={`https://github.com/${data.full_name}/archive/refs/heads/${data.default_branch}.zip`} className="text-zinc-100 text-xl w-full flex items-center justify-center bg-custom-500 shadow-md rounded-md px-4 py-4 pr-3 mt-4 gap-2">
           <Icon icon="octicon:file-zip" className="stroke-[0.2px] stroke-white mr-1 w-6 h-6 -mt-0.5" />
           Download ZIP
         </a>

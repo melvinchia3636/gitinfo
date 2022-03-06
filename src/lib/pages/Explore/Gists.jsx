@@ -65,7 +65,7 @@ function Gist() {
           </div>
         ))}
         {nextPage ? (
-          <button onClick={fetchNextPage} type="button" className="text-lg text-zinc-200 h-14 w-full bg-custom-500 rounded-md shadow-md mt-8">
+          <button onClick={fetchNextPage} type="button" className="text-lg text-zinc-100 h-14 w-full bg-custom-500 rounded-md shadow-md mt-8">
             {isLoading ? (
               <Lottie
                 options={{

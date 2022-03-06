@@ -174,7 +174,7 @@ function Releases({
             ))}
           </div>
           {nextReleasesPage ? (
-            <button onClick={fetchNextReleasesPage} type="button" className="text-lg text-zinc-200 h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
+            <button onClick={fetchNextReleasesPage} type="button" className="text-lg text-zinc-100 h-14 w-full bg-custom-500 rounded-md shadow-md mt-6">
               {isReleasesLoading ? 'Loading...' : 'Load more'}
             </button>
           ) : ''}
@@ -202,7 +202,7 @@ function Releases({
               </div>
             )}
             {nextReactionPage ? (
-              <button onClick={fetchNextReactionPage} type="button" className="text-lg text-zinc-200 h-14 flex-shrink-0 w-full bg-custom-500 rounded-md shadow-md mt-4">
+              <button onClick={fetchNextReactionPage} type="button" className="text-lg text-zinc-100 h-14 flex-shrink-0 w-full bg-custom-500 rounded-md shadow-md mt-4">
                 {isReactionLoading ? (
                   <Lottie
                     options={{

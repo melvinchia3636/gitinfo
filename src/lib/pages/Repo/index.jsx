@@ -95,6 +95,7 @@ function Repo() {
                     ['uil:eye', 'Subscribers'],
                     ['uil:star', 'Stargazers'],
 
+                    ['octicon:git-branch-16', 'Branches'],
                     ['uil:tag', 'Tags'],
                     ['uil:box', 'Releases'],
 
@@ -106,7 +107,7 @@ function Repo() {
                     ['octicon:git-pull-request-16', 'Pull Requests'],
                     ['octicon:project-16', 'Projects'],
                   ].map(([icon, name], index) => (
-                    <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-3 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} type="button">
+                    <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-3 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-100 bg-custom-500 shadow-md' : ''}`} type="button">
                       <Icon icon={icon} className={icon.startsWith('octicon') ? 'w-[1.3rem] h-[1.3rem]' : 'w-6 h-6'} />
                       {name}
                     </button>
@@ -143,6 +144,7 @@ function Repo() {
                     data={data}
                     setData={setData}
                   />,
+                  <></>,
                   <Tags
                     data={data}
                     setData={setData}

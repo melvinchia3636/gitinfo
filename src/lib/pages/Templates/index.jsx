@@ -71,7 +71,7 @@ function Templates() {
               'Gitignore'],
             ['octicon:law-16', 'License'],
             ].map(([icon, name], index) => (
-              <button onClick={() => { setSection(index); setMenuOpen(!menuOpen); }} className={`flex items-center transition-all gap-3 w-full text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} type="button">
+              <button onClick={() => { setSection(index); setMenuOpen(!menuOpen); }} className={`flex items-center transition-all gap-3 w-full text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-100 bg-custom-500 shadow-md' : ''}`} type="button">
                 <Icon icon={icon} className={icon.startsWith('octicon') ? 'w-[1.3rem] h-[1.3rem]' : 'w-6 h-6'} />
                 {name}
               </button>
@@ -86,7 +86,7 @@ function Templates() {
               'Gitignore'],
             ['octicon:law-16', 'License'],
             ].map(([icon, name], index) => (
-              <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-3 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-200 bg-custom-500 shadow-md' : ''}`} type="button">
+              <button onClick={() => setSection(index)} className={`flex items-center transition-all gap-3 w-48 text-left px-4 py-2 pt-2.5 rounded-md ${section === index ? 'text-zinc-100 bg-custom-500 shadow-md' : ''}`} type="button">
                 <Icon icon={icon} className={icon.startsWith('octicon') ? 'w-[1.3rem] h-[1.3rem]' : 'w-6 h-6'} />
                 {name}
               </button>

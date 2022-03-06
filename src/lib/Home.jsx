@@ -31,7 +31,7 @@ function Home() {
         <form onSubmit={fetchResult} className="flex items-center gap-4">
           <Icon icon="uil:search" className="w-6 h-6 ml-4 text-zinc-300 flex-shrink-0" />
           <input onChange={(e) => setQuery(e.target.value)} type="text" placeholder="Search Github" className="placeholder-zinc-300 caret-custom-500 py-4 w-full text-xl focus:border-none focus:outline-none text-zinc-600 dark:text-zinc-300 bg-zinc-50 dark:bg-zinc-700" />
-          <button aria-label="search" type="submit" className="bg-custom-500 text-lg py-3 m-1 rounded-md text-zinc-200 h-full p-3 flex items-center gap-1"><Icon icon="uil:arrow-right" className="w-8 h-8" /></button>
+          <button aria-label="search" type="submit" className="bg-custom-500 text-lg py-3 m-1 rounded-md text-zinc-100 h-full p-3 flex items-center gap-1"><Icon icon="uil:arrow-right" className="w-8 h-8" /></button>
         </form>
         {!isLoading ? (
           <div className={`border-t-zinc-50 dark:border-t-zinc-500 max-h-[24rem] overflow-y-scroll transition-all duration-500 flex flex-col gap-4 px-4 ${result?.users?.items?.length || result?.repo?.items?.length ? 'py-4 border-t-2' : '0'}`}>
