@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
@@ -224,9 +225,17 @@ function Releases({
           </div>
         </div>
       ) : (
-        <div className="w-full h-full flex items-center justify-center">
-          <p className="text-xl text-zinc-400 mt-16">Not Available</p>
-        </div>
+        data.releaseCount ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <p className="text-xl text-zinc-400 mt-16">Not Available</p>
+          </div>
+        ) : (
+          <div className="w-full min-h-0 h-full flex items-center justify-center pb-32 mt-12 transition-none">
+            <svg className="spinner" viewBox="0 0 50 50">
+              <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
+            </svg>
+          </div>
+        )
       )}
     </>
   );

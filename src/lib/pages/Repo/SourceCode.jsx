@@ -203,9 +203,9 @@ function SourceCode({ data, setData }) {
         {branches.length > 0 && (
           <div className="flex flex-col items-center overflow-y-auto divide-y divide-zinc-200">
               {branches.map((e) => (
-                <button onClick={() => { setCurrentBranch(e.name); setBranchBoxShow(false); }} type="button" className={`break-all w-full flex justify-between items-center text-lg p-4 hover:bg-zinc-100 ${e.name === currentBranch ? 'font-bold' : ''}`}>
+                <button onClick={() => { setCurrentBranch(e.name); setBranchBoxShow(false); }} type="button" className={`break-all w-full flex justify-between items-center text-lg p-4 hover:bg-zinc-100 text-left ${e.name === currentBranch ? 'font-bold' : ''}`}>
                   {e.name}
-                  {e.name === currentBranch && <Icon icon="octicon:check" className="w-4 h-4 text-custom-500" />}
+                  {e.name === currentBranch && <Icon icon="octicon:check" className="w-4 h-4 text-custom-500 flex-shrink-0" />}
                 </button>
               ))}
           </div>
