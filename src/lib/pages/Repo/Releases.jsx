@@ -184,6 +184,10 @@ function Releases({
             className={`absolute top-0 left-0 flex overflow-hidden items-center justify-center w-full h-full bg-black transition-all ${isReactedPeopleListShow ? 'z-0 bg-opacity-20 duration-200' : 'z-[-1] bg-opacity-0 duration-500'}`}
           />
           <div className={`w-96 h-[80vh] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-zinc-50 dark:bg-zinc-800 shadow-2xl text-zinc-600 dark:text-zinc-300 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${isReactedPeopleListShow ? '-translate-y-1/2' : 'translate-y-[100%]'}`}>
+            <h2 className="flex items-center text-2xl gap-1 font-bold">
+              <Icon icon="uil:smile" className="text-custom-500 mr-1 w-7 h-7 -mt-0.5" />
+              Reactions
+            </h2>
             {reactionData.length ? reactionData.map((e) => (
               <div className="flex items-center gap-4">
                 <div className="relative inline-block">

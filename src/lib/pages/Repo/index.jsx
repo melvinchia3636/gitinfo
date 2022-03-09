@@ -31,6 +31,7 @@ import Issues from './Issues';
 import SourceCode from './SourceCode';
 import Deployments from './Deployments';
 import CloneCode from './CloneCode';
+import Branches from './Branches';
 
 function Repo() {
   const [data, setData] = useState({});
@@ -144,7 +145,12 @@ function Repo() {
                     data={data}
                     setData={setData}
                   />,
-                  <></>,
+                  <Branches
+                    data={data}
+                    setData={setData}
+                    nextTagsPage={nextTagsPage}
+                    setNextTagsPage={setNextTagsPage}
+                  />,
                   <Tags
                     data={data}
                     setData={setData}
