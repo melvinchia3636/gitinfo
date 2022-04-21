@@ -152,7 +152,7 @@ function SourceCode({ data, setData }) {
       )) : (
         contents.type === 'file'
           ? (
-            <div className="mt-8 text-sm bg-zinc-50 rounded-md shadow-md">
+            <div className="mt-8 text-sm bg-zinc-50 dark:bg-zinc-700 rounded-md shadow-md">
               <div className="mb-1 p-4 pb-0 flex justify-between items-center w-full">
                 <div className="!font-['Source_Code_Pro']">
                   {window.atob(contents.content).split('\n').length.toLocaleString()}
@@ -170,7 +170,7 @@ function SourceCode({ data, setData }) {
                   </button>
                 </div>
               </div>
-              <div className="flex">
+              <div className="flex codecontent">
                 <div className="flex flex-col items-end my-2 ml-3 mr-2">
                   {window.atob(contents.content).split('\n').map((e, i) => <span className="text-zinc-300 !font-['Source_Code_Pro']">{i}</span>)}
                 </div>

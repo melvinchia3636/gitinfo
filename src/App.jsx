@@ -7,8 +7,9 @@ import Navbar from './lib/Navbar';
 import User from './lib/pages/User';
 import { ThemeContext } from './lib/themeContext';
 import Emojis from './lib/pages/Emojis';
-import Templates from './lib/pages/Templates';
+import Templates from './lib/pages/GitignoreLicense';
 import Explore from './lib/pages/Explore';
+import Search from './lib/pages/Search';
 
 function App() {
   const [theme, setTheme] = React.useState(localStorage.theme);
@@ -55,12 +56,12 @@ function App() {
 
   return (
     <main className={`${themeColor} min-w-0 min-h-0 w-full overflow-hidden relative bg-custom-500 dark:bg-custom-700 flex items-center justify-center`}>
-      <div className="h-full min-w-0 shadow-2xl shadow-zinc-500 w-full mx-3 md:mx-8 bg-zinc-100 dark:bg-zinc-800 p-6 pb-0 flex flex-col">
+      <div className="h-full min-w-0 shadow-2xl shadow-zinc-500 w-full mx-3 md:mx-8 bg-zinc-100 dark:bg-zinc-800 p-6 pb-0 flex flex-col text-zinc-600 dark:text-zinc-200 ">
         <Router>
           <Navbar theme={theme} setTheme={setTheme} />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Home />} />
+            <Route path="/search/:type" element={<Search />} />
             <Route path="/repo/:user/:reponame" element={<Repo />} />
             <Route path="/user/:username" element={<User />} />
             <Route path="/emojis" element={<Emojis />} />

@@ -377,3 +377,7 @@ pre {
 code, code * {
 	font-family: "Source Code Pro" !important
 }
+
+.codecontent pre {
+	@apply !bg-zinc-50 dark:!bg-zinc-700 dark:!text-zinc-200
+}

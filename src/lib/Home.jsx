@@ -41,11 +41,11 @@ function Home() {
                   <div>
                     <div className="flex items-center justify-between">
                       <h2 className="text-zinc-300 mb-2">Repositories</h2>
-                      <a href="/" className="text-xs font-medium text-zinc-300">See more</a>
+                      <Link to={`/search/repo?q=${encodeURIComponent(query)}`} className="text-xs font-medium text-zinc-300">See more</Link>
                     </div>
                     <div>
                       {result.repo.items.slice(0, 5).map((e) => (
-                        <Link to={`/repo/${e.full_name}`} className="flex items-center gap-3 py-2 border-b border-zinc-50 dark:border-zinc-600 px-2 hover:bg-custom-50 dark:hover:bg-zinc-2000 transition-all duration-200 hover:rounded-md">
+                        <Link to={`/repo/${e.full_name}`} className="flex items-center gap-3 py-2 border-b border-zinc-50 dark:border-zinc-600 px-2 hover:bg-custom-50 dark:hover:bg-zinc-600 transition-all duration-200 hover:rounded-md">
                           <span className={`bg-custom-500 px-4 whitespace-nowrap py-1 ${hexIsLight(color[e.language]?.color || '#000000') ? 'text-zinc-600' : 'text-zinc-50'} font-medium text-xs rounded-full`} style={{ backgroundColor: color[e.language]?.color }}>{e.language || 'NaN'}</span>
                           <h3 className="text-lg text-zinc-600 dark:text-zinc-300 w-[99%] overflow-hidden whitespace-nowrap overflow-ellipsis">{e.full_name}</h3>
                         </Link>
@@ -57,11 +57,11 @@ function Home() {
                   <div>
                     <div className="flex items-center justify-between">
                       <h2 className="text-zinc-300 mb-2">Users</h2>
-                      <a href="/" className="text-xs font-medium text-zinc-300">See more</a>
+                      <Link to={`/search/user?q=${encodeURIComponent(query)}`} className="text-xs font-medium text-zinc-300">See more</Link>
                     </div>
                     <div>
                       {result.users.items.slice(0, 5).map((e) => (
-                        <Link to={`/user/${e.login}`} className="flex items-center gap-4 py-2 border-b border-zinc-50 dark:border-zinc-600 px-2 hover:bg-custom-50 dark:hover:bg-zinc-2000 transition-all duration-200 hover:rounded-md">
+                        <Link to={`/user/${e.login}`} className="flex items-center gap-4 py-2 border-b border-zinc-50 dark:border-zinc-600 px-2 hover:bg-custom-50 dark:hover:bg-zinc-600 transition-all duration-200 hover:rounded-md">
                           <img src={e.avatar_url} alt={e.login} className="w-8 h-8 rounded-full" />
                           <h3 className="text-lg text-zinc-600 dark:text-zinc-300">{e.login}</h3>
                         </Link>
@@ -73,11 +73,11 @@ function Home() {
                   <div>
                     <div className="flex items-center justify-between">
                       <h2 className="text-zinc-300 mb-2">Organizations</h2>
-                      <a href="/" className="text-xs font-medium text-zinc-300">See more</a>
+                      <Link to={`/search/org?q=${encodeURIComponent(query)}`} className="text-xs font-medium text-zinc-300">See more</Link>
                     </div>
                     <div>
                       {result.org.items.slice(0, 5).map((e) => (
-                        <Link to={`/user/${e.login}`} className="flex items-center gap-4 py-2 border-b border-zinc-50 dark:border-zinc-600 px-2 hover:bg-custom-50 dark:hover:bg-zinc-2000 transition-all duration-200 hover:rounded-md">
+                        <Link to={`/user/${e.login}`} className="flex items-center gap-4 py-2 border-b border-zinc-50 dark:border-zinc-600 px-2 hover:bg-custom-50 dark:hover:bg-zinc-600 transition-all duration-200 hover:rounded-md">
                           <img src={e.avatar_url} alt={e.login} className="w-8 h-8 rounded-full" />
                           <h3 className="text-lg text-zinc-600 dark:text-zinc-300">{e.login}</h3>
                         </Link>
