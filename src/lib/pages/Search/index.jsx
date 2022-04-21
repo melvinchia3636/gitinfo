@@ -2,7 +2,9 @@
 import { Icon } from '@iconify/react';
 import React, { useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
+import Org from './type/Org';
 import Repo from './type/Repo';
+import User from './type/User';
 
 function Search() {
   const params = useParams();
@@ -34,7 +36,9 @@ function Search() {
         </div>
         on Github
       </h3>
-      <Repo query={query} />
+      {type === 'repo' && <Repo query={query} />}
+      {type === 'user' && <User query={query} />}
+      {type === 'org' && <Org query={query} />}
     </>
   );
 }

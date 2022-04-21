@@ -98,7 +98,7 @@ function SourceCode({ data, setData }) {
             {data.currentPath.map((e, i) => (
               <button onClick={() => navigateTo(i)} type="button">
                 <span className={data.currentPath.length - 1 !== i ? 'text-custom-500' : ''}>
-                  {e}
+                  {decodeURIComponent(e)}
                 </span>
                 {' '}
                 {contents.type === 'file' && i === data.currentPath.length - 1 ? '' : <>/&nbsp;</>}

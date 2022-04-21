@@ -13,7 +13,7 @@ function Repo({ query }) {
   }, [query]);
 
   return (
-    <div className="mt-4 overflow-y-auto">
+    <div className="mt-4 pb-12 overflow-y-auto">
       {data?.items?.length > 0 && data.items.map((e) => (
         <div className="py-4 px-4 border-b border-zinc-300 dark:border-zinc-600 gap-4 hover:bg-zinc-200 dark:hover:bg-zinc-600 duration-300 hover:rounded-md">
           <h3 className="text-2xl">
