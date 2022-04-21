@@ -109,8 +109,8 @@ function SourceCode({ data, setData }) {
         <div className="flex items-center gap-8 mr-2">
           <div className="flex items-center text-lg gap-2">
             <Icon icon="mdi:source-branch" width="20" height="20" />
-            <span>
-              {data.branchesCount}
+            <span className="whitespace-nowrap">
+              {data.branchesCount || 1}
               {' '}
               branch
               {data.branchesCount > 1 ? 'es' : ''}
@@ -118,7 +118,7 @@ function SourceCode({ data, setData }) {
           </div>
           <div className="flex items-center text-lg gap-2">
             <Icon icon="uil:tag" width="20" height="20" />
-            <span>
+            <span className="whitespace-nowrap">
               {data.tagsCount}
               {' '}
               tag

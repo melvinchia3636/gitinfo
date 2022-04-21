@@ -32,6 +32,7 @@ import SourceCode from './SourceCode';
 import Deployments from './Deployments';
 import CloneCode from './CloneCode';
 import Branches from './Branches';
+import Forks from './Forks';
 
 function Repo() {
   const [data, setData] = useState({});
@@ -87,9 +88,8 @@ function Repo() {
                   {[
                     ['uil:info-circle', 'Overview'],
                     ['uil:document-info', 'README.md'],
-                    ['uil:rocket', 'Deployments'],
-
                     ['lucide:file-code', 'Source Code'],
+                    ['uil:rocket', 'Deployments'],
                     ['ic:round-code', 'Languages'],
 
                     ['uil:users-alt', 'Contributors'],
@@ -130,8 +130,8 @@ function Repo() {
                     </div>
                   </div>,
                   <ReadmeMD data={data} setData={setData} />,
-                  <Deployments data={data} />,
                   <SourceCode data={data} setData={setData} />,
+                  <Deployments data={data} />,
                   <Languages data={data} />,
                   <Contributors
                     data={data}
@@ -162,7 +162,10 @@ function Repo() {
                     setData={setData}
                   />,
                   <></>,
-                  <></>,
+                  <Forks
+                    data={data}
+                    setData={setData}
+                  />,
                   <Labels
                     data={data}
                     setData={setData}
