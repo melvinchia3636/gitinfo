@@ -171,18 +171,26 @@ function SourceCode({ data, setData }) {
                 </div>
               </div>
               <div className="flex codecontent">
-                <div className="flex flex-col items-end my-2 ml-3 mr-2">
-                  {window.atob(contents.content).split('\n').map((e, i) => <span className="text-zinc-300 !font-['Source_Code_Pro']">{i}</span>)}
-                </div>
-                <SyntaxHighlighter
-                  customStyle={{
-                    fontFamily: 'Source Code Pro',
-                  }}
-                  style={atomOneLight}
-                  language={((Object.entries(languageMap).filter((e) => e[1].extensions?.includes(`.${contents.name.split('.').pop()}`)) || [null])[0] || [null])[0]?.toLowerCase()}
-                >
-                  {window.atob(contents.content)}
-                </SyntaxHighlighter>
+                {!['png', 'jpg'].includes(data.currentPath[data.currentPath.length - 1].split('.').pop()) ? (
+                  <>
+                    <div className="flex flex-col items-end my-2 ml-3 mr-2">
+                      {window.atob(contents.content).split('\n').map((e, i) => <span className="text-zinc-300 !font-['Source_Code_Pro']">{i}</span>)}
+                    </div>
+                    <SyntaxHighlighter
+                      customStyle={{
+                        fontFamily: 'Source Code Pro',
+                      }}
+                      style={atomOneLight}
+                      language={((Object.entries(languageMap).filter((e) => e[1].extensions?.includes(`.${contents.name.split('.').pop()}`)) || [null])[0] || [null])[0]?.toLowerCase()}
+                    >
+                      {window.atob(contents.content)}
+                    </SyntaxHighlighter>
+                  </>
+                ) : (
+                  <div className="w-full flex items-center justify-center my-6">
+                    <img alt="" src={`https://raw.githubusercontent.com/${data.full_name}/${currentBranch}/${data.currentPath.slice(1).join('/')}`} />
+                  </div>
+                )}
               </div>
             </div>
           )
