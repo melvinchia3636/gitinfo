@@ -37,7 +37,7 @@ function Navbar({ theme, setTheme }) {
             'Explore',
             'Emojis',
             'Templates',
-          ].map((e, i) => <Link to={`/${e.toLowerCase().replace('search', '')}`} className={(location.pathname.slice(1) === e.toLowerCase() || (!location.pathname.slice(1) && !i)) ? 'font-bold text-custom-500' : ''}>{e}</Link>)}
+          ].map((e, i) => <Link to={`/${e.toLowerCase().replace('search', '')}`} className={(location.pathname.slice(1).split('/').shift() === e.toLowerCase() || (!location.pathname.slice(1) && !i)) ? 'font-bold text-custom-500' : ''}>{e}</Link>)}
         </div>
         <div className="flex gap-2">
           <button type="button" className="bg-custom-500 p-3 rounded-md shadow-md" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>

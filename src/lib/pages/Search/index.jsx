@@ -25,9 +25,9 @@ function Search() {
             {TYPES[type]}
             <Icon icon="uil:angle-down" className="w-6 h-6 stroke-[0.6px] stroke-custom-500 mt-[3px]" />
           </button>
-          <div className={`absolute -bottom-2 left-0 w-48 text-zinc-600 dark:text-zinc-300 text-lg text-left rounded-md shadow-lg translate-y-full bg-zinc-700 flex flex-col overflow-hidden transition-all duration-700 font-normal ${openTypeSelector ? 'max-h-48 py-2' : 'max-h-0 py-0'}`}>
+          <div className={`absolute -bottom-2 left-0 w-48 text-zinc-600 dark:text-zinc-300 text-lg text-left rounded-md shadow-lg translate-y-full bg-zinc-100 dark:bg-zinc-700 flex flex-col overflow-hidden transition-all duration-700 font-normal ${openTypeSelector ? 'max-h-48 py-2' : 'max-h-0 py-0'}`}>
             {Object.entries(TYPES).map(([link, name]) => (
-              <Link className={`px-4 py-2 hover:bg-custom-50 dark:hover:bg-zinc-600 flex justify-between items-center ${link === type ? 'text-custom-500 font-semibold' : ''}`} to={`/search/${link}?q=${query}`}>
+              <Link className={`px-4 py-2 hover:bg-zinc-200 dark:hover:bg-zinc-600 flex justify-between items-center ${link === type ? 'text-custom-500 font-semibold' : ''}`} to={`/search/${link}?q=${query}`}>
                 {name}
                 {link === type && <Icon icon="uil:check" />}
               </Link>

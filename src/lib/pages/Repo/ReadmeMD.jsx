@@ -25,7 +25,7 @@ function ReadmeMD({ data, setData }) {
     data.readmeContent ? (
       <>
         <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
-          <Icon icon="codicon:law" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
+          <Icon icon="uil:document-info" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
           README.md
         </div>
         <Readme data={data} />
