@@ -20,7 +20,7 @@ function Stats({ data }) {
         </div>
         <div className="text-sm font-medium text-zinc-400 flex flex-col justify-between">
           Forks
-          <span className="text-2xl text-zinc-600 dark:text-zinc-300">{data.forks.toLocaleString()}</span>
+          <span className="text-2xl text-zinc-600 dark:text-zinc-300">{data.forks_count.toLocaleString()}</span>
         </div>
       </div>
       <div className="flex items-center gap-2 rounded-md p-2 bg-zinc-50 dark:bg-zinc-700 w-full shadow-md">
