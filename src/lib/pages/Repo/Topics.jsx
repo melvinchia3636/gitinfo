@@ -1,18 +1,27 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { Icon } from '@iconify/react';
+import React, { useState } from "react";
+import { Icon } from "@iconify/react";
 
 function Topics({ data }) {
-  return (
-    data.topics.length ? (
-      <div className="mt-10">
-        <div className="flex items-center gap-2 text-2xl font-medium text-zinc-600 dark:text-zinc-300 tracking-wide">
-          <Icon icon="uil:bookmark" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
-          Topics
-        </div>
-        <p className="mt-4 text-zinc-600 dark:text-zinc-300 text-sm ml-1 tracking-wide flex gap-1 flex-wrap">{data.topics.map((e) => <span className="px-4 pt-1 pb-1.5 shadow-md block bg-custom-500 rounded-full text-zinc-100">{e}</span>)}</p>
+  return data.topics.length ? (
+    <div className="mt-10">
+      <div className="flex items-center text-2xl font-medium tracking-wide gap-2 text-zinc-600 dark:text-zinc-300">
+        <Icon
+          icon="uil:bookmark"
+          className="w-8 h-8 text-custom-500 dark:text-custom-400"
+        />
+        Topics
       </div>
-    ) : ''
+      <p className="flex flex-wrap mt-4 ml-1 text-sm tracking-wide text-zinc-600 dark:text-zinc-300 gap-1">
+        {data.topics.map((e) => (
+          <span className="px-4 pt-1 pb-1.5 shadow-md block bg-custom-500 rounded-full text-zinc-100">
+            {e}
+          </span>
+        ))}
+      </p>
+    </div>
+  ) : (
+    ""
   );
 }
 

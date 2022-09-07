@@ -16,7 +16,9 @@ function App() {
   const { themeColor } = React.useContext(ThemeContext);
 
   useEffect(() => {
-    const color = getComputedStyle(document.querySelector(`.${themeColor}`)).getPropertyValue('--color-custom-500');
+    const color = getComputedStyle(
+      document.querySelector(`.${themeColor}`),
+    ).getPropertyValue('--color-custom-500');
     let link = document.querySelector("link[rel~='icon']");
     if (link) link.remove();
     link = document.createElement('link');
@@ -38,7 +40,10 @@ function App() {
   }, [themeColor]);
 
   React.useEffect(() => {
-    if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (
+      theme === 'dark'
+      || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
       setTheme('dark');
     } else {
       setTheme('light');
@@ -55,8 +60,10 @@ function App() {
   }, [theme]);
 
   return (
-    <main className={`${themeColor} min-w-0 min-h-0 w-full overflow-hidden relative bg-custom-500 dark:bg-custom-700 flex items-center justify-center`}>
-      <div className="h-full min-w-0 shadow-2xl shadow-zinc-500 w-full mx-3 md:mx-8 bg-zinc-100 dark:bg-zinc-800 p-6 pb-0 flex flex-col text-zinc-600 dark:text-zinc-100 dark:text-zinc-200 ">
+    <main
+      className={`${themeColor} min-w-0 min-h-0 w-full overflow-hidden relative bg-custom-500 dark:bg-custom-700 flex items-center justify-center`}
+    >
+      <div className="flex flex-col w-full h-full min-w-0 p-6 pb-0 mx-3 shadow-2xl shadow-zinc-500 md:mx-8 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-200">
         <Router>
           <Navbar theme={theme} setTheme={setTheme} />
           <Routes>

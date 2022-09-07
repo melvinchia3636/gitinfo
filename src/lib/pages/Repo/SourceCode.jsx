@@ -83,13 +83,13 @@ function SourceCode({ data, setData }) {
 
   return (
     <div className="flex flex-col h-full text-zinc-600 dark:text-zinc-300">
-      <div className="flex items-center gap-2 text-2xl font-medium tracking-wide">
+      <div className="flex items-center text-2xl font-medium tracking-wide gap-2">
         <Icon icon="lucide:file-code" className="w-8 h-8 text-custom-500 dark:text-custom-400" />
         Source Code
       </div>
       <div className="flex items-center justify-between mt-8">
         <div className="flex items-center gap-8">
-          <button type="button" onClick={() => setBranchBoxShow(true)} className="text-zinc-100 bg-custom-500 shadow-md rounded-md px-4 py-2 pr-3 flex items-center gap-2">
+          <button type="button" onClick={() => setBranchBoxShow(true)} className="flex items-center px-4 py-2 pr-3 shadow-md text-zinc-100 bg-custom-500 rounded-md gap-2">
             <Icon icon="mdi:source-branch" width="20" height="20" />
             {currentBranch}
             <Icon icon="uil:angle-down" width="20" height="20" />
@@ -106,7 +106,7 @@ function SourceCode({ data, setData }) {
             ))}
           </p>
         </div>
-        <div className="flex items-center gap-8 mr-2">
+        <div className="flex items-center mr-2 gap-8">
           <div className="flex items-center text-lg gap-2">
             <Icon icon="mdi:source-branch" width="20" height="20" />
             <span className="whitespace-nowrap">
@@ -130,7 +130,7 @@ function SourceCode({ data, setData }) {
       {Array.isArray(contents) ? (contents.length ? (
         <div className="mt-4">
           {contents.sort((a, b) => ['file', 'dir'].indexOf(b.type) - ['file', 'dir'].indexOf(a.type)).map((e) => (
-            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex w-full items-center justify-between px-4 py-4 border-b text-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:rounded-md border-zinc-300 dark:border-zinc-500">
+            <button type="button" onClick={() => setCurrentURL(e.url)} className="flex items-center justify-between w-full px-4 py-4 text-lg border-b hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:rounded-md transition-all border-zinc-300 dark:border-zinc-500">
               <div className="flex items-center gap-4">
                 <Icon icon={e.type === 'dir' ? 'mdi-folder' : 'uil:file'} className={`w-6 h-6 ${e.type === 'dir' ? 'text-custom-500' : 'text-zinc-600 dark:text-zinc-300'}`} />
                 {e.name}
@@ -144,7 +144,7 @@ function SourceCode({ data, setData }) {
           ))}
         </div>
       ) : (
-        <div className="w-full min-h-0 h-full flex items-center justify-center pb-32 mt-6 transition-none">
+        <div className="flex items-center justify-center w-full h-full min-h-0 pb-32 mt-6 transition-none">
           <svg className="spinner" viewBox="0 0 50 50">
             <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="7" />
           </svg>
@@ -152,8 +152,8 @@ function SourceCode({ data, setData }) {
       )) : (
         contents.type === 'file'
           ? (
-            <div className="mt-8 text-sm bg-zinc-50 dark:bg-zinc-700 rounded-md shadow-md">
-              <div className="mb-1 p-4 pb-0 flex justify-between items-center w-full">
+            <div className="mt-8 text-sm shadow-md bg-zinc-50 dark:bg-zinc-700 rounded-md">
+              <div className="flex items-center justify-between w-full p-4 pb-0 mb-1">
                 <div className="!font-['Source_Code_Pro']">
                   {window.atob(contents.content).split('\n').length.toLocaleString()}
                   {' '}
@@ -187,7 +187,7 @@ function SourceCode({ data, setData }) {
                     </SyntaxHighlighter>
                   </>
                 ) : (
-                  <div className="w-full flex items-center justify-center my-6">
+                  <div className="flex items-center justify-center w-full my-6">
                     <img alt="" src={`https://raw.githubusercontent.com/${data.full_name}/${currentBranch}/${data.currentPath.slice(1).join('/')}`} />
                   </div>
                 )}
@@ -201,7 +201,7 @@ function SourceCode({ data, setData }) {
         className={`absolute top-0 left-0 flex overflow-hidden items-center justify-center w-full h-full bg-black transition-all ${branchBoxShow ? 'z-0 bg-opacity-20 duration-200' : 'z-[-1] bg-opacity-0 duration-500'}`}
       />
       <div className={`w-[40vw] max-h-[calc(100vh-8rem)] overscroll-contain absolute top-1/2 left-1/2 -translate-x-1/2 bg-zinc-50 dark:bg-zinc-800 shadow-2xl text-zinc-600 dark:text-zinc-300 rounded-xl overflow-y-scroll p-6 flex flex-col gap-4 transform transition-all duration-500 ${branchBoxShow ? '-translate-y-1/2' : 'translate-y-[100vh]'}`}>
-        <h2 className="flex items-center text-2xl gap-1 font-bold">
+        <h2 className="flex items-center text-2xl font-bold gap-1">
           <Icon icon="mdi:source-branch" className="stroke-[0.4px] stroke-custom-500 text-custom-500 mr-1 w-7 h-7 -mt-0.5" />
           Switch Branches / Tags
         </h2>
@@ -209,11 +209,11 @@ function SourceCode({ data, setData }) {
           {['Branches', 'Tags'].map((e, i) => <button key={i} type="button" onClick={() => setSection(i)} className={`text-base ${i === section ? 'font-bold underline decoration-custom-500 decoration-2 underline-offset-4' : ''}`}>{e}</button>)}
         </header>
         {branches.length > 0 && (
-          <div className="flex flex-col items-center overflow-y-auto divide-y divide-zinc-200">
+          <div className="flex flex-col items-center overflow-y-auto divide-y divide-zinc-200 dark:divide-zinc-700">
               {branches.map((e) => (
-                <button onClick={() => { setCurrentBranch(e.name); setBranchBoxShow(false); }} type="button" className={`break-all w-full flex justify-between items-center text-lg p-4 hover:bg-zinc-100 text-left ${e.name === currentBranch ? 'font-bold' : ''}`}>
+                <button onClick={() => { setCurrentBranch(e.name); setBranchBoxShow(false); }} type="button" className={`break-all w-full flex justify-between items-center text-lg p-4 hover:bg-custom-500 hover:rounded-md transition-all text-left ${e.name === currentBranch ? 'font-bold' : ''}`}>
                   {e.name}
-                  {e.name === currentBranch && <Icon icon="octicon:check" className="w-4 h-4 text-custom-500 flex-shrink-0" />}
+                  {e.name === currentBranch && <Icon icon="octicon:check" className="flex-shrink-0 w-4 h-4 text-custom-500" />}
                 </button>
               ))}
           </div>
