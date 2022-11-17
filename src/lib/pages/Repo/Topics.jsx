@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
-import { Icon } from "@iconify/react";
+import React from 'react';
+import { Icon } from '@iconify/react';
 
 function Topics({ data }) {
   return data.topics.length ? (
@@ -21,7 +21,7 @@ function Topics({ data }) {
       </p>
     </div>
   ) : (
-    ""
+    ''
   );
 }
 
